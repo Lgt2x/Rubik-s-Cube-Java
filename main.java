@@ -3,7 +3,4 @@ public class main{
         System.out.println("hello World !");
         fenetre maFenetre = new fenetre();
     }
-
-
-
 }
