@@ -1,12 +1,3 @@
-# Rubik-s-Cube-Java
-solver de rubik's cube
-
-pour compiler : 
- ```bash
-javac *.java
- java main
-```
-
 ## Comment contribuer au projet
   1) Regarder quelles issues non assignées sont disponibles
   2) S'assigner l'issue, pour que personne d'autre ne se mette dessus
