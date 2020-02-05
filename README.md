@@ -1,4 +1,4 @@
-# Rubik-s-Cube-Java
+# Rubik-s-IHM.Cube-Java
 solver de rubik's cube
 
 pour compiler : 
