@@ -1,6 +1,7 @@
+import IHM.GestionAffichage;
+
 public class main{
     public static void main(String []args){
-        System.out.println("hello World !");
-        fenetre maFenetre = new fenetre();
+        GestionAffichage visualisation = new GestionAffichage();
     }
 }
