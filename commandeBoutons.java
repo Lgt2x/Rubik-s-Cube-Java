@@ -12,7 +12,7 @@ public class commandeBoutons extends JPanel {
 
     public  commandeBoutons(){
         this.setLayout(null);
-        this.setBounds(1025, 10, 300, 150);
+        this.setBounds(1025, 10, 300, 75);
         this.setBackground(maCouleur);
 
         //Placement boutons
