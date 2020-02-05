@@ -6,6 +6,7 @@ public class AffichageCube extends JPanel{
 
     //private CarreCube[] carreCube = new CarreCube[52];
     private JButton[] bouton = new JButton[108];
+    private Color maCouleur = new Color(48, 48, 48);
 
 
 
@@ -13,11 +14,11 @@ public class AffichageCube extends JPanel{
     public AffichageCube(){
         //creer le panel contenant les coté des cubes
         this.setLayout(new GridLayout(9,12) );
-        this.setBackground(Color.BLACK);
+        this.setBackground(Color.GREEN);
         this.setBounds(10,10,840,630); // avoir des boutons carré
 
 
-        //colorier tous les carré comme un cube finit lors du démarage
+        //colorier tous les carré comme un cube fini lors du démarage
         for(int i=0; i<108; i++) {
             bouton[i] = new JButton();
             if ((i>2 && i<6)||(i>14 && i<18)||(i>26 && i<30) ){
@@ -33,7 +34,7 @@ public class AffichageCube extends JPanel{
             }else if ((i>44 && i<49)||(i>56 && i<60)||(i>68 && i<72) ){
                 bouton[i].setBackground(Color.YELLOW);
             }else{
-                bouton[i].setBackground(Color.BLACK);
+                bouton[i].setBackground(maCouleur);
             }
             this.add(bouton[i]);
         }
