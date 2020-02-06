@@ -1,5 +1,12 @@
 public class Cube{
 
+	Face blanche = new Face(1,2,3,4,0);
+	Face bleue = new Face(5, 2,0, 4, 1);
+	Face rouge = new Face(5, 3,0, 1, 2);
+	Face verte = new Face(5, 4,0, 2, 3);
+	Face orange = new Face(5, 1,0, 3, 4);
+	Face jaune = new Face(2, 1,4, 3, 5);
+
 
 
 	Angle UFL = new Angle(new Facelette(0), new Facelette(1), new Facelette(2), 0);

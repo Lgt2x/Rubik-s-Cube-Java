@@ -9,6 +9,7 @@ public class Facelette{
 
 	 */
 	int color;
+	int face;
 	public Facelette(int color) {
 		this.color = color;
 	}
@@ -18,5 +19,13 @@ public class Facelette{
 		return "Facelette{" +
 				"color=" + color +
 				'}';
+	}
+
+	public int getFace() {
+		return face;
+	}
+
+	public void setFace(int face) {
+		this.face = face;
 	}
 }
