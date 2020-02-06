@@ -1,5 +1,4 @@
-package IHM;/* problème : il ne faudrait déclarer que 52 boutons et remplir le reste du grid layout avec du vide*/
-import IHM.Cube.Cube;
+/* problème : il ne faudrait déclarer que 52 boutons et remplir le reste du grid layout avec du vide*/
 import java.awt.*;
 import javax.swing.*;
 
@@ -7,23 +6,19 @@ public class AffichageCube extends JPanel{
 
     //private CarreCube[] carreCube = new CarreCube[52];
     private JButton[] bouton = new JButton[108];
-    private static Color[] couleurs = new Color[] {new Color(255,255,255),
-            new Color(30, 29, 173),
-            new Color(195, 12,0),
-            new Color(14,255, 29),
-            new Color(248, 97,0),
-            new Color(249, 206, 33)
-    };
+    private Color maCouleur = new Color(48, 48, 48);
+
+
+
 
     public AffichageCube(){
-        // Création du panel contenant les cotés des cubes
+        //creer le panel contenant les coté des cubes
         this.setLayout(new GridLayout(9,12) );
-        this.setBackground(Color.BLACK);
-        this.setBounds(10,10,840,630); // Avoir des boutons carrés
+        this.setBackground(Color.GREEN);
+        this.setBounds(10,10,840,630); // avoir des boutons carré
 
 
-        // Colorier tous les carrés comme un cube fini lors du démarage
-        // Attention : Juste pour la phase initiale, tant qu'il n'y a pas de classe cube !
+        //colorier tous les carré comme un cube fini lors du démarage
         for(int i=0; i<108; i++) {
             bouton[i] = new JButton();
             if ((i>2 && i<6)||(i>14 && i<18)||(i>26 && i<30) ){
@@ -39,18 +34,10 @@ public class AffichageCube extends JPanel{
             }else if ((i>44 && i<49)||(i>56 && i<60)||(i>68 && i<72) ){
                 bouton[i].setBackground(Color.YELLOW);
             }else{
-                bouton[i].setBackground(Color.BLACK);
+                bouton[i].setBackground(maCouleur);
             }
             this.add(bouton[i]);
         }
     }
 
-    /**
-     * Retourne la couleur correspondante au nombre demandé
-     * @param color : entier dont on veut la couleur correspondante
-     * @return
-     */
-    public static Color correspondanceCouleur (int color) {
-        return couleurs[color];
-    }
 }
