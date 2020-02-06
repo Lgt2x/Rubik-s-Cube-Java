@@ -1,16 +1,17 @@
+package IHM.UXComponents;
+
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
-public class commandeBoutons extends JPanel {
+public class CommandeBoutons extends JPanel {
     //Déclaration de chaque bouton
-    private JButton pause  = new JButton(new ImageIcon("play2.png"));
-    private JButton avancer = new JButton(new ImageIcon("avancer.png"));
-    private JButton arriere  = new JButton(new ImageIcon("arriere.png"));
+    private JButton pause  = new JButton(new ImageIcon("IHM/UXComponents/play2.png"));
+    private JButton avancer = new JButton(new ImageIcon("IHM/UXComponents/avancer.png"));
+    private JButton arriere  = new JButton(new ImageIcon("IHM/UXComponents/arriere.png"));
     private Color maCouleur = new Color(48, 48, 48);
 
 
-    public  commandeBoutons(){
+    public CommandeBoutons(){
         this.setLayout(null);
         this.setBounds(1025, 10, 300, 75);
         this.setBackground(maCouleur);

@@ -1,17 +1,21 @@
+package IHM;
+
+import IHM.UXComponents.*;
+
 import java.awt.*;
 import javax.swing.*;
 
-public class fenetre extends JFrame{
+public class GestionAffichage extends JFrame{
 
     private AffichageCube affichageCube;
-    private commandeBoutons panneauBouton;
-    private boutonLancement panneauStart;
-    private boutonsMouvements panneauMouvements;
-    private boutonsMouvementInv panneauMouvementsInv;
-    private boutonSolution panneauSolution;
+    private CommandeBoutons panneauBouton;
+    private BoutonLancement panneauStart;
+    private BoutonsMouvements panneauMouvements;
+    private BoutonsMouvementInv panneauMouvementsInv;
+    private BoutonSolution panneauSolution;
     private Color maCouleur = new Color(48, 48, 48);
 
-    public fenetre(){
+    public GestionAffichage(){
 
         //initialisation de la fenetre
         this.setTitle("Solver de rubik's cube");
@@ -26,11 +30,11 @@ public class fenetre extends JFrame{
 
         //Déclaration des panneaux
         affichageCube = new AffichageCube();
-        panneauBouton = new commandeBoutons();
-        panneauStart = new boutonLancement();
-        panneauMouvements = new boutonsMouvements();
-        panneauMouvementsInv = new boutonsMouvementInv();
-        panneauSolution = new boutonSolution();
+        panneauBouton = new CommandeBoutons();
+        panneauStart = new BoutonLancement();
+        panneauMouvements = new BoutonsMouvements();
+        panneauMouvementsInv = new BoutonsMouvementInv();
+        panneauSolution = new BoutonSolution();
 
 
         // Ajout de chaque Panel au panel principal

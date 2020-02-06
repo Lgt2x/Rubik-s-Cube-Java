@@ -1,4 +1,6 @@
 /* problème : il ne faudrait déclarer que 52 boutons et remplir le reste du grid layout avec du vide*/
+package IHM;
+
 import java.awt.*;
 import javax.swing.*;
 

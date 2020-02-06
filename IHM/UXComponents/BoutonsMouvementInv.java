@@ -1,20 +1,23 @@
+package IHM.UXComponents;
+
 import javax.swing.*;
 import java.awt.*;
 
-public  class boutonsMouvements extends JPanel{
+public  class BoutonsMouvementInv extends JPanel{
     JButton[] mouvements = new JButton[6];
     private Color maCouleur = new Color(48, 48, 48);
-    public boutonsMouvements(){
+
+    public BoutonsMouvementInv(){
         this.setLayout(null);
-        this.setBounds(875, 205, 600, 75);
+        this.setBounds(875, 305, 600, 75);
         this.setBackground(maCouleur);
 
-        mouvements[0] = new JButton("R");
-        mouvements[1] = new JButton("U");
-        mouvements[2] = new JButton("L");
-        mouvements[3] = new JButton("D");
-        mouvements[4] = new JButton("F");
-        mouvements[5] = new JButton("B");
+        mouvements[0] = new JButton("R inv");
+        mouvements[1] = new JButton("U inv");
+        mouvements[2] = new JButton("L inv");
+        mouvements[3] = new JButton("D inv");
+        mouvements[4] = new JButton("F inv");
+        mouvements[5] = new JButton("B inv");
 
         //Fonction permettant de mettre la couleur du texte en blanc et ajout des boutons au panel
         placement();

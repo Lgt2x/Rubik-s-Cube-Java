@@ -1,12 +1,14 @@
+package IHM.UXComponents;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class boutonLancement extends JPanel{
+public class BoutonLancement extends JPanel{
     private JButton solve = new JButton("Résoudre");
     private JButton mix = new JButton("Mélanger");
     private Color maCouleur = new Color(48, 48, 48);
 
-    public boutonLancement(){
+    public BoutonLancement(){
         this.setLayout(null);
         this.setBounds(1025, 95, 300, 100);
         this.setBackground(maCouleur);

@@ -1,11 +1,13 @@
+package IHM.UXComponents;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class boutonSolution extends JPanel{
+public class BoutonSolution extends JPanel{
     private JButton solution = new JButton("Solution : ");
     private Color maCouleur = new Color(48, 48, 48);
 
-    public boutonSolution(){
+    public BoutonSolution(){
         this.setLayout(null);
         this.setBounds(1025, 405, 300, 150);
         this.setBackground(maCouleur);
