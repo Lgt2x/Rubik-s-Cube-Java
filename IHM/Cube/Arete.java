@@ -1,3 +1,5 @@
+package IHM.Cube;
+
 public class Arete extends Piece {
 
 	public Arete(Facelette facelette1, Facelette facelette2) {

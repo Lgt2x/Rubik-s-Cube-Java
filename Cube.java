@@ -1,3 +1,7 @@
+import IHM.Cube.Arete;
+import IHM.Cube.Face;
+import IHM.Cube.Facelette;
+
 public class Cube{
 
 	Face blanche = new Face(1,2,3,4,0);

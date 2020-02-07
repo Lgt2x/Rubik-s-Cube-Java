@@ -1,3 +1,5 @@
+package IHM.Cube;
+
 public class Mouvements{
 
 

@@ -1,4 +1,7 @@
-public class Angle extends Piece{
+import IHM.Cube.Facelette;
+import IHM.Cube.Piece;
+
+public class Angle extends Piece {
 
 	public Angle(Facelette facelette1, Facelette facelette2, Facelette facelette3) {
 		this.facelette = new Facelette[3];
