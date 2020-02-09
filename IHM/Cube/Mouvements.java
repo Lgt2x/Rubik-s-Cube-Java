@@ -6,7 +6,7 @@ public class Mouvements{
 
 	public Mouvements(){
 	}
-
+/*
 	public Cube UP(Cube cube){
 
 		Arete aretes0 = cube.aretes[0];
@@ -90,5 +90,5 @@ public class Mouvements{
 		}
 		return cube;
 
-	}
+	}*/
 }

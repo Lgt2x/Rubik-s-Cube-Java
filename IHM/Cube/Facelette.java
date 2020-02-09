@@ -10,10 +10,10 @@ public class Facelette{
 	DOWN/blang
 	 */
 
-	public int color;
-	public Face face;
+	public char color;
+	public char face;
 
-	public Facelette(int color, Face face) {
+	public Facelette(char color,char face) {
 		this.color = color;
 		this.face = face;
 	}

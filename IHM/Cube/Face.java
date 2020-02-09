@@ -5,18 +5,25 @@ import java.util.LinkedList;
 
 public class Face{
 
-	String valeur; // U,L,R,D,B,F
-	String voisins;
-	Queue<Face> queue;
+	char valeur; // U,L,R,D,B,F
+	//String voisins;
+	LinkedList<Character> queue;
 
-	public Face(String valeur, String voisins) {
+	public Face(char valeur, String voisins) {
 		this.valeur = valeur;
-		this.voisins = voisins;
+
+		queue = new LinkedList<Character>();
+		for (int i=0;i<voisins.length();i++)
+			queue.add(voisins.charAt(i));
 	}
 
-	public void defQueue(HashMap<String, Face> faces) {
+
+
+	//
+
+	/*public void defQueue(HashMap<String, Face> faces) {
 		queue = new LinkedList<Face>();
 		for (int i=0;i<voisins.length();i++)
 			queue.add(faces.get(voisins.charAt(i)));
-	}
+	}*/
 }

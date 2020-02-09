@@ -1,10 +1,12 @@
 package IHM.Cube;
 
 public class Angle extends  Piece{
+
+    //instancier les pièces dans leur position initiale
     public Angle (String name) {
         this.facelette = new Facelette[3];
-        this.facelette[0] = new Facelette((String[0], ));
-        this.facelette[1] = f2;
-        this.facelette[2] = f3;
+        for(int i = 0; i < 3; i++) {
+            this.facelette[i] = new Facelette(name.charAt(i),name.charAt(i));
+        }
     }
 }
