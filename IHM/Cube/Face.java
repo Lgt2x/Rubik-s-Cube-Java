@@ -1,20 +1,22 @@
 package IHM.Cube;
+import java.util.HashMap;
 import java.util.Queue;
 import java.util.LinkedList;
 
 public class Face{
-	char valeur; // U,L,R,D,B,F
+
+	String valeur; // U,L,R,D,B,F
+	String voisins;
 	Queue<Face> queue;
 
-	public Face(char valeur) {
+	public Face(String valeur, String voisins) {
 		this.valeur = valeur;
+		this.voisins = voisins;
 	}
 
-	public void defQueue(Face f1,Face f2, Face f3, Face f4) {
+	public void defQueue(HashMap<String, Face> faces) {
 		queue = new LinkedList<Face>();
-		queue.add(f1);
-		queue.add(f2);
-		queue.add(f3);
-		queue.add(f4);
+		for (int i=0;i<voisins.length();i++)
+			queue.add(faces.get(voisins.charAt(i)));
 	}
 }
