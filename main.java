@@ -8,6 +8,6 @@ public class main{
         GestionAffichage visualisation = new GestionAffichage();
 
         Cube cube = new Cube();
-        cube.mouvement('U');
+        cube.mouvement("U", true);
     }
 }

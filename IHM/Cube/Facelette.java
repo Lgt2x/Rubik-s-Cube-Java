@@ -7,10 +7,10 @@ public class Facelette{
 	LEFT/orange
 	BACK/vert
 	LEFT/rouge
-	DOWN/blang
+	DOWN/blanc
 	 */
 
-	public char color;
+	public final char color;
 	public char face;
 
 	public Facelette(char color,char face) {
