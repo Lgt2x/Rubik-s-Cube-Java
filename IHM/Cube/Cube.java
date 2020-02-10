@@ -39,12 +39,12 @@ public class Cube {
     public Cube() {
         nomFaces = new String[]{"U", "L", "B", "D", "R", "F"};
         facesVoisines = new HashMap<>();
-        facesVoisines.put("U", "FLBRF");
-        facesVoisines.put("L", "UFDBU");
-        facesVoisines.put("B", "ULDRU");
-        facesVoisines.put("D", "FRBLF");
+        facesVoisines.put("U", "LBRFL");
+        facesVoisines.put("L", "DBUFD");
+        facesVoisines.put("B", "LDRUL");
+        facesVoisines.put("D", "RBLFR");
         facesVoisines.put("R", "UBDFU");
-        facesVoisines.put("F", "URDLU");
+        facesVoisines.put("F", "LURDL");
 
         faces = new HashMap<>();
         for (String nom: nomFaces) {
@@ -65,4 +65,22 @@ public class Cube {
             arete.mouvement(face, direction);
         }
     }
+
+
+    public int[][][] exportCube(){
+
+        /*ordre :
+        0 = U = jaune
+        1 = F = bleu
+        2 = L = orange
+        3 = B = vert
+        4 = R = rouge
+        5 = D = blanc
+         */
+        int[][][] cubeExporte = new int[6][3][3];
+
+
+        return cubeExporte;
+    }
+
 }
