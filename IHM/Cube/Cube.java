@@ -9,6 +9,9 @@ public class Cube {
     public static HashMap<String, String> facesVoisines;
     public static String[] nomFaces;
 
+
+
+
     // TODO : Générer automatiquement les angles et arêtes
     public static Piece[] angles = {
             new Piece("UFL"),
@@ -36,6 +39,15 @@ public class Cube {
             new Piece("BR")
     };
 
+
+    Face U = new Face('U', "LBRFL");
+    Face L = new Face('L', "DBUFD");
+    Face B = new Face('B', "LDRUL");
+    Face R = new Face('R', "UBDFU");
+    Face F = new Face('F', "LURDL");
+    Face D = new Face('D', "RBLFR");
+    char[] ordre ={'U','L','B','R','F','D'};
+    Face[] ordreFace = {U,L,B,R,F,D};
 
     public Cube() {
         nomFaces = new String[]{"U", "L", "B", "D", "R", "F"};
@@ -67,7 +79,6 @@ public class Cube {
         }
     }
 
-
    public int[][][] exportCube(){
 
         /*ordre :
@@ -86,13 +97,17 @@ public class Cube {
             char couleur = correspondance2(i);
             int chiffre = i;
             int[][] faceExporte = new int[3][3];
-            int compteurLigne = 0;
-            int compteurColone = 0;
-            Face test = faces.get(couleur);
+
+            int[] compteurLigneAngle = {0, 0, 2, 2};
+            int[] compteurColoneAngle = {0, 2, 0, 2};
+            int[] compteurLigneArete = {0, 1, 1, 2};
+            int[] compteurColoneArete = {1, 0, 2, 1};
+            Face test = ordreFace[i];
+            System.out.println(test);
             faceExporte[1][1] = i;
 
-
-            for (int j = 0; j < 4; j++) {
+            //renvoyer les angles
+            for (int j = 0; j < 3; j++) {
                 for (int k = 0; k < angles.length; k++) {
                     if (angles[k].appartientFace(couleur) && angles[k].appartientFace(test.voisins.charAt(j)) && angles[k].appartientFace(test.voisins.charAt(j + 1))) {
                         for (int l = 0; l < angles[k].facelettes.length; l++) {
@@ -100,13 +115,25 @@ public class Cube {
                                 chiffre = correspondance(angles[k].facelettes[l].color);
                             }
                         }
-                        faceExporte[compteurLigne][compteurColone] = chiffre;
-                        compteurLigne += (j / 2) * 2;
-                        compteurColone = 666;
+                        faceExporte[compteurLigneAngle[j]][compteurColoneAngle[j]] = chiffre;
                     }
                 }
             }
-        }
+            //renvoyer les aretes
+            for (int j = 0; j < 3; j++) {
+                for (int k = 0; k < aretes.length; k++) {
+                    if (aretes[k].appartientFace(couleur) && aretes[k].appartientFace(test.voisins.charAt(j))) {
+                        for (int l = 0; l < aretes[k].facelettes.length; l++) {
+                            if (aretes[k].facelettes[l].face == couleur) {
+                                chiffre = correspondance(aretes[k].facelettes[l].color);
+                            }
+                        }
+                        faceExporte[compteurLigneArete[j]][compteurColoneArete[j]] = chiffre;
+                    }
+                }
+            }
+            cubeExporte[i] = faceExporte;
+        }//EndFor, pour une face
         return cubeExporte;
     }
 
@@ -119,7 +146,17 @@ public class Cube {
         return a.charAt(i);
     }
 
-
+    public static void afficherCube(int[][][] cube){
+        for(int i = 0; i<3; i++){
+            for(int j = 0; j<3; j++){
+                for(int k = 0; k<3; k++){
+                    System.out.print(cube[i][j][k]);
+                }
+                System.out.println();
+            }
+            System.out.println();
+        }
+    }
 
 
 

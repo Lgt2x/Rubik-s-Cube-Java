@@ -39,6 +39,11 @@ public class Face{
 		return faceExporte;
 	}*/
 
-
-
+	@Override
+	public String toString() {
+		return "Face{" +
+				"valeur=" + valeur +
+				", voisins='" + voisins + '\'' +
+				'}';
+	}
 }
