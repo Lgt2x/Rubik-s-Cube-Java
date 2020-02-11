@@ -17,10 +17,4 @@ public class Facelette{
 		this.color = color;
 		this.face = face;
 	}
-
-	public static int correspondance(char face){
-		String a = "UFLBRD";
-		return a.indexOf(face);
-	}
-
 }

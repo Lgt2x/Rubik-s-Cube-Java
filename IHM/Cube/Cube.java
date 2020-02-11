@@ -2,6 +2,7 @@ package IHM.Cube;
 
 import java.util.HashMap;
 
+
 public class Cube {
 
     public static HashMap<String, Face> faces;
@@ -9,30 +10,30 @@ public class Cube {
     public static String[] nomFaces;
 
     // TODO : Générer automatiquement les angles et arêtes
-    public static Angle[] angles = {
-            new Angle("UFL"),
-            new Angle("UBL"),
-            new Angle("UBR"),
-            new Angle("UFR"),
-            new Angle("DFR"),
-            new Angle("DFL"),
-            new Angle("DBL"),
-            new Angle("DBR")
+    public static Piece[] angles = {
+            new Piece("UFL"),
+            new Piece("UBL"),
+            new Piece("UBR"),
+            new Piece("UFR"),
+            new Piece("DFR"),
+            new Piece("DFL"),
+            new Piece("DBL"),
+            new Piece("DBR")
     };
 
-    public static Arete[] aretes = {
-            new Arete("UF"),
-            new Arete("UL"),
-            new Arete("UB"),
-            new Arete("UR"),
-            new Arete("DF"),
-            new Arete("DR"),
-            new Arete("DB"),
-            new Arete("DL"),
-            new Arete("FR"),
-            new Arete("FL"),
-            new Arete("BL"),
-            new Arete("BR")
+    public static Piece[] aretes = {
+            new Piece("UF"),
+            new Piece("UL"),
+            new Piece("UB"),
+            new Piece("UR"),
+            new Piece("DF"),
+            new Piece("DR"),
+            new Piece("DB"),
+            new Piece("DL"),
+            new Piece("FR"),
+            new Piece("FL"),
+            new Piece("BL"),
+            new Piece("BR")
     };
 
 
@@ -56,18 +57,18 @@ public class Cube {
         Face face = faces.get(nomFace);
 
         /* Pour les angles */
-        for(Angle angle: angles) {
+        for(Piece angle: angles) {
             angle.mouvement(face, direction);
         }
 
         /* Pour les arêtes */
-        for(Arete arete: aretes) {
+        for(Piece arete: aretes) {
             arete.mouvement(face, direction);
         }
     }
 
 
-    public int[][][] exportCube(){
+   public int[][][] exportCube(){
 
         /*ordre :
         0 = U = jaune
@@ -77,10 +78,49 @@ public class Cube {
         4 = R = rouge
         5 = D = blanc
          */
+
         int[][][] cubeExporte = new int[6][3][3];
 
+        for(int i = 0; i<cubeExporte.length; i++) {
 
+            char couleur = correspondance2(i);
+            int chiffre = i;
+            int[][] faceExporte = new int[3][3];
+            int compteurLigne = 0;
+            int compteurColone = 0;
+            Face test = faces.get(couleur);
+            faceExporte[1][1] = i;
+
+
+            for (int j = 0; j < 4; j++) {
+                for (int k = 0; k < angles.length; k++) {
+                    if (angles[k].appartientFace(couleur) && angles[k].appartientFace(test.voisins.charAt(j)) && angles[k].appartientFace(test.voisins.charAt(j + 1))) {
+                        for (int l = 0; l < angles[k].facelettes.length; l++) {
+                            if (angles[k].facelettes[l].face == couleur) {
+                                chiffre = correspondance(angles[k].facelettes[l].color);
+                            }
+                        }
+                        faceExporte[compteurLigne][compteurColone] = chiffre;
+                        compteurLigne += (j / 2) * 2;
+                        compteurColone = 666;
+                    }
+                }
+            }
+        }
         return cubeExporte;
     }
+
+    public static int correspondance(char face){
+        String a = "UFLBRD";
+        return a.indexOf(face);
+    }
+    public static char correspondance2(int i){
+        String a = "UFLBRD";
+        return a.charAt(i);
+    }
+
+
+
+
 
 }

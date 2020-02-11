@@ -3,7 +3,7 @@ package IHM.Cube;
 /**
  * Pièce PHYSIQUE définie par son appartenance à 2/3 face qui changent en fonction des mouvements
  */
-public abstract class Piece {
+public class Piece {
     Facelette[] facelettes;
 
     public Piece(String name) {
