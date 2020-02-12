@@ -39,7 +39,6 @@ public class Cube {
             new Piece("BR")
     };
 
-
     Face U = new Face('U', "LBRFL");
     Face L = new Face('L', "DBUFD");
     Face B = new Face('B', "LDRUL");
@@ -102,8 +101,8 @@ public class Cube {
 
             int[] compteurLigneAngle = {0, 0, 2, 2};
             int[] compteurColoneAngle = {0, 2, 0, 2};
-            int[] compteurLigneArete = {0, 1, 1, 2};
-            int[] compteurColoneArete = {1, 0, 2, 1};
+            int[] compteurLigneArete = {1, 0, 1, 2};
+            int[] compteurColoneArete = {0, 1, 2, 1};
             Face test = ordreFace[i];
             System.out.println(test);
             cubeExporte[i][1][1] = i;
