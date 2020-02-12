@@ -65,7 +65,8 @@ public class Cube {
             faces.put(nom, new Face(nom.charAt(0), facesVoisines.get(nom)));
         }
     }
-
+        /* TODO: debugger les mouvements
+         */
     public void mouvement(String nomFace, boolean direction) {
         Face face = faces.get(nomFace);
 
