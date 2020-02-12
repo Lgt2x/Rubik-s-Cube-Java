@@ -23,6 +23,15 @@ public class Piece {
         return false;
     }
 
+    public boolean estDeCouleur(char face){
+        for (int i = 0; i <  facelettes.length; i++) {
+            if (facelettes[i].color == face) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void mouvement(Face face, boolean direction) {
         if(appartientFace(face.valeur)){
             for (Facelette facelette: facelettes) {
