@@ -4,7 +4,7 @@ package IHM.Cube;
  * Pièce PHYSIQUE définie par son appartenance à 2/3 face qui changent en fonction des mouvements
  */
 public class Piece {
-    Facelette[] facelettes;
+    public Facelette[] facelettes;
 
     public Piece(String name) {
         this.facelettes = new Facelette[name.length()];
@@ -31,6 +31,16 @@ public class Piece {
         }
         return false;
     }
+
+    public boolean estOriente(){
+        for (int i = 0; i <  facelettes.length; i++) {
+            if (facelettes[i].color == facelettes[i].face) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public void mouvement(Face face, boolean direction) {
         if(appartientFace(face.valeur)){
