@@ -47,17 +47,18 @@ public class Cube {
     Face F = new Face('F', "LURDL");
     Face D = new Face('D', "RBLFR");
     char[] ordre ={'U','L','B','R','F','D'};
-    Face[] ordreFace = {U,L,B,R,F,D};
+    Face[] ordreFace = {U,F,L,B,R,D};
 
     public Cube() {
         nomFaces = new String[]{"U", "L", "B", "D", "R", "F"};
         facesVoisines = new HashMap<>();
         facesVoisines.put("U", "LBRFL");
+        facesVoisines.put("F", "LURDL");
         facesVoisines.put("L", "DBUFD");
         facesVoisines.put("B", "LDRUL");
         facesVoisines.put("D", "RBLFR");
         facesVoisines.put("R", "UBDFU");
-        facesVoisines.put("F", "LURDL");
+
 
         faces = new HashMap<>();
         for (String nom: nomFaces) {
@@ -93,7 +94,7 @@ public class Cube {
         int[][][] cubeExporte = new int[6][3][3];
 
         for(int i = 0; i<cubeExporte.length; i++) {
-
+            System.out.println(("compteur :"+i));
             char couleur = correspondance2(i);
             int chiffre = i;
             int[][] faceExporte = new int[3][3];
@@ -104,10 +105,10 @@ public class Cube {
             int[] compteurColoneArete = {1, 0, 2, 1};
             Face test = ordreFace[i];
             System.out.println(test);
-            faceExporte[1][1] = i;
+            cubeExporte[i][1][1] = i;
 
             //renvoyer les angles
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < 4; j++) {
                 for (int k = 0; k < angles.length; k++) {
                     if (angles[k].appartientFace(couleur) && angles[k].appartientFace(test.voisins.charAt(j)) && angles[k].appartientFace(test.voisins.charAt(j + 1))) {
                         for (int l = 0; l < angles[k].facelettes.length; l++) {
@@ -115,12 +116,12 @@ public class Cube {
                                 chiffre = correspondance(angles[k].facelettes[l].color);
                             }
                         }
-                        faceExporte[compteurLigneAngle[j]][compteurColoneAngle[j]] = chiffre;
+                        cubeExporte[i][compteurLigneAngle[j]][compteurColoneAngle[j]] = chiffre;
                     }
                 }
             }
             //renvoyer les aretes
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < 4; j++) {
                 for (int k = 0; k < aretes.length; k++) {
                     if (aretes[k].appartientFace(couleur) && aretes[k].appartientFace(test.voisins.charAt(j))) {
                         for (int l = 0; l < aretes[k].facelettes.length; l++) {
@@ -128,11 +129,10 @@ public class Cube {
                                 chiffre = correspondance(aretes[k].facelettes[l].color);
                             }
                         }
-                        faceExporte[compteurLigneArete[j]][compteurColoneArete[j]] = chiffre;
+                        cubeExporte[i][compteurLigneArete[j]][compteurColoneArete[j]] = chiffre;
                     }
                 }
             }
-            cubeExporte[i] = faceExporte;
         }//EndFor, pour une face
         return cubeExporte;
     }
@@ -145,19 +145,4 @@ public class Cube {
         String a = "UFLBRD";
         return a.charAt(i);
     }
-
-    public static void afficherCube(int[][][] cube){
-        for(int i = 0; i<3; i++){
-            for(int j = 0; j<3; j++){
-                for(int k = 0; k<3; k++){
-                    System.out.print(cube[i][j][k]);
-                }
-                System.out.println();
-            }
-            System.out.println();
-        }
-    }
-
-
-
 }
