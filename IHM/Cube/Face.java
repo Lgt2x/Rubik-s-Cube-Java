@@ -23,11 +23,12 @@ public class Face{
 		if (direction) {
 			return voisins.charAt(voisins.indexOf(face)+1);
 		} else {
-			int index = voisins.charAt((voisins.indexOf(face)));
+			int index = voisins.indexOf(face);
+
 			if (index == 0) {
 				return voisins.charAt(3);
 			} else {
-				return voisins.charAt(index-1);
+				return voisins.charAt((index-1));
 			}
 		}
 	}

@@ -66,17 +66,25 @@ public class Cube {
     }
         /* TODO: debugger les mouvements
          */
-    public void mouvement(String nomFace, boolean direction) {
+    public void mouvement(char nom) {
+        boolean direction = Character.isUpperCase(nom);
+        String nomFace = String.valueOf(Character.toUpperCase(nom));
         Face face = faces.get(nomFace);
 
         /* Pour les angles */
         for(Piece angle: angles) {
-            angle.mouvement(face, direction);
+                angle.mouvement(face, direction);
         }
 
         /* Pour les arêtes */
         for(Piece arete: aretes) {
             arete.mouvement(face, direction);
+        }
+    }
+
+    public void formule(String formule) {
+        for (int i=0;i<formule.length();i++) {
+            this.mouvement(formule.charAt(i));
         }
     }
 
@@ -94,7 +102,6 @@ public class Cube {
         int[][][] cubeExporte = new int[6][3][3];
 
         for(int i = 0; i<cubeExporte.length; i++) {
-            System.out.println(("compteur :"+i));
             char couleur = correspondance2(i);
             int chiffre = i;
             int[][] faceExporte = new int[3][3];
@@ -104,7 +111,6 @@ public class Cube {
             int[] compteurLigneArete = {1, 0, 1, 2};
             int[] compteurColoneArete = {0, 1, 2, 1};
             Face test = ordreFace[i];
-            System.out.println(test);
             cubeExporte[i][1][1] = i;
 
             //renvoyer les angles
