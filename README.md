@@ -1,11 +1,12 @@
 # Rubik-s-IHM.Cube-Java
 solver de rubik's cube
 
-pour compiler : 
+Pour lancer l'application : 
  ```bash
-javac *.java
- java main
+./gradlew build
+java -jar build/libs/cubesolver.jar
 ```
+ou `gradlew.bat build` sur Windows
 
 ## Comment contribuer au projet
   1) Regarder quelles issues non assignées sont disponibles
