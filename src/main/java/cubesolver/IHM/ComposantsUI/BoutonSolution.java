@@ -1,4 +1,4 @@
-package cubesolver.IHM.UXComponents;
+package cubesolver.IHM.ComposantsUI;
 
 import javax.swing.*;
 import java.awt.*;

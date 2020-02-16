@@ -1,6 +1,7 @@
 package cubesolver.IHM;
 
-import cubesolver.IHM.UXComponents.*;
+import cubesolver.IHM.AffichageCube.AffichageCube;
+import cubesolver.IHM.ComposantsUI.*;
 
 import java.awt.*;
 import javax.swing.*;
@@ -16,39 +17,38 @@ public class GestionAffichage extends JFrame{
     private Color couleurFond = new Color(65, 115, 109);
 
     public GestionAffichage(){
-
-        //initialisation de la fenetre
+        // Initialisation de la fenetre
         this.setTitle("Solver de rubik's cube");
         this.setSize(1500,1000);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // Initialisation du panel principal
         JPanel panneauPrincipal = new JPanel();
         panneauPrincipal.setBounds(0,0, getWidth(), getHeight());
         panneauPrincipal.setBackground(couleurFond);
         panneauPrincipal.setLayout(null);
 
-        //Déclaration des panneaux
+        // Déclaration des panneaux secondaires
         affichageCube = new AffichageCube();
-        affichageCube.setBackground(new Color(255,255,255));
+        panneauPrincipal.add(affichageCube);
 
         panneauBouton = new CommandeBoutons();
-        panneauStart = new BoutonLancement();
-        panneauMouvements = new BoutonsMouvements();
-        panneauMouvementsInv = new BoutonsMouvementInv();
-        panneauSolution = new BoutonSolution();
-
-
-        // Ajout de chaque Panel au panel principal
-        panneauPrincipal.add(affichageCube);
         panneauPrincipal.add(panneauBouton);
+
+        panneauStart = new BoutonLancement();
         panneauPrincipal.add(panneauStart);
 
+        panneauMouvements = new BoutonsMouvements();
         panneauPrincipal.add(panneauMouvements);
+
+        panneauMouvementsInv = new BoutonsMouvementInv();
         panneauPrincipal.add(panneauMouvementsInv);
+
+        panneauSolution = new BoutonSolution();
         panneauPrincipal.add(panneauSolution);
 
-
+        // Affichage de la fenêtre
         this.setContentPane(panneauPrincipal);
         this.setVisible(true);
     }

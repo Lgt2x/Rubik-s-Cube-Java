@@ -1,10 +1,9 @@
-package cubesolver.IHM.UXComponents;
+package cubesolver.IHM.ComposantsUI;
 
 import javax.swing.*;
 import java.awt.*;
 
 import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class CommandeBoutons extends JPanel {

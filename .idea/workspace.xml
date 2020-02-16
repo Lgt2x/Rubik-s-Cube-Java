@@ -2,10 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f69ca52-54d7-4537-8664-06c715cc32c8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/launch.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cubesolver/IHM/UXComponents/CommandeBoutons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cubesolver/IHM/UXComponents/CommandeBoutons.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cubesolver/IHM/AffichageCube/AffichageCube.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cubesolver/IHM/AffichageCube/Face.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cubesolver/Master.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cubesolver/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cubesolver/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cubesolver/IHM/AffichageCube.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cubesolver/IHM/GestionAffichage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cubesolver/IHM/GestionAffichage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cubesolver/IHM/UXComponents/BoutonLancement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cubesolver/IHM/ComposantsUI/BoutonLancement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cubesolver/IHM/UXComponents/BoutonSolution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cubesolver/IHM/ComposantsUI/BoutonSolution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cubesolver/IHM/UXComponents/BoutonsMouvementInv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cubesolver/IHM/ComposantsUI/BoutonsMouvementInv.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cubesolver/IHM/UXComponents/BoutonsMouvements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cubesolver/IHM/ComposantsUI/BoutonsMouvements.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cubesolver/IHM/UXComponents/CommandeBoutons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cubesolver/IHM/ComposantsUI/CommandeBoutons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cubesolver/IHM/UXComponents/affBack.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/cubesolver/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cubesolver/AppTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +41,19 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Louis Gombert &lt;louisgombert@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
@@ -52,6 +76,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/launch.sh" />
@@ -98,12 +123,25 @@
       <option name="presentableId" value="Default" />
       <updated>1581806626472</updated>
       <workItem from="1581806630386" duration="238000" />
-      <workItem from="1581865978935" duration="1372000" />
+      <workItem from="1581865978935" duration="2287000" />
+      <workItem from="1581873634763" duration="2101000" />
     </task>
+    <task id="LOCAL-00001" summary="Gradle prêt à être utilisé sur l'IDE">
+      <created>1581867650627</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1581867650627</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Gradle prêt à être utilisé sur l'IDE" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gradle prêt à être utilisé sur l'IDE" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2338" y="699" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581867083955">
@@ -115,10 +153,14 @@
       <screen x="1920" y="485" width="1920" height="1080" />
     </state>
     <state x="2726" y="933" width="300" height="217" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/1920.485.1920.1080/0.516.1920.684@1920.485.1920.1080" timestamp="1581867566045" />
-    <state x="2407" y="546" width="820" height="866" key="CommitChangelistDialog2" timestamp="1581867544119">
+    <state x="693" y="134" width="519" height="847" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1581875011732">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state x="693" y="134" width="519" height="847" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.31.1920.1049@0.31.1920.1049" timestamp="1581875011732" />
+    <state x="2407" y="546" width="820" height="866" key="CommitChangelistDialog2" timestamp="1581867649769">
       <screen x="1920" y="485" width="1920" height="1080" />
     </state>
-    <state x="2407" y="546" width="820" height="866" key="CommitChangelistDialog2/1920.485.1920.1080/0.516.1920.684@1920.485.1920.1080" timestamp="1581867544119" />
+    <state x="2407" y="546" width="820" height="866" key="CommitChangelistDialog2/1920.485.1920.1080/0.516.1920.684@1920.485.1920.1080" timestamp="1581867649769" />
     <state x="779" y="357" width="426" height="485" key="FileChooserDialogImpl" timestamp="1581866820850">
       <screen x="0" y="516" width="1920" height="684" />
     </state>
@@ -139,9 +181,18 @@
       <screen x="0" y="516" width="1920" height="684" />
     </state>
     <state width="1545" height="321" key="GridCell.Tab.0.right/1920.485.1920.1080/0.516.1920.684@0.516.1920.684" timestamp="1581866614786" />
-    <state x="667" y="685" key="com.intellij.ide.util.TipDialog" timestamp="1581806642074">
-      <screen x="0" y="516" width="1920" height="684" />
+    <state x="2475" y="765" width="802" height="552" key="Vcs.Push.Dialog.v2" timestamp="1581867663073">
+      <screen x="1920" y="485" width="1920" height="1080" />
     </state>
+    <state x="2475" y="765" width="802" height="552" key="Vcs.Push.Dialog.v2/1920.485.1920.1080/0.516.1920.684@1920.485.1920.1080" timestamp="1581867663073" />
+    <state x="667" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1581873637483">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state x="667" y="290" key="com.intellij.ide.util.TipDialog/0.31.1920.1049@0.31.1920.1049" timestamp="1581873637483" />
     <state x="667" y="685" key="com.intellij.ide.util.TipDialog/1920.485.1920.1080/0.516.1920.684@0.516.1920.684" timestamp="1581806642074" />
+    <state x="623" y="262" width="672" height="678" key="search.everywhere.popup" timestamp="1581873783849">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state x="623" y="262" width="672" height="678" key="search.everywhere.popup/0.31.1920.1049@0.31.1920.1049" timestamp="1581873783849" />
   </component>
 </project>
