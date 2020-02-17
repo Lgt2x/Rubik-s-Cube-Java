@@ -5,11 +5,11 @@ import cubesolver.IHM.GestionAffichage;
 
 public class Master {
     public Master() {
-        GestionAffichage visualisation = new GestionAffichage();
         Cube cube = new Cube();
-            cube.formule("UrU");
-
-        //afficherCube(cube.exportCube());
+        GestionAffichage visualisation = new GestionAffichage(cube);
+        visualisation.actualise(cube.exportCube());
+        cube.formule("R");
+        visualisation.actualise(cube.exportCube());
     }
 
     public static void affichageCLICube(int[][][] cube){

@@ -1,5 +1,6 @@
 package cubesolver.IHM;
 
+import cubesolver.Cube.Cube;
 import cubesolver.IHM.AffichageCube.AffichageCube;
 import cubesolver.IHM.ComposantsUI.*;
 
@@ -16,7 +17,7 @@ public class GestionAffichage extends JFrame{
     private BoutonSolution panneauSolution;
     private Color couleurFond = new Color(65, 115, 109);
 
-    public GestionAffichage(){
+    public GestionAffichage(Cube cube) {
         // Initialisation de la fenetre
         this.setTitle("Solver de rubik's cube");
         this.setSize(1500,1000);
@@ -51,5 +52,9 @@ public class GestionAffichage extends JFrame{
         // Affichage de la fenêtre
         this.setContentPane(panneauPrincipal);
         this.setVisible(true);
+    }
+
+    public void actualise(int[][][] export) {
+        this.affichageCube.actualise(export);
     }
 }
