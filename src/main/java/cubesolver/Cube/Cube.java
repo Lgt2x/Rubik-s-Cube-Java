@@ -104,7 +104,7 @@ public class Cube {
             int[][] faceExporte = new int[3][3];
 
             int[] compteurLigneAngle = {0, 0, 2, 2};
-            int[] compteurColoneAngle = {0, 2, 0, 2};
+            int[] compteurColoneAngle = {0, 2, 2, 0};
             int[] compteurLigneArete = {1, 0, 1, 2};
             int[] compteurColoneArete = {0, 1, 2, 1};
             Face test = ordreFace[i];
@@ -138,6 +138,11 @@ public class Cube {
             }
         }//EndFor, pour une face
         return cubeExporte;
+    }
+
+    public void importCube(int [][][] cube){
+
+        //cube[0][2][0] cube[1][0][0] cube [2][0][2]
     }
 
     public static int correspondance(char face){

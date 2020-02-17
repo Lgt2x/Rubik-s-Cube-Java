@@ -8,7 +8,7 @@ public class Master {
         Cube cube = new Cube();
         GestionAffichage visualisation = new GestionAffichage(cube);
         visualisation.actualise(cube.exportCube());
-        cube.formule("R");
+        cube.formule("RRLLDDUUBBFF");
         visualisation.actualise(cube.exportCube());
     }
 
