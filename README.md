@@ -1,11 +1,19 @@
-# Rubik-s-IHM.Cube-Java
-solver de rubik's cube
+# Rubik's Cube Java
+Un solver de rubik's cube avec interface graphique écrit en Java, sous license GPLv3
 
-pour compiler : 
+## Lancelent de l'application
+Le build est fait par Gradle, qui construit un .jar à partir des fichiers source. Le wrapper gradlew est inclus dans le repo.
  ```bash
-javac *.java
- java main
+./gradlew build
+java -jar build/libs/cubesolver.jar
 ```
+ou `gradlew.bat build` sur Windows
+
+Un script bash est aussi fourni :
+```bash
+./launch.sh
+```
+Sur IDEA, créer une nouvelle configuration de type shell script menant à ce script pour relancer l'applcation rapidement avec Shift+F10 (par défaut).
 
 ## Comment contribuer au projet
   1) Regarder quelles issues non assignées sont disponibles

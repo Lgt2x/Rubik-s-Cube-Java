@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6f69ca52-54d7-4537-8664-06c715cc32c8" name="Default Changelist" comment="Gradle prêt à être utilisé sur l'IDE">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Louis Gombert &lt;louisgombert@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1XraNTTUwlb5N29TYNRjbrxde9v" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/launch.sh" />
+  </component>
+  <component name="RunManager" selected="Gradle.RubikGradle">
+    <configuration name="RubikGradle" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Build &amp; Run" type="ShConfigurationType">
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/launch.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.RubikGradle" />
+      <item itemvalue="Shell Script.Build &amp; Run" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6f69ca52-54d7-4537-8664-06c715cc32c8" name="Default Changelist" comment="" />
+      <created>1581806626472</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581806626472</updated>
+      <workItem from="1581806630386" duration="238000" />
+      <workItem from="1581865978935" duration="2287000" />
+      <workItem from="1581873634763" duration="2101000" />
+    </task>
+    <task id="LOCAL-00001" summary="Gradle prêt à être utilisé sur l'IDE">
+      <created>1581867650627</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1581867650627</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Gradle prêt à être utilisé sur l'IDE" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gradle prêt à être utilisé sur l'IDE" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="418" y="239" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581923439092">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state x="418" y="239" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.31.1920.1049@0.31.1920.1049" timestamp="1581923439092" />
+    <state x="454" y="257" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.485.1920.1080/0.516.1920.684@0.516.1920.684" timestamp="1581866835431" />
+    <state x="2338" y="699" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.485.1920.1080/0.516.1920.684@1920.485.1920.1080" timestamp="1581867083955" />
+    <state x="2726" y="933" width="300" height="217" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1581867566045">
+      <screen x="1920" y="485" width="1920" height="1080" />
+    </state>
+    <state x="2726" y="933" width="300" height="217" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/1920.485.1920.1080/0.516.1920.684@1920.485.1920.1080" timestamp="1581867566045" />
+    <state x="693" y="134" width="519" height="847" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1581875011732">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state x="693" y="134" width="519" height="847" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.31.1920.1049@0.31.1920.1049" timestamp="1581875011732" />
+    <state x="487" y="90" width="1132" height="842" key="CommitChangelistDialog2" timestamp="1581923697927">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state x="487" y="90" width="1132" height="842" key="CommitChangelistDialog2/0.31.1920.1049@0.31.1920.1049" timestamp="1581923697927" />
+    <state x="2407" y="546" width="820" height="866" key="CommitChangelistDialog2/1920.485.1920.1080/0.516.1920.684@1920.485.1920.1080" timestamp="1581867649769" />
+    <state x="779" y="357" width="426" height="485" key="FileChooserDialogImpl" timestamp="1581866820850">
+      <screen x="0" y="516" width="1920" height="684" />
+    </state>
+    <state x="779" y="357" width="426" height="485" key="FileChooserDialogImpl/1920.485.1920.1080/0.516.1920.684@0.516.1920.684" timestamp="1581866820850" />
+    <state width="1874" height="276" key="GridCell.Tab.0.bottom" timestamp="1581923342415">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state width="1874" height="276" key="GridCell.Tab.0.bottom/0.31.1920.1049@0.31.1920.1049" timestamp="1581923342415" />
+    <state width="1545" height="321" key="GridCell.Tab.0.bottom/1920.485.1920.1080/0.516.1920.684@0.516.1920.684" timestamp="1581866614786" />
+    <state width="1874" height="276" key="GridCell.Tab.0.center" timestamp="1581923342415">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state width="1874" height="276" key="GridCell.Tab.0.center/0.31.1920.1049@0.31.1920.1049" timestamp="1581923342415" />
+    <state width="1545" height="321" key="GridCell.Tab.0.center/1920.485.1920.1080/0.516.1920.684@0.516.1920.684" timestamp="1581866614785" />
+    <state width="1874" height="276" key="GridCell.Tab.0.left" timestamp="1581923342414">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state width="1874" height="276" key="GridCell.Tab.0.left/0.31.1920.1049@0.31.1920.1049" timestamp="1581923342414" />
+    <state width="1545" height="321" key="GridCell.Tab.0.left/1920.485.1920.1080/0.516.1920.684@0.516.1920.684" timestamp="1581866614785" />
+    <state width="1874" height="276" key="GridCell.Tab.0.right" timestamp="1581923342415">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state width="1874" height="276" key="GridCell.Tab.0.right/0.31.1920.1049@0.31.1920.1049" timestamp="1581923342415" />
+    <state width="1545" height="321" key="GridCell.Tab.0.right/1920.485.1920.1080/0.516.1920.684@0.516.1920.684" timestamp="1581866614786" />
+    <state x="2475" y="765" width="802" height="552" key="Vcs.Push.Dialog.v2" timestamp="1581867663073">
+      <screen x="1920" y="485" width="1920" height="1080" />
+    </state>
+    <state x="2475" y="765" width="802" height="552" key="Vcs.Push.Dialog.v2/1920.485.1920.1080/0.516.1920.684@1920.485.1920.1080" timestamp="1581867663073" />
+    <state x="667" y="290" key="com.intellij.ide.util.TipDialog" timestamp="1581873637483">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state x="667" y="290" key="com.intellij.ide.util.TipDialog/0.31.1920.1049@0.31.1920.1049" timestamp="1581873637483" />
+    <state x="667" y="685" key="com.intellij.ide.util.TipDialog/1920.485.1920.1080/0.516.1920.684@0.516.1920.684" timestamp="1581806642074" />
+    <state x="623" y="262" width="672" height="678" key="search.everywhere.popup" timestamp="1581873783849">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state x="623" y="262" width="672" height="678" key="search.everywhere.popup/0.31.1920.1049@0.31.1920.1049" timestamp="1581873783849" />
+  </component>
+</project>
