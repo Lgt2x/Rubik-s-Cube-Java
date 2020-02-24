@@ -1,7 +1,8 @@
-package IHM.Solver;
-import IHM.Cube.Cube;
+package cubesolver.Solveur;
 
-    public class DeuxiemeEtage{
+import cubesolver.Cube.Cube;
+
+public class DeuxiemeEtage{
         String mouvement = "RFLBR";
         String formula;
         String A;
@@ -53,4 +54,3 @@ import IHM.Cube.Cube;
 
         }
     }
-}

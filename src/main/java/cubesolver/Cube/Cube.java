@@ -84,6 +84,20 @@ public class Cube {
             this.mouvement(formule.charAt(i));
         }
     }
+    public void formuleSymetrique(String formule){
+        char a;
+        for (int i=0;i<formule.length();i++) {
+            if(Character.isUpperCase(formule.charAt(i))){
+                a = (String.valueOf(formule.charAt(i)).toLowerCase()).charAt(0);
+            }else{
+                a = (String.valueOf(formule.charAt(i)).toUpperCase()).charAt(0);
+            }
+            this.mouvement(a);
+        }
+    }
+
+
+
 
    public int[][][] exportCube(){
 
@@ -140,6 +154,9 @@ public class Cube {
         return cubeExporte;
     }
 
+    /* TODO : une methode qui importe le cube
+
+     */
     public void importCube(int [][][] cube){
 
         //cube[0][2][0] cube[1][0][0] cube [2][0][2]
