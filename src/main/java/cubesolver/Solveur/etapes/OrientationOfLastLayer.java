@@ -1,15 +1,50 @@
-package cubesolver.Solveur;
+package cubesolver.Solveur.etapes;
 
 import cubesolver.Cube.Cube;
+import cubesolver.Solveur.EtapeResolution;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class OrientationOfLastLayer {
+public class OrientationOfLastLayer extends EtapeResolution {
     int[][] cas = new int[4][3];
     Cube cube = new Cube();
-    public OrientationOfLastLayer() {
+
+    public boolean comparateurCas(int[][] cas, String solution){
+        boolean estIdentique = true;
+        for(int i = 0; i<solution.length; i++){
+            for(int j = 0; j<solution[i].length; j++){
+                if (cas[i][j] != solution[i][j]) {
+                    estIdentique = false;
+                    break;
+                }
+            }
+            if(!estIdentique){
+                break;
+            }
+        }
+        return estIdentique;
+    }
+
+    public boolean estResolu(int[][] cas){
+        boolean estResolu = true;
+        for(int i = 0; i<cas.length; i++){
+            for(int j = 0; j<cas[0].length; j++) {
+                if(cas[i][j] != 0){
+                    estResolu = false;
+                    break;
+                }
+            }
+            if(!estResolu){
+                break;
+            }
+        }
+        return estResolu;
+    }
+
+    @Override
+    public void effectuerEtape(Cube cube) {
         int[][] t = new int[4][3];
 
         HashMap<Integer[][],String> map = new HashMap();
@@ -219,41 +254,5 @@ public class OrientationOfLastLayer {
 
 
 
-    }
-
-
-
-
-
-    public boolean comparateurCas(int[][] cas, String solution){
-        boolean estIdentique = true;
-        for(int i = 0; i<solution.length; i++){
-            for(int j = 0; j<solution[i].length; j++){
-                if (cas[i][j] != solution[i][j]) {
-                    estIdentique = false;
-                    break;
-                }
-            }
-            if(!estIdentique){
-                break;
-            }
-        }
-        return estIdentique;
-    }
-
-    public boolean estResolu(int[][] cas){
-        boolean estResolu = true;
-        for(int i = 0; i<cas.length; i++){
-            for(int j = 0; j<cas[0].length; j++) {
-                if(cas[i][j] != 0){
-                    estResolu = false;
-                    break;
-                }
-            }
-            if(!estResolu){
-                break;
-            }
-        }
-        return estResolu;
     }
 }

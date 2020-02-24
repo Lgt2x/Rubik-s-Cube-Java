@@ -1,12 +1,14 @@
-package cubesolver.Solveur;
+package cubesolver.Solveur.etapes;
 
 import cubesolver.Cube.Cube;
+import cubesolver.Solveur.EtapeResolution;
 
-public class CroixBlanche {
+public class CroixBlanche extends EtapeResolution {
     String mouvement = "FLBRF";
-    Cube cube = new Cube();
-    public CroixBlanche(){
-        /*
+
+    @Override
+    public void effectuerEtape(Cube cube) {
+/*
         on remarque que les pièces de la croix blanche sont celles avec le down soit les aretes du tableau 4 à 7 d'ou les for de 4 à 8
          */
 
@@ -40,7 +42,7 @@ public class CroixBlanche {
                 }
                 //placer notre pièce blanche
                 while(!cube.aretes[i].appartientFace('D')){
-                   cube.mouvement(faceEtudiee);
+                    cube.mouvement(faceEtudiee);
                 }
             }
         }
