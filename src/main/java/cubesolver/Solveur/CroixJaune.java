@@ -1,5 +1,6 @@
 package cubesolver.Solveur;
 import cubesolver.Cube.Cube;
+import cubesolver.Cube.Facelette;
 
 public class CroixJaune {
         String mouvement = "FLBRF";
