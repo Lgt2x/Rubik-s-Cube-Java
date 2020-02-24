@@ -157,10 +157,6 @@ public class Cube {
     /* TODO : une methode qui importe le cube
 
      */
-    public void importCube(int [][][] cube){
-
-        //cube[0][2][0] cube[1][0][0] cube [2][0][2]
-    }
 
     public static int correspondance(char face){
         String a = "UFLBRD";
