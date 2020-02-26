@@ -46,7 +46,7 @@ public class CroixBlanche {
         }
 
         //orienter la croix blanche
-        /*for(int i = 4; i<8; i++){
+        for(int i = 4; i<8; i++){
             if(!cube.aretes[i].estOriente()){
                 char M = cube.aretes[i].facelettes[1].face;
                 String formule = String.valueOf(M+'d'+ mouvement.charAt(mouvement.indexOf(M)+1));
@@ -71,6 +71,6 @@ public class CroixBlanche {
                 String formule = String.valueOf(cube.aretes[i].facelettes[1].face + cube.aretes[i].facelettes[1].face);
                 cube.formule(formule);
             }
-        }*/
+        }
     }
 }

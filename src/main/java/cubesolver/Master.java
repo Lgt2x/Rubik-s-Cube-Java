@@ -9,6 +9,11 @@ public class Master {
         GestionAffichage visualisation = new GestionAffichage(cube);
         visualisation.actualise(cube.exportCube());
         cube.formule("RUUruRur");
+        cube.formule("RUUruRur");
+        cube.formule("RUUruRur");
+        cube.formule("RUUruRur");
+        cube.formule("RUUruRur");
+        cube.formule("RUUruRur");
         visualisation.actualise(cube.exportCube());
     }
 

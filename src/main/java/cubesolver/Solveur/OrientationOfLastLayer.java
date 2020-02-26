@@ -77,28 +77,28 @@ public class OrientationOfLastLayer {
         //L-Shapes
         oll.put(110101001010L, "FRUruRUruf"); //L2
         oll.put(011010100101L, "fluLUluLUF"); //L1
-        oll.put(110111001000L, ""); //L3
-        oll.put(100111011000L, ""); //L4
+        oll.put(110111001000L, "ulUULUlUfluLUF"); //L3
+        oll.put(100111011000L, "uRUUruRurFRUruf"); //L4
         oll.put(000111010101L, "rfLflFLflFFR"); //L5
         oll.put(010111000101L, "LFrFRfrFRFFl"); //L6
 
         //Lightning Bolts
-        oll.put(110000100110L, ""); //B1
-        oll.put(001000011011L, ""); //B2
-        oll.put(100010110100L, ""); //B3
-        oll.put(011010001001L, ""); //B4
+        oll.put(110000100110L, "LFrFRFFl"); //B1
+        oll.put(001000011011L, "UUrfLflFFR"); //B2
+        oll.put(100010110100L, "lRRBrBRBBrBrL"); //B3
+        oll.put(011010001001L, "UFRUrufUFRUruf"); //B4
         oll.put(010000110001L, "LfluLUFul"); //B5
         oll.put(010100011000L, "rFRUrufUR"); //B6
 
         //No Edges Flipped Correctly
         oll.put(010111010111L, "RuurrFRfuurFRf"); //O1
-        oll.put(110111011010L, ""); //O2
-        oll.put(010110110110L, ""); //O3
-        oll.put(011011010011L, ""); //O4
-        oll.put(111010010010L, ""); //O6
-        oll.put(010110010011L, ""); //O7
+        oll.put(110111011010L, "FRUrufUUFURurf"); //O2
+        oll.put(010110110110L, "FRUrufufulULF"); //O3
+        oll.put(011011010011L, "UFRUrufUURUrURururFRf"); //O4
+        oll.put(111010010010L, "UUFRUrufurfLflFFR"); //O6
+        oll.put(010110010011L, "UUFRUrufuRUrfRUrurFRurFRf"); //O7
         oll.put(010110011010L, "RUrUrFRfuurFRf"); //O5
-        oll.put(010010010010L, ""); //O8
+        oll.put(010010010010L, "FURurfUUrurFRfUR"); //O8
 
         do {
             if(oll.containsKey(cas)) {
