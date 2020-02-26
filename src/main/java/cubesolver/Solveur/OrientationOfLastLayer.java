@@ -51,10 +51,16 @@ public class OrientationOfLastLayer {
         oll.put(000111010000L, "UUFURurf"); //P4
 
         //I-Shapes
-        oll.put(110101011000L, ""); //I1
-        oll.put(010101010101L, ""); //I4
-        oll.put(001010100111L, ""); //I2
-        oll.put(000111000111L, ""); //I3
+        oll.put(110101011000L, "UUFURurURurf"); //I1
+        oll.put(010101010101L, "lbLurURurURlBL"); //I4
+        oll.put(001010100111L, "RUrURuBubr"); //I2
+        oll.put(000111000111L, "UrFRURuRRfRRurURUr"); //I3
+
+        //Fish Shapes
+        oll.put(011001001010L, "RUrurFRRUruf");//F1
+        oll.put(001010010100L, "RUURRFRfRUUr");//F3
+        oll.put(100100110010L, "RUrUrFRfRUUr");//F2
+        oll.put(011000000110L, "FRuruRUrf");//F4
 
         //Knight Move Shapes
         oll.put(011001001010L, "RUrurFRRUruf"); //F1
@@ -63,8 +69,8 @@ public class OrientationOfLastLayer {
         oll.put(011000000110L, "FRuruRUrf"); //F4
 
         //Awkward Shapes
-        oll.put(000100010011L, ""); //A1
-        oll.put(110010001000L, ""); //A2
+        oll.put(000100010011L, "URUruRurfuFRUr"); //A1
+        oll.put(110010001000L, "uFURUUruRUUruf"); //A2
         oll.put(010000101010L, "RUrURuurFRUruf"); //A3
         oll.put(101000010010L, "ruRurUURFRUruf"); //A4
 
@@ -73,8 +79,8 @@ public class OrientationOfLastLayer {
         oll.put(011010100101L, "fluLUluLUF"); //L1
         oll.put(110111001000L, ""); //L3
         oll.put(100111011000L, ""); //L4
-        oll.put(000111010101L, ""); //L5
-        oll.put(010111000101L, ""); //L6
+        oll.put(000111010101L, "rfLflFLflFFR"); //L5
+        oll.put(010111000101L, "LFrFRfrFRFFl"); //L6
 
         //Lightning Bolts
         oll.put(110000100110L, ""); //B1
@@ -98,8 +104,9 @@ public class OrientationOfLastLayer {
             if(oll.containsKey(cas)) {
                 cube.formule(oll.get(cas));
                 estResolu = true;
+            }else{
+                cube.mouvement('U');
             }
-            cube.mouvement('U');
         }while(!estResolu);
     }
 
