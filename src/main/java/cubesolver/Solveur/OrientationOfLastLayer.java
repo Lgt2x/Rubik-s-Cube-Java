@@ -8,11 +8,10 @@ public class OrientationOfLastLayer {
     Long cas;
     Cube cube = new Cube();
     public OrientationOfLastLayer() {
-
         cas = conversionLastLayer();
-        int[][] t = new int[4][3];
         boolean estResolu = false;
 
+        //enregister tous les cas d'oll avec leur formule respective
         HashMap<Long, String> oll = new HashMap();
 
         //All Edges Oriented Correctly
@@ -101,6 +100,7 @@ public class OrientationOfLastLayer {
         oll.put(010010010010L, "FURurfUUrurFRfUR"); //O8
 
         do {
+            //si notre cas est connu resoudre, sinon faire tourner la face du haut jusqu'à tomber dessus
             if(oll.containsKey(cas)) {
                 cube.formule(oll.get(cas));
                 estResolu = true;
