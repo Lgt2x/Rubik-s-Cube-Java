@@ -3,11 +3,15 @@ package cubesolver.IHM;
 import cubesolver.Cube.Cube;
 import cubesolver.IHM.AffichageCube.AffichageCube;
 import cubesolver.IHM.ComposantsUI.*;
+import cubesolver.Solveur.Solveur;
 
 import java.awt.*;
 import javax.swing.*;
 
 public class GestionAffichage extends JFrame{
+
+    public Cube cube;
+    public Solveur solver;
 
     private AffichageCube affichageCube;
     private CommandeBoutons panneauBouton;
@@ -18,6 +22,10 @@ public class GestionAffichage extends JFrame{
     private Color couleurFond = new Color(65, 115, 109);
 
     public GestionAffichage(Cube cube) {
+        this.cube = new Cube();
+        this.solver = new Solveur(cube);
+
+
         // Initialisation de la fenetre
         this.setTitle("Solver de rubik's cube");
         this.setSize(1500,1000);

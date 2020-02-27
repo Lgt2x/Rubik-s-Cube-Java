@@ -13,6 +13,9 @@ public class AffichageCube extends JPanel{
         this.setBackground(new Color(255,255,255));
         this.setLayout(new GridLayout(3,4));
 
+        /**
+         * Sur une grille 3*4, donne les positions de l'applat des faces
+         */
         boolean[] positions = {false, true, false, false,
                                 true, true, true, true,
                                 false, true, false, false};
@@ -29,6 +32,7 @@ public class AffichageCube extends JPanel{
                 this.add(new JPanel());
             }
         }
+
         repaint();
     }
 

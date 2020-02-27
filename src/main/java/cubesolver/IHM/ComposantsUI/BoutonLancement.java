@@ -30,6 +30,7 @@ public class BoutonLancement extends JPanel{
         mix.setBorder(BorderFactory.createLineBorder(Color.white));
 
         this.add(solve); this.add(mix);
-
     }
+
+
 }

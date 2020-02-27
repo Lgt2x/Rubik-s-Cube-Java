@@ -1,12 +1,12 @@
-package cubesolver.Solveur;
+package cubesolver.Solveur.etapes;
 import cubesolver.Cube.Cube;
-import cubesolver.Cube.Facelette;
+import cubesolver.Solveur.EtapeResolution;
 
-public class CroixJaune {
-        String mouvement = "FLBRF";
-      Cube cube = new Cube();
+public class CroixJaune extends EtapeResolution {
+    String mouvement = "FLBRF";
 
-        public CroixJaune(){
+    @Override
+    public void effectuerEtape(Cube cube) {
             //RepÃ©rer la configuration dans laquelle on se trouve, et faire la croix jaune
             for (int i=0; i<12; i++){
                 if (cube.aretes[i].appartientFace('F') && cube.aretes[i].appartientFace('U')){

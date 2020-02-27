@@ -1,8 +1,10 @@
-package cubesolver.Solveur;
+package cubesolver.Solveur.etapes;
+
 
 import cubesolver.Cube.Cube;
+import cubesolver.Solveur.EtapeResolution;
 
-public class DeuxiemeEtage{
+public class DeuxiemeEtage extends EtapeResolution {
         String mouvement = "RFLBR";
         String formula;
         String A;
@@ -12,9 +14,8 @@ public class DeuxiemeEtage{
         String U = "U";
         String u = "u";
 
-        Cube cube = new Cube();
-        public DeuxiemeEtage(){
-
+        @Override
+        public void effectuerEtape(Cube cube){
         /*
         les angles du deuxieme etage sont ceux allant de 8 à 12
          */
