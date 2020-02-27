@@ -1,11 +1,12 @@
-package cubesolver.Solveur;
+package cubesolver.Solveur.etapes;
 
 import cubesolver.Cube.Cube;
+import cubesolver.Solveur.EtapeResolution;
 
-public class PositionOfLastLayer {
-    Cube cube = new Cube();
+public class PositionOfLastLayer extends EtapeResolution {
 
-    public PositionOfLastLayer() {
+    @Override
+    public void effectuerEtape(Cube cube) {
         int i = 0;
         String u = "";
         String U = "";

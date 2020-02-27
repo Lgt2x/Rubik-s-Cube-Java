@@ -7,8 +7,8 @@ public class CroixBlanche extends EtapeResolution {
     String mouvement = "FLBRF";
 
     @Override
-    public void effectuerEtape(Cube cube) {
-/*
+    public void effectuerEtape(Cube cube){
+        /*
         on remarque que les pièces de la croix blanche sont celles avec le down soit les aretes du tableau 4 à 7 d'ou les for de 4 à 8
          */
 
@@ -42,13 +42,13 @@ public class CroixBlanche extends EtapeResolution {
                 }
                 //placer notre pièce blanche
                 while(!cube.aretes[i].appartientFace('D')){
-                    cube.mouvement(faceEtudiee);
+                   cube.mouvement(faceEtudiee);
                 }
             }
         }
 
         //orienter la croix blanche
-        /*for(int i = 4; i<8; i++){
+        for(int i = 4; i<8; i++){
             if(!cube.aretes[i].estOriente()){
                 char M = cube.aretes[i].facelettes[1].face;
                 String formule = String.valueOf(M+'d'+ mouvement.charAt(mouvement.indexOf(M)+1));
@@ -73,6 +73,6 @@ public class CroixBlanche extends EtapeResolution {
                 String formule = String.valueOf(cube.aretes[i].facelettes[1].face + cube.aretes[i].facelettes[1].face);
                 cube.formule(formule);
             }
-        }*/
+        }
     }
 }
