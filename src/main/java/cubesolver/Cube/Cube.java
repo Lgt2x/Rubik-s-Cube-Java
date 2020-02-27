@@ -61,8 +61,6 @@ public class Cube {
             faces.put(nom, new Face(nom.charAt(0), facesVoisines.get(nom)));
         }
     }
-        /* TODO: debugger les mouvements
-         */
     public void mouvement(char nom) {
         boolean direction = Character.isUpperCase(nom);
         String nomFace = String.valueOf(Character.toUpperCase(nom));
@@ -153,10 +151,6 @@ public class Cube {
         }//EndFor, pour une face
         return cubeExporte;
     }
-
-    /* TODO : une methode qui importe le cube
-
-     */
 
     public static int correspondance(char face){
         String a = "UFLBRD";
