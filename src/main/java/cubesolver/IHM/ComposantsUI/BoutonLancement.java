@@ -34,14 +34,20 @@ public class BoutonLancement extends JPanel implements ActionListener {
         mix.setBorder(BorderFactory.createLineBorder(Color.white));
 
         mix.addActionListener(this);
+        solve.addActionListener(this);
 
         this.add(solve); this.add(mix);
     }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == mix) {
-            System.out.println(GestionAffichage.cube.melange(3));
+            System.out.println(GestionAffichage.cube.melange(15));
             GestionAffichage.actualise(GestionAffichage.cube.exportCube());
+        } else if (e.getSource() == solve) {
+            if (GestionAffichage.solver.peutFaireEtapeSuivante()) {
+                System.out.println(GestionAffichage.solver.effectueEtapeSuivante());
+                GestionAffichage.actualise(GestionAffichage.cube.exportCube());
+            }
         }
     }
 }

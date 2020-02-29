@@ -3,6 +3,7 @@ package cubesolver.Solveur;
 import cubesolver.Cube.Cube;
 import cubesolver.Solveur.etapes.*;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -23,9 +24,9 @@ public class Solveur {
         etapes=etapesList.iterator();
     }
 
-    public void effectueEtapeSuivante() {
+    public ArrayList<Character> effectueEtapeSuivante() {
         EtapeResolution etape = etapes.next();
-        etape.effectuerEtape(this.cube);
+        return etape.effectuerEtape(this.cube);
     }
 
     public boolean peutFaireEtapeSuivante() {
