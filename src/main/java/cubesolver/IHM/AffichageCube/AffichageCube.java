@@ -5,8 +5,8 @@ import java.awt.*;
 import javax.swing.*;
 
 public class AffichageCube extends JPanel{
-    public static final Dimension TAILLE_FACE = new Dimension(200,200);
-    public static FaceAff[] faces = new FaceAff[6];
+    private static final Dimension TAILLE_FACE = new Dimension(200,200);
+    private static FaceAff[] faces = new FaceAff[6];
 
     public AffichageCube(){
         this.setBounds(10,10,850,640);

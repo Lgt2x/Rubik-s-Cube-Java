@@ -3,13 +3,16 @@ package cubesolver.Solveur.etapes;
 import cubesolver.Cube.Cube;
 import cubesolver.Solveur.EtapeResolution;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class OrientationOfLastLayer extends EtapeResolution {
     Long cas;
 
     @Override
-    public void effectuerEtape(Cube cube) {
+    public ArrayList<Character> effectuerEtape(Cube cube) {
+        ArrayList<Character> mouvements = new ArrayList<>();
+        
         cas = conversionLastLayer(cube);
         boolean estResolu = false;
 
@@ -107,9 +110,11 @@ public class OrientationOfLastLayer extends EtapeResolution {
                 cube.formule(oll.get(cas));
                 estResolu = true;
             }else{
-                cube.mouvement('U');
+                mouvements.add('U');
             }
-        }while(!estResolu);
+        } while(!estResolu);
+
+        return mouvements;
     }
 
     public Long conversionLastLayer(Cube cube) {

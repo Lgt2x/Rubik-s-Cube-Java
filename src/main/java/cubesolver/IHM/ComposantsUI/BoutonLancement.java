@@ -1,9 +1,13 @@
 package cubesolver.IHM.ComposantsUI;
 
+import cubesolver.IHM.GestionAffichage;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class BoutonLancement extends JPanel{
+public class BoutonLancement extends JPanel implements ActionListener {
     private JButton solve = new JButton("Résoudre");
     private JButton mix = new JButton("Mélanger");
     private Color maCouleur = new Color(48, 48, 48);
@@ -29,8 +33,15 @@ public class BoutonLancement extends JPanel{
         solve.setBorder(BorderFactory.createLineBorder(Color.white));
         mix.setBorder(BorderFactory.createLineBorder(Color.white));
 
+        mix.addActionListener(this);
+
         this.add(solve); this.add(mix);
     }
 
-
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == mix) {
+            System.out.println(GestionAffichage.cube.melange(3));
+            GestionAffichage.actualise(GestionAffichage.cube.exportCube());
+        }
+    }
 }

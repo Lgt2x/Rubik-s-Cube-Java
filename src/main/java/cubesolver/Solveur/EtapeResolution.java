@@ -2,6 +2,8 @@ package cubesolver.Solveur;
 
 import cubesolver.Cube.Cube;
 
+import java.util.ArrayList;
+
 public abstract class EtapeResolution {
-    public abstract void effectuerEtape(Cube cube);
+    public abstract ArrayList<Character> effectuerEtape(Cube cube);
 }

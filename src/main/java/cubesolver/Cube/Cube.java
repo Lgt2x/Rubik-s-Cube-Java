@@ -1,6 +1,7 @@
 package cubesolver.Cube;
 
 import java.util.HashMap;
+import java.util.Random;
 
 
 public class Cube {
@@ -8,6 +9,7 @@ public class Cube {
     public static HashMap<String, Face> faces;
     public static HashMap<String, String> facesVoisines;
     public static String[] nomFaces;
+    public static String[] mouvements = {"R", "U", "L", "D", "F", "B", "r", "u", "l", "d", "f", "b"};
 
     // TODO : Générer automatiquement les angles et arêtes
     public static Piece[] angles = {
@@ -82,6 +84,7 @@ public class Cube {
             this.mouvement(formule.charAt(i));
         }
     }
+
     public void formuleSymetrique(String formule){
         char a;
         for (int i=0;i<formule.length();i++) {
@@ -94,7 +97,15 @@ public class Cube {
         }
     }
 
+    public String melange(int longueur) {
+        String combi = "";
+        for (int i=0;i<longueur;i++) {
+            combi = combi + mouvements[new Random().nextInt(mouvements.length)];
+        }
 
+        this.formule(combi);
+        return combi;
+    }
 
 
    public int[][][] exportCube(){

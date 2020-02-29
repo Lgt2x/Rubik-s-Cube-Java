@@ -13,9 +13,12 @@ public class Solveur {
     public Solveur(Cube cube) {
         this.cube = cube;
         LinkedList<EtapeResolution> etapesList = new LinkedList<>();
+
         etapesList.add(new CroixBlanche());
         etapesList.add(new DeuxiemeEtage());
+        etapesList.add(new CroixJaune());
         etapesList.add(new OrientationOfLastLayer());
+        etapesList.add(new PositionOfLastLayer());
 
         etapes=etapesList.iterator();
     }

@@ -4,6 +4,8 @@ package cubesolver.Solveur.etapes;
 import cubesolver.Cube.Cube;
 import cubesolver.Solveur.EtapeResolution;
 
+import java.util.ArrayList;
+
 public class DeuxiemeEtage extends EtapeResolution {
         String mouvement = "RFLBR";
         String formula;
@@ -15,10 +17,12 @@ public class DeuxiemeEtage extends EtapeResolution {
         String u = "u";
 
         @Override
-        public void effectuerEtape(Cube cube){
-        /*
-        les angles du deuxieme etage sont ceux allant de 8 à 12
-         */
+        public ArrayList<Character> effectuerEtape(Cube cube){
+            ArrayList<Character> mouvements = new ArrayList<>();
+            
+            /*
+            les angles du deuxieme etage sont ceux allant de 8 à 12
+             */
             for(int i = 8; i<12; i++){
                 //verifier si la pièce est deja positionée
                 if(!cube.aretes[i].estEnPlace()){
@@ -40,7 +44,7 @@ public class DeuxiemeEtage extends EtapeResolution {
 
                     //mettre la pièce en position
                     while(cube.aretes[i].facelettes[o].face != cube.aretes[i].facelettes[o].color ){
-                        cube.mouvement('U');
+                        mouvements.add('U');
                     }
 
                     //formule pour placer la pièce
@@ -52,6 +56,6 @@ public class DeuxiemeEtage extends EtapeResolution {
                     }
                 }
             }
-
+            return mouvements;
         }
     }

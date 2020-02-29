@@ -3,7 +3,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class FaceAff extends JPanel{
-    public FaceletteAff[] facelettes = new FaceletteAff[9];
+    public JButton[] facelettes = new JButton[9];
     public Color[] couleurs = {
         new Color(255, 232, 14),
         new Color(52, 48,255),
@@ -19,7 +19,7 @@ public class FaceAff extends JPanel{
         this.setPreferredSize(new Dimension(200,200));
 
         for (int i=0;i<9;i++) {
-            facelettes[i] = new FaceletteAff();
+            facelettes[i] = new JButton();
             this.add(facelettes[i]);
         }
     }
@@ -28,7 +28,7 @@ public class FaceAff extends JPanel{
         int count = 0;
         for (int i=0;i<3;i++) {
             for (int j=0;j<3;j++) {
-                facelettes[count].changeCouleur(this.couleurs[face[i][j]]);
+                facelettes[count].setBackground(this.couleurs[face[i][j]]);
                 count++;
             }
         }

@@ -9,8 +9,7 @@ import java.awt.event.ActionListener;
 
 public  class BoutonsMouvements extends JPanel implements ActionListener {
     private JButton[] mouvements = new JButton[12];
-    private String[] faces = {"R", "U", "L", "D", "F", "B",
-            "r", "u", "l", "d", "f", "b"};
+    private String[] faces = {"R", "U", "L", "D", "F", "B", "r", "u", "l", "d", "f", "b"};
 
     public BoutonsMouvements(){
         this.setLayout(new GridLayout(2,6));
@@ -27,8 +26,6 @@ public  class BoutonsMouvements extends JPanel implements ActionListener {
             this.add(mouvements[i]);
             mouvements[i].addActionListener(this);
         }
-
-
     }
 
     public void actionPerformed(ActionEvent e) {

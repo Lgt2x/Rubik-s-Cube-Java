@@ -3,11 +3,15 @@ package cubesolver.Solveur.etapes;
 import cubesolver.Cube.Cube;
 import cubesolver.Solveur.EtapeResolution;
 
+import java.util.ArrayList;
+
 public class CroixBlanche extends EtapeResolution {
     String mouvement = "FLBRF";
 
     @Override
-    public void effectuerEtape(Cube cube){
+    public ArrayList<Character> effectuerEtape(Cube cube){
+        ArrayList<Character> mouvements = new ArrayList<>();
+
         /*
         on remarque que les pièces de la croix blanche sont celles avec le down soit les aretes du tableau 4 à 7 d'ou les for de 4 à 8
          */
@@ -35,14 +39,14 @@ public class CroixBlanche extends EtapeResolution {
                 while(j<8 && libre){
                     libre = !(cube.aretes[k].appartientFace('D') && cube.aretes[j].appartientFace(faceEtudiee));
                     if(!libre){
-                        cube.mouvement('D');
+                        mouvements.add('D');
                         j = 4;
                     }
                     j++;
                 }
                 //placer notre pièce blanche
                 while(!cube.aretes[i].appartientFace('D')){
-                   cube.mouvement(faceEtudiee);
+                   mouvements.add(faceEtudiee);
                 }
             }
         }
@@ -68,11 +72,12 @@ public class CroixBlanche extends EtapeResolution {
         for(int i = 4; i<8; i++){
             if(!cube.aretes[i].appartientFace('D')) {
                 while (!cube.aretes[i].appartientFace(cube.aretes[i].facelettes[1].color)) {
-                    cube.mouvement('U');
+                    mouvements.add('U');
                 }
                 String formule = String.valueOf(cube.aretes[i].facelettes[1].face + cube.aretes[i].facelettes[1].face);
                 cube.formule(formule);
             }
         }
+        return mouvements;
     }
 }

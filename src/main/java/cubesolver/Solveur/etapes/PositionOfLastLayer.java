@@ -3,10 +3,14 @@ package cubesolver.Solveur.etapes;
 import cubesolver.Cube.Cube;
 import cubesolver.Solveur.EtapeResolution;
 
+import java.util.ArrayList;
+
 public class PositionOfLastLayer extends EtapeResolution {
 
     @Override
-    public void effectuerEtape(Cube cube) {
+    public ArrayList<Character> effectuerEtape(Cube cube) {
+        ArrayList<Character> mouvements = new ArrayList<>();
+        
         int i = 0;
         String u = "";
         String U = "";
@@ -15,7 +19,7 @@ public class PositionOfLastLayer extends EtapeResolution {
 
         //mettre en place un angle
         while(!cube.angles[1].estEnPlace()){
-            cube.mouvement('U');
+            mouvements.add('U');
         }
         // verifeir si tous les angles sont en place ou non
         if(cube.angles[0].estEnPlace() && cube.angles[2].estEnPlace() && cube.angles[3].estEnPlace()){
@@ -61,5 +65,8 @@ public class PositionOfLastLayer extends EtapeResolution {
             }
             cube.formule(U);
         }
+
+    return mouvements;
     }
+
 }
