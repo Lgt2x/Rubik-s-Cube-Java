@@ -6,10 +6,8 @@ import cubesolver.IHM.GestionAffichage;
 public class Launcher {
     public Launcher() {
         Cube cube = new Cube();
-        GestionAffichage visualisation = new GestionAffichage(cube);
 
-        visualisation.actualise(cube.exportCube());
-        cube.formule("RUUruRur");
+        GestionAffichage visualisation = new GestionAffichage(cube);
         visualisation.actualise(cube.exportCube());
     }
 

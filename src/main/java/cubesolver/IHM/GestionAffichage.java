@@ -10,14 +10,13 @@ import javax.swing.*;
 
 public class GestionAffichage extends JFrame{
 
-    public Cube cube;
-    public Solveur solver;
+    public static Cube cube;
+    public static Solveur solver;
 
-    private AffichageCube affichageCube;
+    private static AffichageCube affichageCube;
     private CommandeBoutons panneauBouton;
     private BoutonLancement panneauStart;
     private BoutonsMouvements panneauMouvements;
-    private BoutonsMouvementInv panneauMouvementsInv;
     private BoutonSolution panneauSolution;
     private Color couleurFond = new Color(65, 115, 109);
 
@@ -51,9 +50,6 @@ public class GestionAffichage extends JFrame{
         panneauMouvements = new BoutonsMouvements();
         panneauPrincipal.add(panneauMouvements);
 
-        panneauMouvementsInv = new BoutonsMouvementInv();
-        panneauPrincipal.add(panneauMouvementsInv);
-
         panneauSolution = new BoutonSolution();
         panneauPrincipal.add(panneauSolution);
 
@@ -62,7 +58,7 @@ public class GestionAffichage extends JFrame{
         this.setVisible(true);
     }
 
-    public void actualise(int[][][] export) {
-        this.affichageCube.actualise(export);
+    public static void actualise(int[][][] export) {
+        AffichageCube.actualise(export);
     }
 }

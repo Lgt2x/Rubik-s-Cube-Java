@@ -1,39 +1,40 @@
 package cubesolver.IHM.ComposantsUI;
 
+import cubesolver.IHM.GestionAffichage;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public  class BoutonsMouvements extends JPanel{
-    JButton[] mouvements = new JButton[6];
-    private Color maCouleur = new Color(48, 48, 48);
+public  class BoutonsMouvements extends JPanel implements ActionListener {
+    private JButton[] mouvements = new JButton[12];
+    private String[] faces = {"R", "U", "L", "D", "F", "B",
+            "r", "u", "l", "d", "f", "b"};
+
     public BoutonsMouvements(){
-        this.setLayout(null);
-        this.setBounds(875, 205, 600, 75);
-        this.setBackground(maCouleur);
+        this.setLayout(new GridLayout(2,6));
+        this.setBounds(875, 205, 600, 150);
+        this.setBackground(new Color(48, 48, 48));
 
-        mouvements[0] = new JButton("R");
-        mouvements[1] = new JButton("U");
-        mouvements[2] = new JButton("L");
-        mouvements[3] = new JButton("D");
-        mouvements[4] = new JButton("F");
-        mouvements[5] = new JButton("B");
+        for (int i=0;i<faces.length;i++) {
+            mouvements[i] = new JButton(faces[i]);
 
-        //Fonction permettant de mettre la couleur du texte en blanc et ajout des boutons au panel
-        placement();
+            mouvements[i].setBackground(new Color(48, 48, 48));
+            mouvements[i].setForeground(Color.WHITE);
+            mouvements[i].setBorder(BorderFactory.createLineBorder(Color.WHITE));
+
+            this.add(mouvements[i]);
+            mouvements[i].addActionListener(this);
+        }
 
 
     }
 
-    public void placement(){
-        int x = 0;
-        for (JButton mouvement : mouvements) {
-            mouvement.setBounds(x, 0, 100, 75);
-            mouvement.setBackground(maCouleur);
-            mouvement.setForeground(Color.WHITE);
-            mouvement.setBorder(BorderFactory.createLineBorder(Color.white));
-            this.add(mouvement);
-            x += 100;
-        }
+    public void actionPerformed(ActionEvent e) {
+        JButton face = (JButton)(e.getSource());
+        GestionAffichage.cube.mouvement(face.getText().charAt(0));
+        GestionAffichage.actualise(GestionAffichage.cube.exportCube());
     }
 
 }

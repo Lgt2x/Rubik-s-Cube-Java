@@ -5,11 +5,11 @@ import javax.swing.*;
 public class FaceAff extends JPanel{
     public FaceletteAff[] facelettes = new FaceletteAff[9];
     public Color[] couleurs = {
-        new Color(255, 245, 0),
+        new Color(255, 232, 14),
         new Color(52, 48,255),
-        new Color(255, 78, 0),
-        new Color(1, 184, 29),
-        new Color(255, 0, 0),
+        new Color(255, 114, 0),
+        new Color(12, 228, 30),
+        new Color(227, 0, 0),
         new Color(255,255,255),
     };
 
