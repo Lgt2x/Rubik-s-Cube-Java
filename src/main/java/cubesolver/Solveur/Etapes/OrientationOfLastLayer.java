@@ -1,4 +1,4 @@
-package cubesolver.Solveur.etapes;
+package cubesolver.Solveur.Etapes;
 
 import cubesolver.Cube.Cube;
 import cubesolver.Solveur.EtapeResolution;
@@ -10,10 +10,10 @@ public class OrientationOfLastLayer extends EtapeResolution {
     Long cas;
 
     @Override
-    public ArrayList<Character> effectuerEtape(Cube cube) {
-        ArrayList<Character> mouvements = new ArrayList<>();
+    public String effectuerEtape() {
+        StringBuilder mouvements = new StringBuilder();
         
-        cas = conversionLastLayer(cube);
+        cas = conversionLastLayer();
         boolean estResolu = false;
 
         //enregister tous les cas d'oll avec leur formule respective
@@ -107,45 +107,45 @@ public class OrientationOfLastLayer extends EtapeResolution {
         do {
             //si notre cas est connu resoudre, sinon faire tourner la face du haut jusqu'à tomber dessus
             if(oll.containsKey(cas)) {
-                cube.formule(oll.get(cas));
+                Cube.formule(oll.get(cas));
                 estResolu = true;
             }else{
-                mouvements.add('U');
+                mouvements.append("U");
             }
         } while(!estResolu);
 
-        return mouvements;
+        return mouvements.toString();
     }
 
-    public Long conversionLastLayer(Cube cube) {
-        // l'objectif de cette methode est de convertir le cube en un long afin de connaitre l'orientation des pieces du dernier etage our resoudre la face avec une unique formule
+    public Long conversionLastLayer() {
+        // l'objectif de cette methode est de convertir le Cube en un long afin de connaitre l'orientation des pieces du dernier etage our resoudre la face avec une unique formule
         long a = 0L;
         long coef = 1L;
         String voisins = "FLBR";
         // les aretes jaune vont de 0 à 3, soit la boucle for :
         for(int i = 0; i<4; i++){
-            if(cube.aretes[i].facelettes[0].face == 'U'){
+            if(Cube.aretes[i].facelettes[0].face == 'U'){
                 // ne rien faire
-            }else if(cube.aretes[i].facelettes[0].face == 'F'){
+            }else if(Cube.aretes[i].facelettes[0].face == 'F'){
                 a+=10L;
-            }else if(cube.aretes[i].facelettes[0].face == 'L'){
+            }else if(Cube.aretes[i].facelettes[0].face == 'L'){
                 a+=10000L;
-            }else if(cube.aretes[i].facelettes[0].face == 'B'){
+            }else if(Cube.aretes[i].facelettes[0].face == 'B'){
                 a+=10000000L;
             }else{
                 a+=10000000000L;
             }
         }
         for(int i = 0; i<4; i++){
-            if(cube.angles[i].facelettes[0].face == 'U'){
+            if(Cube.angles[i].facelettes[0].face == 'U'){
                 //ne rien faire
             } else{
                 int j = 0;
-                while(cube.angles[i].facelettes[0].face != voisins.charAt(j)){
+                while(Cube.angles[i].facelettes[0].face != voisins.charAt(j)){
                     j++;
                 }
                 coef = (j+1)*1000L;
-                if(cube.angles[i].appartientFace(voisins.charAt(j+1))){
+                if(Cube.angles[i].appartientFace(voisins.charAt(j+1))){
                     coef *=100L;
                 }
                 a+=coef;

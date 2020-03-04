@@ -3,13 +3,30 @@ package cubesolver.Cube;
 import java.util.HashMap;
 import java.util.Random;
 
-
+/**
+ * Classe décrivant le cube, avec ses faces, ses pièces physiques
+ * Traite les mouvements, les formules, et s'exporte sous forme de tableau 3D
+ * Comportement passif/esclave : réagit aux appels mais ne réfléchit pas à sa solution
+ * Doit être utilisé en static, pour éviter les problèmes dus à l'instanciation
+ */
 public class Cube {
 
+    // Correspondance entre l'objet face et son caractère correspondant
     public static HashMap<String, Face> faces;
+
+    // Correspondance entre le nom d'une face et ses faces voisines, dans le sens horaire
     public static HashMap<String, String> facesVoisines;
-    public static String[] nomFaces;
+
+    // Nom des faces sous fome de tableau de chaines de caractère
+    public static String[] nomFaces = new String[]{"U", "L", "B", "D", "R", "F"};
+
+    // Tableau référençant tous les différents mouvement, pour éviter d'itérer sur nomFaces en maj et en minuscule
     public static String[] mouvements = {"R", "U", "L", "D", "F", "B", "r", "u", "l", "d", "f", "b"};
+
+    // Tableau décrivant l'ordre logique des faces pour une itération
+    public static String[] ordreFace = {"U","F","L","B","R","D"};
+    
+    public static int[][][] export = new int[6][3][3];
 
     // TODO : Générer automatiquement les angles et arêtes
     public static Piece[] angles = {
@@ -38,17 +55,7 @@ public class Cube {
             new Piece("BR")
     };
 
-    Face U = new Face('U', "LBRFL");
-    Face L = new Face('L', "DBUFD");
-    Face B = new Face('B', "LDRUL");
-    Face R = new Face('R', "UBDFU");
-    Face F = new Face('F', "LURDL");
-    Face D = new Face('D', "RBLFR");
-    char[] ordre ={'U','L','B','R','F','D'};
-    Face[] ordreFace = {U,F,L,B,R,D};
-
     public Cube() {
-        nomFaces = new String[]{"U", "L", "B", "D", "R", "F"};
         facesVoisines = new HashMap<>();
         facesVoisines.put("U", "LBRFL");
         facesVoisines.put("F", "LURDL");
@@ -57,13 +64,18 @@ public class Cube {
         facesVoisines.put("D", "RBLFR");
         facesVoisines.put("R", "UBDFU");
 
-
+        // Association des faces à leur nom
         faces = new HashMap<>();
         for (String nom: nomFaces) {
             faces.put(nom, new Face(nom.charAt(0), facesVoisines.get(nom)));
         }
     }
-    public void mouvement(char nom) {
+
+    /**
+     * Effectue un mouvement donné en changeant les pièces de place
+     * @param nom la face concernée, en majuscule si le mouvement est fait dans le sens horaire, en minuscule le cas contraire
+     */
+    public static void mouvement(char nom) {
         boolean direction = Character.isUpperCase(nom);
         String nomFace = String.valueOf(Character.toUpperCase(nom));
         Face face = faces.get(nomFace);
@@ -79,96 +91,121 @@ public class Cube {
         }
     }
 
-    public void formule(String formule) {
+    /**
+     * Effecute les mouvements d'une formule en décomposant la formule
+     * @param formule chaine de caractère composée de noms de mouvement concaténés
+     */
+    public static void formule(String formule) {
         for (int i=0;i<formule.length();i++) {
-            this.mouvement(formule.charAt(i));
+            mouvement(formule.charAt(i));
         }
     }
 
-    public void formuleSymetrique(String formule){
-        char a;
+    /**
+     * Effectue la formule inverse de la chaine de caractère donnée
+     * @param formule la chaine de caractère correspondant à la formule que l'on veut inverser
+     */
+    public static void formuleSymetrique(String formule){
+        char mouvement;
+
         for (int i=0;i<formule.length();i++) {
-            if(Character.isUpperCase(formule.charAt(i))){
-                a = (String.valueOf(formule.charAt(i)).toLowerCase()).charAt(0);
-            }else{
-                a = (String.valueOf(formule.charAt(i)).toUpperCase()).charAt(0);
-            }
-            this.mouvement(a);
+            mouvement = formule.charAt(i);
+            if(Character.isUpperCase(mouvement))
+                mouvement = Character.toLowerCase(mouvement);
+            else
+                mouvement = Character.toUpperCase(mouvement);
+
+            mouvement(mouvement);
         }
     }
 
-    public String melange(int longueur) {
-        String combi = "";
+    /**
+     * Mélange le cube avec un nombre de mouvements aléatoires donnés
+     * @param longueur le nombre de mouvements aléatoire à faire
+     * @return la formule de mélange utilisée
+     */
+    public static String melange(int longueur) {
+        StringBuilder combi = new StringBuilder();
         for (int i=0;i<longueur;i++) {
-            combi = combi + mouvements[new Random().nextInt(mouvements.length)];
+            combi.append(mouvements[new Random().nextInt(mouvements.length)]);
         }
 
-        this.formule(combi);
-        return combi;
+        formule(combi.toString());
+        return combi.toString();
     }
 
 
-   public int[][][] exportCube(){
-
-        /*ordre :
-        0 = U = jaune
-        1 = F = bleu
-        2 = L = orange
-        3 = B = vert
-        4 = R = rouge
-        5 = D = blanc
-         */
-
-        int[][][] cubeExporte = new int[6][3][3];
-
-        for(int i = 0; i<cubeExporte.length; i++) {
-            char couleur = correspondance2(i);
+    // TODO : Optimiser cette horreur
+    /**
+     * Exporte le cube sous forme de tableau à trois dimensions avec les faces dans l'ordre donné par ordreFace
+     * C'est un tableau d'int avec l'encodage suivant:
+     *         0 = U = jaune
+     *         1 = F = bleu
+     *         2 = L = orange
+     *         3 = B = vert
+     *         4 = R = rouge
+     *         5 = D = blanc
+     * @return le tableau 3d de int
+     */
+   public static int[][][] exportCube(){
+        for(int i=0;i<6;i++) {
+            char couleur = correspondanceNombreFace(i);
             int chiffre = i;
-            int[][] faceExporte = new int[3][3];
 
             int[] compteurLigneAngle = {0, 0, 2, 2};
             int[] compteurColoneAngle = {0, 2, 2, 0};
             int[] compteurLigneArete = {1, 0, 1, 2};
             int[] compteurColoneArete = {0, 1, 2, 1};
-            Face test = ordreFace[i];
-            cubeExporte[i][1][1] = i;
+            Face test = faces.get(ordreFace[i]);
+            export[i][1][1] = i;
 
-            //renvoyer les angles
+            // Renvoyer les angles
             for (int j = 0; j < 4; j++) {
-                for (int k = 0; k < angles.length; k++) {
-                    if (angles[k].appartientFace(couleur) && angles[k].appartientFace(test.voisins.charAt(j)) && angles[k].appartientFace(test.voisins.charAt(j + 1))) {
-                        for (int l = 0; l < angles[k].facelettes.length; l++) {
-                            if (angles[k].facelettes[l].face == couleur) {
-                                chiffre = correspondance(angles[k].facelettes[l].color);
+                for (Piece angle : angles) {
+                    if (angle.appartientFace(couleur) && angle.appartientFace(test.voisins.charAt(j)) && angle.appartientFace(test.voisins.charAt(j + 1))) {
+                        for (int l = 0; l < angle.facelettes.length; l++) {
+                            if (angle.facelettes[l].face == couleur) {
+                                chiffre = correspondanceFaceNombre(angle.facelettes[l].color);
                             }
                         }
-                        cubeExporte[i][compteurLigneAngle[j]][compteurColoneAngle[j]] = chiffre;
+                        export[i][compteurLigneAngle[j]][compteurColoneAngle[j]] = chiffre;
                     }
                 }
             }
-            //renvoyer les aretes
+            // Renvoyer les aretes
             for (int j = 0; j < 4; j++) {
-                for (int k = 0; k < aretes.length; k++) {
-                    if (aretes[k].appartientFace(couleur) && aretes[k].appartientFace(test.voisins.charAt(j))) {
-                        for (int l = 0; l < aretes[k].facelettes.length; l++) {
-                            if (aretes[k].facelettes[l].face == couleur) {
-                                chiffre = correspondance(aretes[k].facelettes[l].color);
+                for (Piece arete : aretes) {
+                    if (arete.appartientFace(couleur) && arete.appartientFace(test.voisins.charAt(j))) {
+                        for (int l = 0; l < arete.facelettes.length; l++) {
+                            if (arete.facelettes[l].face == couleur) {
+                                chiffre = correspondanceFaceNombre(arete.facelettes[l].color);
                             }
                         }
-                        cubeExporte[i][compteurLigneArete[j]][compteurColoneArete[j]] = chiffre;
+                        export[i][compteurLigneArete[j]][compteurColoneArete[j]] = chiffre;
                     }
                 }
             }
         }//EndFor, pour une face
-        return cubeExporte;
+        return export;
     }
 
-    public static int correspondance(char face){
-        String a = "UFLBRD";
-        return a.indexOf(face);
+    /**
+     * Retourne le nombre correspondant à la face donnée dans l'ordre établi par ordreFace
+     * @param face la face dont on veut la corespondance
+     * @return le nombre correspondant à la face
+     */
+    public static int correspondanceFaceNombre(char face){
+        String ordre = "UFLBRD";
+        return ordre.indexOf(face);
     }
-    public static char correspondance2(int i){
-        String a = "UFLBRD";
-        return a.charAt(i);
+
+    /**
+     * Retourne la face correspondant au nombre donné
+     * @param index l'index dont on veut la face associée
+     * @return le caractère correspondant à la face donnée
+     */
+    public static char correspondanceNombreFace(int index){
+        String ordre = "UFLBRD";
+        return ordre.charAt(index);
     }
 }

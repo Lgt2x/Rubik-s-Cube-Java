@@ -1,4 +1,4 @@
-package cubesolver.Solveur.etapes;
+package cubesolver.Solveur.Etapes;
 
 
 import cubesolver.Cube.Cube;
@@ -17,45 +17,45 @@ public class DeuxiemeEtage extends EtapeResolution {
         String u = "u";
 
         @Override
-        public ArrayList<Character> effectuerEtape(Cube cube){
-            ArrayList<Character> mouvements = new ArrayList<>();
+        public String effectuerEtape(){
+            StringBuilder mouvements = new StringBuilder();
             
             /*
             les angles du deuxieme etage sont ceux allant de 8 à 12
              */
             for(int i = 8; i<12; i++){
                 //verifier si la pièce est deja positionée
-                if(!cube.aretes[i].estEnPlace()){
+                if(!Cube.aretes[i].estPositionneeCorrectement()){
                     //si elle n'est pas sur la face du haut, faire la formule afin de le mettre sur la face du haut
-                    if(!cube.aretes[i].appartientFace('U')){
+                    if(!Cube.aretes[i].appartientFace('U')){
                     /*
                     TODO : sortir une pièce qui n'est pas sur la face du haut
                      */
                     }
-                    //enregistrer la facelette qui est sur le dessus du cube
+                    //enregistrer la facelette qui est sur le dessus du Cube
                     int o = 0;
-                    if(cube.aretes[i].facelettes[1].face == 'U'){
+                    if(Cube.aretes[i].facelettes[1].face == 'U'){
                         o = 1;
                     }
-                    A = String.valueOf(cube.aretes[i].facelettes[o].color);
+                    A = String.valueOf(Cube.aretes[i].facelettes[o].color);
                     a = A.toLowerCase();
-                    B = String.valueOf(cube.aretes[i].facelettes[(o+1)%2].color);
+                    B = String.valueOf(Cube.aretes[i].facelettes[(o+1)%2].color);
                     b = B.toLowerCase();
 
                     //mettre la pièce en position
-                    while(cube.aretes[i].facelettes[o].face != cube.aretes[i].facelettes[o].color ){
-                        mouvements.add('U');
+                    while(Cube.aretes[i].facelettes[o].face !=Cube.aretes[i].facelettes[o].color ){
+                        mouvements.append("U");
                     }
 
                     //formule pour placer la pièce
                     formula = U+B+u+b+u+a+U+A;
                     if(mouvement.indexOf(a)<mouvement.indexOf(b)){
-                        cube.formule(formula);
+                       Cube.formule(formula);
                     }else{
-                        cube.formuleSymetrique(formula);
+                        Cube.formuleSymetrique(formula);
                     }
                 }
             }
-            return mouvements;
+            return mouvements.toString();
         }
     }
