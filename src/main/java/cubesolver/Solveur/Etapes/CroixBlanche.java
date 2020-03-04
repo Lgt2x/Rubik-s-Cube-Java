@@ -3,15 +3,11 @@ package cubesolver.Solveur.Etapes;
 import cubesolver.Cube.Cube;
 import cubesolver.Solveur.EtapeResolution;
 
-import java.util.ArrayList;
-
 public class CroixBlanche extends EtapeResolution {
-    String mouvement = "FLBRF";
-
     @Override
-    public ArrayList<Character> effectuerEtape(){
-        ArrayList<Character> mouvements = new ArrayList<>();
-
+    public String effectuerEtape(){
+        StringBuilder mouvements = new StringBuilder();
+        String mouvement = "FLBRF";
         /*
         on remarque que les pièces de la croix blanche sont celles avec le down soit les aretes du tableau 4 à 7 d'ou les for de 4 à 8
          */
@@ -37,12 +33,11 @@ public class CroixBlanche extends EtapeResolution {
                 sinon mouvement D et on recommence l'opération
                 */
                 j = 4;
-                libre = true;
                 while(j<8){
 
                     libre = !(Cube.aretes[j].appartientFace('D') &&Cube.aretes[j].appartientFace(faceEtudiee));
                     if(!libre && i!=j){
-                        mouvements.add('D');
+                        mouvements.append("D");
                        Cube.mouvement('D');
                         j = 3;
                     }
@@ -51,7 +46,7 @@ public class CroixBlanche extends EtapeResolution {
 
                 //placer notre pièce blanche
                 while(!Cube.aretes[i].appartientFace('D')){
-                   mouvements.add(faceEtudiee);
+                   mouvements.append(faceEtudiee);
                   Cube.mouvement(faceEtudiee);
                 }
             }
@@ -64,7 +59,7 @@ public class CroixBlanche extends EtapeResolution {
                 String formula = ""+M+'d'+mouvement.charAt(mouvement.indexOf(M)+1);
 
                 for(int z=0; z<formula.length(); z++){
-                    mouvements.add(formula.charAt(z));
+                    mouvements.append(formula.charAt(z));
                 }
                Cube.formule(formula);
             }
@@ -76,7 +71,7 @@ public class CroixBlanche extends EtapeResolution {
             if(!Cube.aretes[i].estPositionneeCorrectement()){
                 String formula = ""+Cube.aretes[i].facelettes[1].face+Cube.aretes[i].facelettes[1].face;
                 for(int z=0; z<formula.length(); z++){
-                    mouvements.add(formula.charAt(z));
+                    mouvements.append(formula.charAt(z));
                 }
                Cube.formule(formula);
             }
@@ -85,16 +80,16 @@ public class CroixBlanche extends EtapeResolution {
         for(int i = 4; i<8; i++){
             if(!Cube.aretes[i].appartientFace('D')) {
                 while (!Cube.aretes[i].appartientFace(Cube.aretes[i].facelettes[1].color)) {
-                    mouvements.add('U');
+                    mouvements.append("U");
                    Cube.mouvement('U');
                 }
                 String formula = ""+Cube.aretes[i].facelettes[1].face +Cube.aretes[i].facelettes[1].face;
                 for(int z=0; z<formula.length(); z++){
-                    mouvements.add(formula.charAt(z));
+                    mouvements.append(formula.charAt(z));
                 }
                Cube.formule(formula);
             }
         }
-        return mouvements;
+        return mouvements.toString();
     }
 }

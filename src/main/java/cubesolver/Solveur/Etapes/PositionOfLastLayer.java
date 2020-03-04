@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class PositionOfLastLayer extends EtapeResolution {
 
     @Override
-    public ArrayList<Character> effectuerEtape() {
-        ArrayList<Character> mouvements = new ArrayList<>();
+    public String effectuerEtape() {
+        StringBuilder mouvements = new StringBuilder();
         
         int i = 0;
         String u = "";
@@ -19,7 +19,7 @@ public class PositionOfLastLayer extends EtapeResolution {
 
         //mettre en place un angle
         while(!Cube.angles[1].estPositionneeCorrectement()){
-            mouvements.add('U');
+            mouvements.append("U");
         }
         // verifeir si tous les angles sont en place ou non
             if(Cube.angles[0].estPositionneeCorrectement() &&Cube.angles[2].estPositionneeCorrectement() && Cube.angles[3].estPositionneeCorrectement()){
@@ -27,10 +27,12 @@ public class PositionOfLastLayer extends EtapeResolution {
             //coriger la parité
             if(Cube.angles[0].estPositionneeCorrectement() ^ Cube.angles[2].estPositionneeCorrectement() ^ Cube.angles[3].estPositionneeCorrectement()){
                 Cube.formule("RUrurFRRuruRUrf");
+                mouvements.append("RUrurFRRuruRUrf");
             }
             //deux cas a traiter, 2 itérations max
             while(!Cube.angles[0].estPositionneeCorrectement()){
                 Cube.formule("RbRFFrBRFFRR");
+                mouvements.append("RbRFFrBRFFRR");
             }
         }
 
@@ -66,7 +68,7 @@ public class PositionOfLastLayer extends EtapeResolution {
             Cube.formule(U);
         }
 
-    return mouvements;
+    return mouvements.toString();
     }
 
 }

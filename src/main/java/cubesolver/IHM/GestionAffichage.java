@@ -9,12 +9,8 @@ import java.awt.*;
 import javax.swing.*;
 
 public class GestionAffichage extends JFrame{
-
-    private CommandeBoutons panneauBouton;
-    private BoutonLancement panneauStart;
-    private BoutonsMouvements panneauMouvements;
-    private BoutonSolution panneauSolution;
-    private Color couleurFond = new Color(65, 115, 109);
+    public static String formuleMix;
+    public static String[] formuleResolution;
 
     public GestionAffichage() {
         // Initialisation de la fenetre
@@ -26,23 +22,15 @@ public class GestionAffichage extends JFrame{
         // Initialisation du panel principal
         JPanel panneauPrincipal = new JPanel();
         panneauPrincipal.setBounds(0,0, getWidth(), getHeight());
-        panneauPrincipal.setBackground(couleurFond);
+        panneauPrincipal.setBackground(new Color(65, 115, 109));
         panneauPrincipal.setLayout(null);
 
         // Déclaration des panneaux secondaires
         panneauPrincipal.add(new AffichageCube());
-
-        panneauBouton = new CommandeBoutons();
-        panneauPrincipal.add(panneauBouton);
-
-        panneauStart = new BoutonLancement();
-        panneauPrincipal.add(panneauStart);
-
-        panneauMouvements = new BoutonsMouvements();
-        panneauPrincipal.add(panneauMouvements);
-
-        panneauSolution = new BoutonSolution();
-        panneauPrincipal.add(panneauSolution);
+        panneauPrincipal.add(new CommandeBoutons());
+        panneauPrincipal.add(new BoutonLancement());
+        panneauPrincipal.add(new BoutonsMouvements());
+        panneauPrincipal.add(new BoutonSolution());
 
         Cube.exportCube();
         actualise();

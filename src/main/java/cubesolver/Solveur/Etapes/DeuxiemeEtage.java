@@ -17,8 +17,8 @@ public class DeuxiemeEtage extends EtapeResolution {
         String u = "u";
 
         @Override
-        public ArrayList<Character> effectuerEtape(){
-            ArrayList<Character> mouvements = new ArrayList<>();
+        public String effectuerEtape(){
+            StringBuilder mouvements = new StringBuilder();
             
             /*
             les angles du deuxieme etage sont ceux allant de 8 à 12
@@ -44,7 +44,7 @@ public class DeuxiemeEtage extends EtapeResolution {
 
                     //mettre la pièce en position
                     while(Cube.aretes[i].facelettes[o].face !=Cube.aretes[i].facelettes[o].color ){
-                        mouvements.add('U');
+                        mouvements.append("U");
                     }
 
                     //formule pour placer la pièce
@@ -56,6 +56,6 @@ public class DeuxiemeEtage extends EtapeResolution {
                     }
                 }
             }
-            return mouvements;
+            return mouvements.toString();
         }
     }

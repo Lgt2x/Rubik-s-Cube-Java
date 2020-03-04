@@ -10,8 +10,8 @@ public class OrientationOfLastLayer extends EtapeResolution {
     Long cas;
 
     @Override
-    public ArrayList<Character> effectuerEtape() {
-        ArrayList<Character> mouvements = new ArrayList<>();
+    public String effectuerEtape() {
+        StringBuilder mouvements = new StringBuilder();
         
         cas = conversionLastLayer();
         boolean estResolu = false;
@@ -110,11 +110,11 @@ public class OrientationOfLastLayer extends EtapeResolution {
                 Cube.formule(oll.get(cas));
                 estResolu = true;
             }else{
-                mouvements.add('U');
+                mouvements.append("U");
             }
         } while(!estResolu);
 
-        return mouvements;
+        return mouvements.toString();
     }
 
     public Long conversionLastLayer() {

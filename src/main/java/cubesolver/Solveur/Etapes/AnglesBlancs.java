@@ -15,8 +15,8 @@ public class AnglesBlancs extends EtapeResolution {
     String d = "d";
 
     @Override
-    public ArrayList<Character> effectuerEtape(){
-        ArrayList<Character> mouvements = new ArrayList<>();
+    public String effectuerEtape(){
+        StringBuilder mouvements = new StringBuilder();
 
         /*
         pour chaque angles du cube, on remarque que les angles de la face du bas sont ceux allant de 4 à 8
@@ -42,7 +42,7 @@ public class AnglesBlancs extends EtapeResolution {
 
                 //mettre l'angle au dessus de sa position;
                 while(!Cube.angles[i].appartientFace(Cube.angles[i].facelettes[1].color) || !Cube.angles[i].appartientFace(Cube.angles[i].facelettes[2].color)){
-                    mouvements.add('D');
+                    mouvements.append("D");
                    Cube.mouvement('U');
                 }
 
@@ -61,6 +61,6 @@ public class AnglesBlancs extends EtapeResolution {
             }
         }
 
-        return mouvements;
+        return mouvements.toString();
     }
 }
