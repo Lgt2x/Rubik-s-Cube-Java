@@ -1,4 +1,4 @@
-package cubesolver.Solveur.etapes;
+package cubesolver.Solveur.Etapes;
 
 
 import cubesolver.Cube.Cube;

@@ -1,7 +1,7 @@
 package cubesolver.Solveur;
 
 import cubesolver.Cube.Cube;
-import cubesolver.Solveur.etapes.*;
+import cubesolver.Solveur.Etapes.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,6 +16,7 @@ public class Solveur {
         LinkedList<EtapeResolution> etapesList = new LinkedList<>();
 
         etapesList.add(new CroixBlanche());
+        etapesList.add(new AnglesBlancs());
         etapesList.add(new DeuxiemeEtage());
         etapesList.add(new CroixJaune());
         etapesList.add(new OrientationOfLastLayer());
