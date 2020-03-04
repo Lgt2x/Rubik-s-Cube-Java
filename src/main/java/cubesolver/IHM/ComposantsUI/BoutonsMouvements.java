@@ -1,5 +1,6 @@
 package cubesolver.IHM.ComposantsUI;
 
+import cubesolver.Cube.Cube;
 import cubesolver.IHM.GestionAffichage;
 
 import javax.swing.*;
@@ -30,8 +31,8 @@ public  class BoutonsMouvements extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         JButton face = (JButton)(e.getSource());
-        GestionAffichage.cube.mouvement(face.getText().charAt(0));
-        GestionAffichage.actualise(GestionAffichage.cube.exportCube());
+        Cube.mouvement(face.getText().charAt(0));
+        GestionAffichage.actualise();
     }
 
 }

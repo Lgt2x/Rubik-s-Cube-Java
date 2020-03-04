@@ -10,21 +10,13 @@ import javax.swing.*;
 
 public class GestionAffichage extends JFrame{
 
-    public static Cube cube;
-    public static Solveur solver;
-
-    private static AffichageCube affichageCube;
     private CommandeBoutons panneauBouton;
     private BoutonLancement panneauStart;
     private BoutonsMouvements panneauMouvements;
     private BoutonSolution panneauSolution;
     private Color couleurFond = new Color(65, 115, 109);
 
-    public GestionAffichage(Cube cube) {
-        this.cube = new Cube();
-        this.solver = new Solveur(cube);
-
-
+    public GestionAffichage() {
         // Initialisation de la fenetre
         this.setTitle("Solver de rubik's cube");
         this.setSize(1500,1000);
@@ -38,8 +30,7 @@ public class GestionAffichage extends JFrame{
         panneauPrincipal.setLayout(null);
 
         // Déclaration des panneaux secondaires
-        affichageCube = new AffichageCube();
-        panneauPrincipal.add(affichageCube);
+        panneauPrincipal.add(new AffichageCube());
 
         panneauBouton = new CommandeBoutons();
         panneauPrincipal.add(panneauBouton);
@@ -53,12 +44,16 @@ public class GestionAffichage extends JFrame{
         panneauSolution = new BoutonSolution();
         panneauPrincipal.add(panneauSolution);
 
+        Cube.exportCube();
+        actualise();
+
         // Affichage de la fenêtre
         this.setContentPane(panneauPrincipal);
         this.setVisible(true);
     }
 
-    public static void actualise(int[][][] export) {
-        AffichageCube.actualise(export);
+    public static void actualise() {
+        Cube.exportCube();
+        AffichageCube.actualise();
     }
 }

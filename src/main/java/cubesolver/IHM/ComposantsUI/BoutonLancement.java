@@ -1,5 +1,6 @@
 package cubesolver.IHM.ComposantsUI;
 
+import cubesolver.Cube.Cube;
 import cubesolver.IHM.GestionAffichage;
 
 import javax.swing.*;
@@ -41,12 +42,12 @@ public class BoutonLancement extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == mix) {
-            System.out.println(GestionAffichage.cube.melange(15));
-            GestionAffichage.actualise(GestionAffichage.cube.exportCube());
+            System.out.println(Cube.melange(15));
+            GestionAffichage.actualise();
         } else if (e.getSource() == solve) {
             if (GestionAffichage.solver.peutFaireEtapeSuivante()) {
                 System.out.println(GestionAffichage.solver.effectueEtapeSuivante());
-                GestionAffichage.actualise(GestionAffichage.cube.exportCube());
+                GestionAffichage.actualise();
             }
         }
     }

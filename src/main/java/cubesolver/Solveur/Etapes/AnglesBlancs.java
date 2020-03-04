@@ -15,7 +15,7 @@ public class AnglesBlancs extends EtapeResolution {
     String d = "d";
 
     @Override
-    public ArrayList<Character> effectuerEtape(Cube cube){
+    public ArrayList<Character> effectuerEtape(){
         ArrayList<Character> mouvements = new ArrayList<>();
 
         /*
@@ -23,40 +23,40 @@ public class AnglesBlancs extends EtapeResolution {
          */
         for(int i=4; i<8; i++){
             //si l'ange n'est pas en place
-            if(!cube.angles[i].estPositionneeCorrectement()){
+            if(!Cube.angles[i].estPositionneeCorrectement()){
 
                 //bouger l'angle pour qu'il soit simple à placer par la suite
                 char place;
-                if(cube.angles[i].facelettes[1].face != 'D'){
-                    place = cube.angles[i].facelettes[1].face;
+                if(Cube.angles[i].facelettes[1].face != 'D'){
+                    place =Cube.angles[i].facelettes[1].face;
                 }else{
-                    place = cube.angles[i].facelettes[0].face;
+                    place =Cube.angles[i].facelettes[0].face;
                 }
                 A = String.valueOf(place);
                 a = A.toLowerCase();
 
                 String mouvementsString = A+U+a;
-                while(cube.angles[i].appartientFace('D') || cube.angles[i].estOrienteeSelon('U')){
-                    cube.formule(mouvementsString);
+                while(Cube.angles[i].appartientFace('D') ||Cube.angles[i].estOrienteeSelon('U')){
+                   Cube.formule(mouvementsString);
                 }
 
                 //mettre l'angle au dessus de sa position;
-                while(!cube.angles[i].appartientFace(cube.angles[i].facelettes[1].color) || !cube.angles[i].appartientFace(cube.angles[i].facelettes[2].color)){
+                while(!Cube.angles[i].appartientFace(Cube.angles[i].facelettes[1].color) || !Cube.angles[i].appartientFace(Cube.angles[i].facelettes[2].color)){
                     mouvements.add('D');
-                    cube.mouvement('U');
+                   Cube.mouvement('U');
                 }
 
                 //placer l'angle
                 A = String.valueOf(mouvement.charAt(i-4));
                 a = A.toLowerCase();
                 mouvementsString = A+U+a;
-                while(!cube.angles[i].estPositionneeCorrectement()){
+                while(!Cube.angles[i].estPositionneeCorrectement()){
 
                     /**
                      * BOUCLE INFINIE ICI
                      */
 
-                    cube.formule(mouvementsString);
+                   Cube.formule(mouvementsString);
                 }
             }
         }

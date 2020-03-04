@@ -7,7 +7,7 @@ import java.util.Random;
  * Classe décrivant le cube, avec ses faces, ses pièces physiques
  * Traite les mouvements, les formules, et s'exporte sous forme de tableau 3D
  * Comportement passif/esclave : réagit aux appels mais ne réfléchit pas à sa solution
- * Doit être utilisé en statique, pour éviter les problèmes dus à l'instanciation
+ * Doit être utilisé en static, pour éviter les problèmes dus à l'instanciation
  */
 public class Cube {
 
@@ -25,6 +25,8 @@ public class Cube {
 
     // Tableau décrivant l'ordre logique des faces pour une itération
     public static String[] ordreFace = {"U","F","L","B","R","D"};
+    
+    public static int[][][] export = new int[6][3][3];
 
     // TODO : Générer automatiquement les angles et arêtes
     public static Piece[] angles = {
@@ -73,7 +75,7 @@ public class Cube {
      * Effectue un mouvement donné en changeant les pièces de place
      * @param nom la face concernée, en majuscule si le mouvement est fait dans le sens horaire, en minuscule le cas contraire
      */
-    public void mouvement(char nom) {
+    public static void mouvement(char nom) {
         boolean direction = Character.isUpperCase(nom);
         String nomFace = String.valueOf(Character.toUpperCase(nom));
         Face face = faces.get(nomFace);
@@ -93,9 +95,9 @@ public class Cube {
      * Effecute les mouvements d'une formule en décomposant la formule
      * @param formule chaine de caractère composée de noms de mouvement concaténés
      */
-    public void formule(String formule) {
+    public static void formule(String formule) {
         for (int i=0;i<formule.length();i++) {
-            this.mouvement(formule.charAt(i));
+            mouvement(formule.charAt(i));
         }
     }
 
@@ -103,18 +105,17 @@ public class Cube {
      * Effectue la formule inverse de la chaine de caractère donnée
      * @param formule la chaine de caractère correspondant à la formule que l'on veut inverser
      */
-    public void formuleSymetrique(String formule){
+    public static void formuleSymetrique(String formule){
         char mouvement;
 
         for (int i=0;i<formule.length();i++) {
             mouvement = formule.charAt(i);
-            if(Character.isUpperCase(mouvement)){
+            if(Character.isUpperCase(mouvement))
                 mouvement = Character.toLowerCase(mouvement);
-            }else{
-                mouvement = Character.toLowerCase(mouvement);
-            }
+            else
+                mouvement = Character.toUpperCase(mouvement);
 
-            this.mouvement(mouvement);
+            mouvement(mouvement);
         }
     }
 
@@ -123,13 +124,13 @@ public class Cube {
      * @param longueur le nombre de mouvements aléatoire à faire
      * @return la formule de mélange utilisée
      */
-    public String melange(int longueur) {
+    public static String melange(int longueur) {
         StringBuilder combi = new StringBuilder();
         for (int i=0;i<longueur;i++) {
             combi.append(mouvements[new Random().nextInt(mouvements.length)]);
         }
 
-        this.formule(combi.toString());
+        formule(combi.toString());
         return combi.toString();
     }
 
@@ -146,10 +147,8 @@ public class Cube {
      *         5 = D = blanc
      * @return le tableau 3d de int
      */
-   public int[][][] exportCube(){
-        int[][][] cubeExporte = new int[6][3][3];
-
-        for(int i = 0; i<cubeExporte.length; i++) {
+   public static int[][][] exportCube(){
+        for(int i=0;i<6;i++) {
             char couleur = correspondanceNombreFace(i);
             int chiffre = i;
 
@@ -158,7 +157,7 @@ public class Cube {
             int[] compteurLigneArete = {1, 0, 1, 2};
             int[] compteurColoneArete = {0, 1, 2, 1};
             Face test = faces.get(ordreFace[i]);
-            cubeExporte[i][1][1] = i;
+            export[i][1][1] = i;
 
             // Renvoyer les angles
             for (int j = 0; j < 4; j++) {
@@ -169,7 +168,7 @@ public class Cube {
                                 chiffre = correspondanceFaceNombre(angle.facelettes[l].color);
                             }
                         }
-                        cubeExporte[i][compteurLigneAngle[j]][compteurColoneAngle[j]] = chiffre;
+                        export[i][compteurLigneAngle[j]][compteurColoneAngle[j]] = chiffre;
                     }
                 }
             }
@@ -182,12 +181,12 @@ public class Cube {
                                 chiffre = correspondanceFaceNombre(arete.facelettes[l].color);
                             }
                         }
-                        cubeExporte[i][compteurLigneArete[j]][compteurColoneArete[j]] = chiffre;
+                        export[i][compteurLigneArete[j]][compteurColoneArete[j]] = chiffre;
                     }
                 }
             }
         }//EndFor, pour une face
-        return cubeExporte;
+        return export;
     }
 
     /**

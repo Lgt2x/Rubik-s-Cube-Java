@@ -8,11 +8,9 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Solveur {
-    public Cube cube;
     private Iterator<EtapeResolution> etapes;
 
-    public Solveur(Cube cube) {
-        this.cube = cube;
+    public Solveur() {
         LinkedList<EtapeResolution> etapesList = new LinkedList<>();
 
         etapesList.add(new CroixBlanche());
@@ -27,7 +25,7 @@ public class Solveur {
 
     public ArrayList<Character> effectueEtapeSuivante() {
         EtapeResolution etape = etapes.next();
-        return etape.effectuerEtape(this.cube);
+        return etape.effectuerEtape();
     }
 
     public boolean peutFaireEtapeSuivante() {

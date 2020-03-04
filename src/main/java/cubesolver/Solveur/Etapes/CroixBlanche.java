@@ -9,7 +9,7 @@ public class CroixBlanche extends EtapeResolution {
     String mouvement = "FLBRF";
 
     @Override
-    public ArrayList<Character> effectuerEtape(Cube cube){
+    public ArrayList<Character> effectuerEtape(){
         ArrayList<Character> mouvements = new ArrayList<>();
 
         /*
@@ -23,11 +23,11 @@ public class CroixBlanche extends EtapeResolution {
 
         //placement des aretes blanches
         for(int i = 4; i<8; i++) {
-            if(!cube.aretes[i].appartientFace('D')){
+            if(!Cube.aretes[i].appartientFace('D')){
 
                 //trouver la face ou se trouve la pièce
                 j = 0;
-                while(!cube.aretes[i].appartientFace(mouvement.charAt(j))){
+                while(!Cube.aretes[i].appartientFace(mouvement.charAt(j))){
                     j++;
                 }
                 faceEtudiee = mouvement.charAt(j);
@@ -40,59 +40,59 @@ public class CroixBlanche extends EtapeResolution {
                 libre = true;
                 while(j<8){
 
-                    libre = !(cube.aretes[j].appartientFace('D') && cube.aretes[j].appartientFace(faceEtudiee));
+                    libre = !(Cube.aretes[j].appartientFace('D') &&Cube.aretes[j].appartientFace(faceEtudiee));
                     if(!libre && i!=j){
                         mouvements.add('D');
-                        cube.mouvement('D');
+                       Cube.mouvement('D');
                         j = 3;
                     }
                     j++;
                 }
 
                 //placer notre pièce blanche
-                while(!cube.aretes[i].appartientFace('D')){
+                while(!Cube.aretes[i].appartientFace('D')){
                    mouvements.add(faceEtudiee);
-                   cube.mouvement(faceEtudiee);
+                  Cube.mouvement(faceEtudiee);
                 }
             }
         }
 
         //orienter la croix blanche
         for(int i = 4; i<8; i++){
-            if(!cube.aretes[i].estOrienteCorrectement()){
-                char M = cube.aretes[i].facelettes[0].face;
+            if(!Cube.aretes[i].estOrienteCorrectement()){
+                char M =Cube.aretes[i].facelettes[0].face;
                 String formula = ""+M+'d'+mouvement.charAt(mouvement.indexOf(M)+1);
 
                 for(int z=0; z<formula.length(); z++){
                     mouvements.add(formula.charAt(z));
                 }
-                cube.formule(formula);
+               Cube.formule(formula);
             }
         }
 
         //placer les aretes de la croix blanche
             //setUp
         for(int i = 4; i<8; i++){
-            if(!cube.aretes[i].estPositionneeCorrectement()){
-                String formula = ""+cube.aretes[i].facelettes[1].face+cube.aretes[i].facelettes[1].face;
+            if(!Cube.aretes[i].estPositionneeCorrectement()){
+                String formula = ""+Cube.aretes[i].facelettes[1].face+Cube.aretes[i].facelettes[1].face;
                 for(int z=0; z<formula.length(); z++){
                     mouvements.add(formula.charAt(z));
                 }
-                cube.formule(formula);
+               Cube.formule(formula);
             }
         }
             //placement
         for(int i = 4; i<8; i++){
-            if(!cube.aretes[i].appartientFace('D')) {
-                while (!cube.aretes[i].appartientFace(cube.aretes[i].facelettes[1].color)) {
+            if(!Cube.aretes[i].appartientFace('D')) {
+                while (!Cube.aretes[i].appartientFace(Cube.aretes[i].facelettes[1].color)) {
                     mouvements.add('U');
-                    cube.mouvement('U');
+                   Cube.mouvement('U');
                 }
-                String formula = ""+cube.aretes[i].facelettes[1].face + cube.aretes[i].facelettes[1].face;
+                String formula = ""+Cube.aretes[i].facelettes[1].face +Cube.aretes[i].facelettes[1].face;
                 for(int z=0; z<formula.length(); z++){
                     mouvements.add(formula.charAt(z));
                 }
-                cube.formule(formula);
+               Cube.formule(formula);
             }
         }
         return mouvements;

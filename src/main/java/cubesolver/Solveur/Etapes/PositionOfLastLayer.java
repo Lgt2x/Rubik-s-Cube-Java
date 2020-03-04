@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class PositionOfLastLayer extends EtapeResolution {
 
     @Override
-    public ArrayList<Character> effectuerEtape(Cube cube) {
+    public ArrayList<Character> effectuerEtape() {
         ArrayList<Character> mouvements = new ArrayList<>();
         
         int i = 0;
@@ -18,19 +18,19 @@ public class PositionOfLastLayer extends EtapeResolution {
         //placer les angles
 
         //mettre en place un angle
-        while(!cube.angles[1].estPositionneeCorrectement()){
+        while(!Cube.angles[1].estPositionneeCorrectement()){
             mouvements.add('U');
         }
         // verifeir si tous les angles sont en place ou non
-        if(cube.angles[0].estPositionneeCorrectement() && cube.angles[2].estPositionneeCorrectement() && cube.angles[3].estPositionneeCorrectement()){
+            if(Cube.angles[0].estPositionneeCorrectement() &&Cube.angles[2].estPositionneeCorrectement() && Cube.angles[3].estPositionneeCorrectement()){
         }else{
             //coriger la parité
-            if(cube.angles[0].estPositionneeCorrectement() ^ cube.angles[2].estPositionneeCorrectement() ^ cube.angles[3].estPositionneeCorrectement()){
-                cube.formule("RUrurFRRuruRUrf");
+            if(Cube.angles[0].estPositionneeCorrectement() ^ Cube.angles[2].estPositionneeCorrectement() ^ Cube.angles[3].estPositionneeCorrectement()){
+                Cube.formule("RUrurFRRuruRUrf");
             }
             //deux cas a traiter, 2 itérations max
-            while(!cube.angles[0].estPositionneeCorrectement()){
-                cube.formule("RbRFFrBRFFRR");
+            while(!Cube.angles[0].estPositionneeCorrectement()){
+                Cube.formule("RbRFFrBRFFRR");
             }
         }
 
@@ -39,31 +39,31 @@ public class PositionOfLastLayer extends EtapeResolution {
         // on teste d'abord les deux cas problématiques :
 
         //H
-        if(cube.aretes[0].appartientFace('R') && cube.aretes[3].appartientFace('F')){
-            cube.formule("RuRURURuruRRuRuRURURuruRRU");
+        if(Cube.aretes[0].appartientFace('R') && Cube.aretes[3].appartientFace('F')){
+            Cube.formule("RuRURURuruRRuRuRURURuruRRU");
         }
         //Z1
-        if(cube.aretes[0].appartientFace('L') && cube.aretes[1].appartientFace('F')){
-            cube.formule("RuRURURuruRRrUrururURURR");
+        if(Cube.aretes[0].appartientFace('L') && Cube.aretes[1].appartientFace('F')){
+            Cube.formule("RuRURURuruRRrUrururURURR");
         }
         //Z2
-        if(cube.aretes[0].appartientFace('B') && cube.aretes[2].appartientFace('F')){
-            cube.formule("RRUURRUURRURRUURRUURRu");
+        if(Cube.aretes[0].appartientFace('B') && Cube.aretes[2].appartientFace('F')){
+            Cube.formule("RRUURRUURRURRUURRUURRu");
         }
         //placer la dernier face pour faire la formule;
-        if(!(cube.aretes[0].estPositionneeCorrectement() && cube.aretes[1].estPositionneeCorrectement())){
-            while(!cube.aretes[i].estPositionneeCorrectement()){
+        if(!(Cube.aretes[0].estPositionneeCorrectement() && Cube.aretes[1].estPositionneeCorrectement())){
+            while(!Cube.aretes[i].estPositionneeCorrectement()){
                 i++;
             }
             for(int j = 0; j<i; j++){
                 u += "u";
                 U += "U";
             }
-            cube.formule(u);
-            while(!(cube.aretes[0].estPositionneeCorrectement() && cube.aretes[1].estPositionneeCorrectement())){
-                cube.formule("rUrururURURR");
+            Cube.formule(u);
+            while(!(Cube.aretes[0].estPositionneeCorrectement() && Cube.aretes[1].estPositionneeCorrectement())){
+                Cube.formule("rUrururURURR");
             }
-            cube.formule(U);
+            Cube.formule(U);
         }
 
     return mouvements;
