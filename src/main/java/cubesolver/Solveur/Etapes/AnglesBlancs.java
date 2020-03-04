@@ -23,7 +23,7 @@ public class AnglesBlancs extends EtapeResolution {
          */
         for(int i=4; i<8; i++){
             //si l'ange n'est pas en place
-            if(!cube.angles[i].estEnPlace()){
+            if(!cube.angles[i].estPositionneeCorrectement()){
 
                 //bouger l'angle pour qu'il soit simple à placer par la suite
                 char place;
@@ -36,7 +36,7 @@ public class AnglesBlancs extends EtapeResolution {
                 a = A.toLowerCase();
 
                 String mouvementsString = A+U+a;
-                while(cube.angles[i].appartientFace('D') || cube.angles[i].orienteSelon('U')){
+                while(cube.angles[i].appartientFace('D') || cube.angles[i].estOrienteeSelon('U')){
                     cube.formule(mouvementsString);
                 }
 
@@ -50,7 +50,7 @@ public class AnglesBlancs extends EtapeResolution {
                 A = String.valueOf(mouvement.charAt(i-4));
                 a = A.toLowerCase();
                 mouvementsString = A+U+a;
-                while(!cube.angles[i].estEnPlace()){
+                while(!cube.angles[i].estPositionneeCorrectement()){
 
                     /**
                      * BOUCLE INFINIE ICI

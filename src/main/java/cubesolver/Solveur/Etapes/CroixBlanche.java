@@ -59,7 +59,7 @@ public class CroixBlanche extends EtapeResolution {
 
         //orienter la croix blanche
         for(int i = 4; i<8; i++){
-            if(!cube.aretes[i].estOriente()){
+            if(!cube.aretes[i].estOrienteCorrectement()){
                 char M = cube.aretes[i].facelettes[0].face;
                 String formula = ""+M+'d'+mouvement.charAt(mouvement.indexOf(M)+1);
 
@@ -73,7 +73,7 @@ public class CroixBlanche extends EtapeResolution {
         //placer les aretes de la croix blanche
             //setUp
         for(int i = 4; i<8; i++){
-            if(!cube.aretes[i].estEnPlace()){
+            if(!cube.aretes[i].estPositionneeCorrectement()){
                 String formula = ""+cube.aretes[i].facelettes[1].face+cube.aretes[i].facelettes[1].face;
                 for(int z=0; z<formula.length(); z++){
                     mouvements.add(formula.charAt(z));

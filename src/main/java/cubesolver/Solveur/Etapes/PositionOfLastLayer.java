@@ -18,18 +18,18 @@ public class PositionOfLastLayer extends EtapeResolution {
         //placer les angles
 
         //mettre en place un angle
-        while(!cube.angles[1].estEnPlace()){
+        while(!cube.angles[1].estPositionneeCorrectement()){
             mouvements.add('U');
         }
         // verifeir si tous les angles sont en place ou non
-        if(cube.angles[0].estEnPlace() && cube.angles[2].estEnPlace() && cube.angles[3].estEnPlace()){
+        if(cube.angles[0].estPositionneeCorrectement() && cube.angles[2].estPositionneeCorrectement() && cube.angles[3].estPositionneeCorrectement()){
         }else{
             //coriger la parité
-            if(cube.angles[0].estEnPlace() ^ cube.angles[2].estEnPlace() ^ cube.angles[3].estEnPlace()){
+            if(cube.angles[0].estPositionneeCorrectement() ^ cube.angles[2].estPositionneeCorrectement() ^ cube.angles[3].estPositionneeCorrectement()){
                 cube.formule("RUrurFRRuruRUrf");
             }
             //deux cas a traiter, 2 itérations max
-            while(!cube.angles[0].estEnPlace()){
+            while(!cube.angles[0].estPositionneeCorrectement()){
                 cube.formule("RbRFFrBRFFRR");
             }
         }
@@ -51,8 +51,8 @@ public class PositionOfLastLayer extends EtapeResolution {
             cube.formule("RRUURRUURRURRUURRUURRu");
         }
         //placer la dernier face pour faire la formule;
-        if(!(cube.aretes[0].estEnPlace() && cube.aretes[1].estEnPlace())){
-            while(!cube.aretes[i].estEnPlace()){
+        if(!(cube.aretes[0].estPositionneeCorrectement() && cube.aretes[1].estPositionneeCorrectement())){
+            while(!cube.aretes[i].estPositionneeCorrectement()){
                 i++;
             }
             for(int j = 0; j<i; j++){
@@ -60,7 +60,7 @@ public class PositionOfLastLayer extends EtapeResolution {
                 U += "U";
             }
             cube.formule(u);
-            while(!(cube.aretes[0].estEnPlace() && cube.aretes[1].estEnPlace())){
+            while(!(cube.aretes[0].estPositionneeCorrectement() && cube.aretes[1].estPositionneeCorrectement())){
                 cube.formule("rUrururURURR");
             }
             cube.formule(U);

@@ -25,7 +25,7 @@ public class DeuxiemeEtage extends EtapeResolution {
              */
             for(int i = 8; i<12; i++){
                 //verifier si la pièce est deja positionée
-                if(!cube.aretes[i].estEnPlace()){
+                if(!cube.aretes[i].estPositionneeCorrectement()){
                     //si elle n'est pas sur la face du haut, faire la formule afin de le mettre sur la face du haut
                     if(!cube.aretes[i].appartientFace('U')){
                     /*

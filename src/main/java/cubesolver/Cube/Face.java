@@ -1,5 +1,8 @@
 package cubesolver.Cube;
 
+/**
+ * Classe correspondant à une face avec 9 facelettes, avec une orientation fixe
+ */
 public class Face{
 
 	final char valeur; // U,L,R,D,B,F
@@ -28,20 +31,5 @@ public class Face{
 				return voisins.charAt((index-1));
 			}
 		}
-	}
-
-	/*public int[][] exportFace(){
-		int[][] faceExporte = new int[3][3];
-		faceExporte[1][1] = correspondance(this.valeur);
-
-		return faceExporte;
-	}*/
-
-	@Override
-	public String toString() {
-		return "Face{" +
-				"valeur=" + valeur +
-				", voisins='" + voisins + '\'' +
-				'}';
 	}
 }
