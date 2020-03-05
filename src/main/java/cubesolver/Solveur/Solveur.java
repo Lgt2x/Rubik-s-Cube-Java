@@ -16,8 +16,8 @@ public class Solveur {
 
         etapesList.add(new CroixBlanche());
         etapesList.add(new AnglesBlancs());
-        /*etapesList.add(new DeuxiemeEtage());
-        etapesList.add(new CroixJaune());
+        etapesList.add(new DeuxiemeEtage());
+        /*etapesList.add(new CroixJaune());
         etapesList.add(new OrientationOfLastLayer());
         etapesList.add(new PositionOfLastLayer());*/
 
