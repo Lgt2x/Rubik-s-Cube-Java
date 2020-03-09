@@ -73,10 +73,10 @@ public class OrientationOfLastLayer extends EtapeResolution {
         oll.put(11000000110L, "FRuruRUrf");//F4
 
         //Knight Move Shapes
-        oll.put(11001001010L, "RUrurFRRUruf"); //F1
-        oll.put(100100110010L, "RUrUrFRfRuur"); //F2
-        oll.put(1010010100L, "RuurrFRfRuur"); //F3
-        oll.put(11000000110L, "FRuruRUrf"); //F4
+        oll.put(110000110100L, "FURuRRfRURur"); //K1
+        oll.put(11001011000L, "rFRUrfRFuf"); //K2
+        oll.put(10100110100L, "lbLruRUlBL"); //K3
+        oll.put(11001010001L, "UURBrLUluRbr"); //K4
 
         //Awkward Shapes
         oll.put(100010011L, "URUruRurfuFRUr"); //A1
@@ -87,9 +87,9 @@ public class OrientationOfLastLayer extends EtapeResolution {
         //L-Shapes
         oll.put(110101001010L, "FRUruRUruf"); //L2
         oll.put(11010100101L, "fluLUluLUF"); //L1
-        oll.put(110111001000L, "ulUULUlUfluLUF"); //L3
+        oll.put(110111001000L, "ulUULUlULfluLUF"); //L3
         oll.put(100111011000L, "uRUUruRurFRUruf"); //L4
-        oll.put(111010101L, "rfLflFLflFFR"); //L5
+        oll.put(111010101L, "urfLflFLflFFR"); //L5
         oll.put(10111000101L, "LFrFRfrFRFFl"); //L6
 
         //Lightning Bolts

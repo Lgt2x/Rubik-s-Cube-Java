@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f435365-2446-40c8-aae2-f52208ce5588" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Formules/positions.oll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cubesolver/IHM/ComposantsUI/CommandeBoutons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cubesolver/IHM/ComposantsUI/CommandeBoutons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cubesolver/Solveur/Solveur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cubesolver/Solveur/Solveur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cubesolver/Solveur/Etapes/OrientationOfLastLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cubesolver/Solveur/Etapes/OrientationOfLastLayer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +61,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="debbug-du-solver" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -228,6 +228,10 @@
     <state x="418" y="239" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.31.1920.1049@0.31.1920.1049" timestamp="1581923439092" />
     <state x="454" y="257" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.485.1920.1080/0.516.1920.684@0.516.1920.684" timestamp="1581866835431" />
     <state x="2338" y="699" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.485.1920.1080/0.516.1920.684@1920.485.1920.1080" timestamp="1581867083955" />
+    <state x="520" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583739194970">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="520" y="215" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1583739194970" />
     <state x="598" y="134" key="#com.intellij.ide.util.MemberChooser" timestamp="1583428680868">
       <screen x="0" y="0" width="1600" height="864" />
     </state>
@@ -298,10 +302,10 @@
     <state x="556" y="213" key="com.intellij.ide.util.TipDialog/0.0.1600.864@0.0.1600.864" timestamp="1583430568337" />
     <state x="667" y="290" key="com.intellij.ide.util.TipDialog/0.31.1920.1049@0.31.1920.1049" timestamp="1581873637483" />
     <state x="667" y="685" key="com.intellij.ide.util.TipDialog/1920.485.1920.1080/0.516.1920.684@0.516.1920.684" timestamp="1581806642074" />
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583310030143">
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583738623598">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1583310030143" />
+    <state x="578" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1583738623598" />
     <state x="0" y="0" width="738" height="824" key="find.popup" timestamp="1582533911511">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
