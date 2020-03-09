@@ -43,5 +43,6 @@ public class GestionAffichage extends JFrame{
     public static void actualise() {
         Cube.exportCube();
         AffichageCube.actualise();
+
     }
 }

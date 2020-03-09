@@ -4,6 +4,7 @@ import cubesolver.Cube.Cube;
 import cubesolver.IHM.GestionAffichage;
 import cubesolver.Solveur.Solveur;
 
+import javax.sound.midi.SysexMessage;
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,6 +12,8 @@ import javax.imageio.ImageIO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+
+import static cubesolver.IHM.GestionAffichage.formuleResolution;
 
 public class CommandeBoutons extends JPanel {
     //Déclaration de chaque bouton
@@ -20,7 +23,7 @@ public class CommandeBoutons extends JPanel {
     private JButton avancer = new JButton();
     private JButton arriere = new JButton();
     private JLabel text = new JLabel();
-    private int niemeMouv = 0;
+    private int niemeMouv = -1;
 
     public CommandeBoutons(){
         this.setLayout(null);
@@ -60,6 +63,8 @@ public class CommandeBoutons extends JPanel {
 
 
 
+
+
     }
 
     class avancerListener implements ActionListener{
@@ -67,15 +72,12 @@ public class CommandeBoutons extends JPanel {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             niemeMouv++;
-            if(niemeMouv>GestionAffichage.formuleResolution.length){
-                niemeMouv--;
-            } else {
-                for(int i=0; i<=niemeMouv;i++){
-                    Cube.formule(GestionAffichage.formuleResolution[i]);
-                    GestionAffichage.actualise();
-                }
+
+            if(niemeMouv<formuleResolution.length){
+                Cube.formule(formuleResolution[niemeMouv]);
+                GestionAffichage.actualise();
             }
-            text.setText(String.valueOf(niemeMouv));
+
         }
     }
 
@@ -88,10 +90,11 @@ public class CommandeBoutons extends JPanel {
                 niemeMouv=0;
             } else {
                 for(int i=0; i<=niemeMouv;i++){
-                    Cube.formule(GestionAffichage.formuleResolution[i]);
+                    Cube.formule(formuleResolution[i]);
                     GestionAffichage.actualise();
                 }
             }
+            System.out.println(formuleResolution.length);
             text.setText(String.valueOf(niemeMouv));
         }
     }

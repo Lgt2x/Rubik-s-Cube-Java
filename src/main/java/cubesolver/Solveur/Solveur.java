@@ -9,7 +9,7 @@ import java.util.LinkedList;
 
 public class Solveur {
     private static Iterator<EtapeResolution> etapes;
-    private static LinkedList<EtapeResolution> etapesList;
+    public static LinkedList<EtapeResolution> etapesList;
 
     public Solveur() {
         etapesList = new LinkedList<>();
