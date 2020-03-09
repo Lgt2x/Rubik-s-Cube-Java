@@ -2,7 +2,6 @@ package cubesolver.IHM.ComposantsUI;
 
 import cubesolver.Cube.Cube;
 import cubesolver.IHM.GestionAffichage;
-import cubesolver.Solveur.Solveur;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +10,7 @@ import javax.imageio.ImageIO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Objects;
 
 public class CommandeBoutons extends JPanel {
     //Déclaration de chaque bouton
@@ -30,9 +30,9 @@ public class CommandeBoutons extends JPanel {
         // Chargement des images des boutons
         // TODO : le faire dans des classes boutton séparées pour ne pas polluer ici
         try {
-            pause.setIcon(new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/play2.png"))));
-            avancer.setIcon(new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/avancer.png"))));
-            arriere.setIcon(new ImageIcon(ImageIO.read(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/arriere.png"))));
+            pause.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/play2.png")))));
+            avancer.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/avancer.png")))));
+            arriere.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/arriere.png")))));
         } catch (IOException e) {
             System.out.println("Erreur de chargement d'une image");
         }

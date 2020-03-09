@@ -15,30 +15,11 @@ public class OrientationOfLastLayer extends EtapeResolution {
     public String effectuerEtape() {
 
         StringBuilder mouvements = new StringBuilder();
-        cas = conversionLastLayer();
+        cas = conversionLastLayer(); // Conversion de la position courante pour identifier le casà traiter
         boolean estResolu = false;
-        HashMap<Long, String> oll = new HashMap();
 
         // Lire dans le fichier pour ajouter les oll
-        try {
-            String fileName = "BoutonsIHM/play2.png";
-            ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-            InputStream is = classloader.getResourceAsStream("Formules/positions.oll");
-            InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
-            BufferedReader reader = new BufferedReader(streamReader);
-
-            String st;
-            String[] separateur;
-            while ((st = reader.readLine()) != null) {
-                if (st.charAt(0) != '/' && st.charAt(1) != '/') {
-                    separateur = st.split(" ");
-                    oll.put(Long.parseLong(separateur[0]), separateur[1]);
-                }
-            }
-        } catch (IOException e) {
-            System.out.println("Erreur de chargement des oll");
-        }
-
+        HashMap<Long, String> oll = chargementOLL("Formules/positions.oll");
 
         do {
             // Si notre cas est connu : resoudre, sinon faire tourner la face du haut jusqu'à tomber dessus
@@ -59,7 +40,7 @@ public class OrientationOfLastLayer extends EtapeResolution {
     public Long conversionLastLayer() {
         // l'objectif de cette methode est de convertir le cube en un long afin de connaitre l'orientation des pieces du dernier etage our resoudre la face avec une unique formule
         long a = 0L;
-        long coef = 1L;
+        long coef;
         String voisins = "RBLFR";
 
         HashMap<Character, Integer> correspondance = new HashMap<>();
@@ -77,8 +58,8 @@ public class OrientationOfLastLayer extends EtapeResolution {
                 a-=1; // On ne veut rien ajouter quand c'est U
             }
         }
+
         for(int i = 0; i<4; i++){
-            coef = 1L;
             if(Cube.angles[i].facelettes[0].face != 'U'){
                 int j = 0;
                 while(Cube.angles[i].facelettes[0].face != voisins.charAt(j)){
@@ -94,5 +75,41 @@ public class OrientationOfLastLayer extends EtapeResolution {
             }
         }
         return a;
+    }
+
+    public HashMap<Long, String> chargementOLL(String fichier) {
+        HashMap<Long, String> oll = new HashMap<>();
+        try {
+            // Recherche du chemin de la classe courante
+            ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+
+            // Chargement d'une ressource à partir du dossier concerné
+            InputStream is = classloader.getResourceAsStream(fichier);
+
+            // Initialisation de la lecture du fichier comme stream
+            assert is != null;
+            InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
+            BufferedReader reader = new BufferedReader(streamReader);
+
+            String st;
+            String[] separateur;
+
+            // Lire la ligne tant qu'on n'est pas arrivés au bout du fichier
+            while ((st = reader.readLine()) != null) {
+                if (st.charAt(0) != '/' && st.charAt(1) != '/') {
+
+                    // Séparation de la chaine de caractère en deux, d'un côté le long, de l'autre la formule associée
+                    separateur = st.split(" ");
+
+                    // Remplissage de la table de correspondance à partir des données du fichier
+                    oll.put(Long.parseLong(separateur[0]), separateur[1]);
+                }
+            }
+
+        } catch (IOException e) {
+            System.out.println("Erreur de chargement des oll");
+        }
+
+        return oll;
     }
 }
