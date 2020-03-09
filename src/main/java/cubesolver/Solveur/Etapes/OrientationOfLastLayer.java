@@ -2,25 +2,25 @@ package cubesolver.Solveur.Etapes;
 
 import cubesolver.Cube.Cube;
 import cubesolver.Solveur.EtapeResolution;
-
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 
 public class OrientationOfLastLayer extends EtapeResolution {
     Long cas;
 
     @Override
     public String effectuerEtape() {
+
         StringBuilder mouvements = new StringBuilder();
-        
         cas = conversionLastLayer();
         boolean estResolu = false;
-
-        // TODO : mettre tout ça dans un fichier...
-        // Enregistrement de tous les cas d'oll avec leur formule respective
-
         HashMap<Long, String> oll = new HashMap();
-
+/*
         //All Edges Oriented Correctly
         oll.put(1001000001L, "RUUruRur"); //OCLL6
         oll.put(101000101000L, "RUUruRUruRur"); //OCLL1
@@ -105,6 +105,28 @@ public class OrientationOfLastLayer extends EtapeResolution {
         oll.put(10110010011L, "UUFRUrufuRUrfRUrurFRurFRf"); //O7
         oll.put(10110011010L, "RUrUrFRfuurFRf"); //O5
         oll.put(10010010010L, "FURurfUUrurFRfUR"); //O8
+
+ */
+
+        //lire dans le fichier pour ajouter les oll
+        try {
+            String fileName = "BoutonsIHM/play2.png";
+            ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+            File file = new File(classLoader.getResource(fileName).getFile());
+
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String st;
+            String[] separateur;
+            while ((st = br.readLine()) != null) {
+                if (st.charAt(0) != '/' && st.charAt(1) != '/') {
+                    separateur = st.split(" ");
+                    oll.put(Long.parseLong(separateur[0]), separateur[1]);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Erreur de chargement des oll");
+        }
+
 
         do {
             // Si notre cas est connu : resoudre, sinon faire tourner la face du haut jusqu'à tomber dessus
