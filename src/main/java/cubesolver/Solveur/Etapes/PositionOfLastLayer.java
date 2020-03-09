@@ -77,20 +77,20 @@ public class PositionOfLastLayer extends EtapeResolution {
             }
 
             Cube.formule(u);
-            for(int z=0; z<u.length(); z++){
-                mouvements.append(u.charAt(z));
-            }
+            mouvements.append(u);
+
 
             while(!(Cube.aretes[0].facelettes[1].face == Cube.angles[0].facelettes[1].face && Cube.aretes[1].facelettes[1].face == Cube.angles[0].facelettes[2].face)){
                 formula = "rUrururURURR";
                 Cube.formule(formula);
                 mouvements.append(formula);
-                System.out.println("erreur");
             }
             Cube.formule(U);
             mouvements.append(U);
         }
+        System.out.println("succes");
     return mouvements.toString();
+
     }
 
 }
