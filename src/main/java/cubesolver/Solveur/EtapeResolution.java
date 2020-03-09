@@ -1,9 +1,9 @@
 package cubesolver.Solveur;
 
-import cubesolver.Cube.Cube;
-
-import java.util.ArrayList;
-
+/**
+ * Modèle d'étape de résolution
+ * Chaque étape doit implémenter la fonction effectuerEtape qui retourne un String
+ */
 public abstract class EtapeResolution {
     public abstract String effectuerEtape();
 }
