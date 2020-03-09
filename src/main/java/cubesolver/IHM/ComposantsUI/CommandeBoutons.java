@@ -13,13 +13,12 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class CommandeBoutons extends JPanel {
-    //Déclaration de chaque bouton
 
-    private Color maCouleur = new Color(48, 48, 48);
-    private JButton pause = new JButton();
-    private JButton avancer = new JButton();
-    private JButton arriere = new JButton();
-    private JLabel text = new JLabel();
+    private Color couleurFond = new Color(48, 48, 48);
+    private JButton boutonPause = new JButton();
+    private JButton boutonAvancer = new JButton();
+    private JButton boutonArriere = new JButton();
+    private JLabel champTexte = new JLabel();
     private int niemeMouv = 0;
 
     public CommandeBoutons(){
@@ -37,29 +36,27 @@ public class CommandeBoutons extends JPanel {
             System.out.println("Erreur de chargement d'une image");
         }
 
-        //Placement boutons
-        arriere.setBounds(0, 0, 100, 75);
-        text.setBounds(100, 0, 100, 75);
-        avancer.setBounds(200, 0, 100, 75);
+        // Placement boutons
+        boutonArriere.setBounds(0, 0, 100, 75);
+        champTexte.setBounds(100, 0, 100, 75);
+        boutonAvancer.setBounds(200, 0, 100, 75);
 
-        //Couleurs et Bordures
-        arriere.setBackground(maCouleur);
-        pause.setBackground(maCouleur);
-        avancer.setBackground(maCouleur);
+        // Couleurs et Bordures
+        boutonArriere.setBackground(couleurFond);
+        boutonPause.setBackground(couleurFond);
+        boutonAvancer.setBackground(couleurFond);
 
-        arriere.setBorder(BorderFactory.createLineBorder(Color.white));
-        pause.setBorder(BorderFactory.createLineBorder(Color.white));
-        avancer.setBorder(BorderFactory.createLineBorder(Color.white));
+        boutonArriere.setBorder(BorderFactory.createLineBorder(Color.white));
+        boutonPause.setBorder(BorderFactory.createLineBorder(Color.white));
+        boutonAvancer.setBorder(BorderFactory.createLineBorder(Color.white));
 
-        avancer.addActionListener(new avancerListener());
-        arriere.addActionListener(new arriereListener());
+        boutonAvancer.addActionListener(new avancerListener());
+        boutonArriere.addActionListener(new arriereListener());
 
-
-
-        this.add(arriere); this.add(avancer); this.add(pause); this.add(text);
-
-
-
+        this.add(boutonArriere);
+        this.add(boutonAvancer);
+        this.add(boutonPause);
+        this.add(champTexte);
     }
 
     class avancerListener implements ActionListener{
@@ -75,7 +72,7 @@ public class CommandeBoutons extends JPanel {
                     GestionAffichage.actualise();
                 }
             }
-            text.setText(String.valueOf(niemeMouv));
+            champTexte.setText(String.valueOf(niemeMouv));
         }
     }
 
@@ -92,7 +89,7 @@ public class CommandeBoutons extends JPanel {
                     GestionAffichage.actualise();
                 }
             }
-            text.setText(String.valueOf(niemeMouv));
+            champTexte.setText(String.valueOf(niemeMouv));
         }
     }
 

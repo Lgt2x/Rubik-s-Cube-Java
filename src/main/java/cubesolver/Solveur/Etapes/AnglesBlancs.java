@@ -3,8 +3,11 @@ package cubesolver.Solveur.Etapes;
 import cubesolver.Cube.Cube;
 import cubesolver.Solveur.EtapeResolution;
 
-import java.util.ArrayList;
-
+/**
+ * Etape de résolution #2
+ * Place et oriente les coins de la première face constituée, la face blanche
+ * A la fin : la première couronne est en place
+ */
 public class AnglesBlancs extends EtapeResolution {
 
     @Override

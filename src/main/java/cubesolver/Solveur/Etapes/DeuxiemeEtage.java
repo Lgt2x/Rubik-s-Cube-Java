@@ -4,8 +4,10 @@ package cubesolver.Solveur.Etapes;
 import cubesolver.Cube.Cube;
 import cubesolver.Solveur.EtapeResolution;
 
-import java.util.ArrayList;
-
+/**
+ * Etape de résolution #3
+ * Place les arêtes du deuxième étape
+ */
 public class DeuxiemeEtage extends EtapeResolution {
         @Override
         public String effectuerEtape(){

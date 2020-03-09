@@ -8,6 +8,11 @@ import java.util.HashMap;
 
 import java.io.IOException;
 
+/**
+ * Etape de résolution #4
+ * Résout la face jaune, sans placer correctement les pièces
+ *
+*/
 public class OrientationOfLastLayer extends EtapeResolution {
     Long cas;
 
