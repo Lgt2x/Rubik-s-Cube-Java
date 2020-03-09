@@ -89,8 +89,8 @@ public class PositionOfLastLayer extends EtapeResolution {
             Cube.formule(U);
             mouvements.append(U);
         }
-
     return mouvements.toString();
+
     }
 
 }
