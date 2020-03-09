@@ -3,6 +3,10 @@ package cubesolver.Solveur.Etapes;
 import cubesolver.Cube.Cube;
 import cubesolver.Solveur.EtapeResolution;
 
+/**
+ * Etape de résolution #1
+ * Place la croix de la première face
+ */
 public class CroixBlanche extends EtapeResolution {
     @Override
     public String effectuerEtape(){
