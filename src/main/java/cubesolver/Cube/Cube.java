@@ -105,12 +105,14 @@ public class Cube {
 
     /**
      * Effectue la formule inverse de la chaine de caractère donnée
+     * i.e. en faisant formule(chaine) puis formuleSymetrique(chaine)
+     * on retrouve la position initiale
      * @param formule la chaine de caractère correspondant à la formule que l'on veut inverser
      */
     public static void formuleSymetrique(String formule){
         char mouvement;
 
-        for (int i=0;i<formule.length();i++) {
+        for (int i=formule.length()-1;i>=0;i--) {
             mouvement = formule.charAt(i);
             if(Character.isUpperCase(mouvement))
                 mouvement = Character.toLowerCase(mouvement);

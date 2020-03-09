@@ -14,7 +14,6 @@ import java.util.Objects;
 
 public class CommandeBoutons extends JPanel {
 
-    private Color couleurFond = new Color(48, 48, 48);
     private JButton boutonPause = new JButton();
     private JButton boutonAvancer = new JButton();
     private JButton boutonArriere = new JButton();
@@ -29,9 +28,9 @@ public class CommandeBoutons extends JPanel {
         // Chargement des images des boutons
         // TODO : le faire dans des classes boutton séparées pour ne pas polluer ici
         try {
-            pause.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/play2.png")))));
-            avancer.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/avancer.png")))));
-            arriere.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/arriere.png")))));
+            boutonPause.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/play2.png")))));
+            boutonAvancer.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/avancer.png")))));
+            boutonArriere.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/arriere.png")))));
         } catch (IOException e) {
             System.out.println("Erreur de chargement d'une image");
         }
@@ -42,6 +41,7 @@ public class CommandeBoutons extends JPanel {
         boutonAvancer.setBounds(200, 0, 100, 75);
 
         // Couleurs et Bordures
+        Color couleurFond = new Color(48, 48, 48);
         boutonArriere.setBackground(couleurFond);
         boutonPause.setBackground(couleurFond);
         boutonAvancer.setBackground(couleurFond);
@@ -63,16 +63,12 @@ public class CommandeBoutons extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            niemeMouv++;
-            if(niemeMouv>GestionAffichage.formuleResolution.length){
-                niemeMouv--;
-            } else {
-                for(int i=0; i<=niemeMouv;i++){
-                    Cube.formule(GestionAffichage.formuleResolution[i]);
-                    GestionAffichage.actualise();
-                }
+            if(niemeMouv<5){
+                Cube.formule(GestionAffichage.formuleResolution[niemeMouv]);
+                GestionAffichage.actualise();
+                champTexte.setText(String.valueOf(niemeMouv));
             }
-            champTexte.setText(String.valueOf(niemeMouv));
+            niemeMouv++;
         }
     }
 
@@ -80,16 +76,12 @@ public class CommandeBoutons extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            niemeMouv--;
-            if(niemeMouv<0){
-                niemeMouv=0;
-            } else {
-                for(int i=0; i<=niemeMouv;i++){
-                    Cube.formule(GestionAffichage.formuleResolution[i]);
-                    GestionAffichage.actualise();
-                }
+            if(niemeMouv>0){
+                Cube.formuleSymetrique(GestionAffichage.formuleResolution[niemeMouv-1]);
+                GestionAffichage.actualise();
+                champTexte.setText(String.valueOf(niemeMouv));
             }
-            champTexte.setText(String.valueOf(niemeMouv));
+            niemeMouv--;
         }
     }
 
