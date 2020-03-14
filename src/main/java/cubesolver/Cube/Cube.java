@@ -1,7 +1,5 @@
 package cubesolver.Cube;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.HashMap;
 import java.util.Random;
 
@@ -26,8 +24,9 @@ public class Cube {
     public static String[] mouvements = {"R", "U", "L", "D", "F", "B", "r", "u", "l", "d", "f", "b"};
 
     // Tableau décrivant l'ordre logique des faces pour une itération
-    public static String[] ordreFace = {"U","F","L","B","R","D"};
-    
+    public static String[] ordreFace = {"U", "F", "L", "B", "R", "D"};
+
+    // Tableau utilisé pour l'export du cube pour l'affichage
     public static int[][][] export = new int[6][3][3];
 
     // TODO : Générer automatiquement les angles et arêtes
@@ -68,13 +67,14 @@ public class Cube {
 
         // Association des faces à leur nom
         faces = new HashMap<>();
-        for (String nom: nomFaces) {
+        for (String nom : nomFaces) {
             faces.put(nom, new Face(nom.charAt(0), facesVoisines.get(nom)));
         }
     }
 
     /**
      * Effectue un mouvement donné en changeant les pièces de place
+     *
      * @param nom la face concernée, en majuscule si le mouvement est fait dans le sens horaire, en minuscule le cas contraire
      */
     public static void mouvement(char nom) {
@@ -83,22 +83,23 @@ public class Cube {
         Face face = faces.get(nomFace);
 
         /* Pour les angles */
-        for(Piece angle: angles) {
-                angle.mouvement(face, direction);
+        for (Piece angle : angles) {
+            angle.mouvement(face, direction);
         }
 
         /* Pour les arêtes */
-        for(Piece arete: aretes) {
+        for (Piece arete : aretes) {
             arete.mouvement(face, direction);
         }
     }
 
     /**
      * Effecute les mouvements d'une formule en décomposant la formule
+     *
      * @param formule chaine de caractère composée de noms de mouvement concaténés
      */
     public static void formule(String formule) {
-        for (int i=0;i<formule.length();i++) {
+        for (int i = 0; i < formule.length(); i++) {
             mouvement(formule.charAt(i));
         }
     }
@@ -107,14 +108,15 @@ public class Cube {
      * Effectue la formule inverse de la chaine de caractère donnée
      * i.e. en faisant formule(chaine) puis formuleSymetrique(chaine)
      * on retrouve la position initiale
+     *
      * @param formule la chaine de caractère correspondant à la formule que l'on veut inverser
      */
-    public static void formuleSymetrique(String formule){
+    public static void formuleSymetrique(String formule) {
         char mouvement;
 
-        for (int i=formule.length()-1;i>=0;i--) {
+        for (int i = formule.length() - 1; i >= 0; i--) {
             mouvement = formule.charAt(i);
-            if(Character.isUpperCase(mouvement))
+            if (Character.isUpperCase(mouvement))
                 mouvement = Character.toLowerCase(mouvement);
             else
                 mouvement = Character.toUpperCase(mouvement);
@@ -125,12 +127,13 @@ public class Cube {
 
     /**
      * Mélange le cube avec un nombre de mouvements aléatoires donnés
+     *
      * @param longueur le nombre de mouvements aléatoire à faire
      * @return la formule de mélange utilisée
      */
     public static String melange(int longueur) {
         StringBuilder combi = new StringBuilder();
-        for (int i=0;i<longueur;i++) {
+        for (int i = 0; i < longueur; i++) {
             combi.append(mouvements[new Random().nextInt(mouvements.length)]);
         }
 
@@ -140,19 +143,21 @@ public class Cube {
 
 
     // TODO : Optimiser cette horreur
+
     /**
      * Exporte le cube sous forme de tableau à trois dimensions avec les faces dans l'ordre donné par ordreFace
      * C'est un tableau d'int avec l'encodage suivant:
-     *         0 = U = jaune
-     *         1 = F = bleu
-     *         2 = L = orange
-     *         3 = B = vert
-     *         4 = R = rouge
-     *         5 = D = blanc
+     * 0 = U = jaune
+     * 1 = F = bleu
+     * 2 = L = orange
+     * 3 = B = vert
+     * 4 = R = rouge
+     * 5 = D = blanc
+     *
      * @return le tableau 3d de int
      */
-   public static int[][][] exportCube(){
-        for(int i=0;i<6;i++) {
+    public static int[][][] exportCube() {
+        for (int i = 0; i < 6; i++) {
             char couleur = correspondanceNombreFace(i);
             int chiffre = i;
 
@@ -189,26 +194,28 @@ public class Cube {
                     }
                 }
             }
-        }//EndFor, pour une face
+        } //EndFor, pour une face
         return export;
     }
 
     /**
      * Retourne le nombre correspondant à la face donnée dans l'ordre établi par ordreFace
+     *
      * @param face la face dont on veut la corespondance
      * @return le nombre correspondant à la face
      */
-    public static int correspondanceFaceNombre(char face){
+    public static int correspondanceFaceNombre(char face) {
         String ordre = "UFLBRD";
         return ordre.indexOf(face);
     }
 
     /**
      * Retourne la face correspondant au nombre donné
+     *
      * @param index l'index dont on veut la face associée
      * @return le caractère correspondant à la face donnée
      */
-    public static char correspondanceNombreFace(int index){
+    public static char correspondanceNombreFace(int index) {
         String ordre = "UFLBRD";
         return ordre.charAt(index);
     }

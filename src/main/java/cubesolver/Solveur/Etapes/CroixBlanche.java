@@ -9,7 +9,7 @@ import cubesolver.Solveur.EtapeResolution;
  */
 public class CroixBlanche extends EtapeResolution {
     @Override
-    public String effectuerEtape(){
+    public String effectuerEtape() {
         StringBuilder mouvements = new StringBuilder();
 
         String mouvement = "FLBRF";
@@ -18,30 +18,27 @@ public class CroixBlanche extends EtapeResolution {
          */
 
         int j;
-        int k = 4;
         char faceEtudiee;
         boolean libre;
 
         //placement des aretes blanches
-        for(int i = 4; i<8; i++) {
-            if(!Cube.aretes[i].appartientFace('D')){
+        for (int i = 4; i < 8; i++) {
+            if (!Cube.aretes[i].appartientFace('D')) {
 
                 //trouver la face ou se trouve la pièce
                 j = 0;
-                while(!Cube.aretes[i].appartientFace(mouvement.charAt(j))){
+                while (!Cube.aretes[i].appartientFace(mouvement.charAt(j))) {
                     j++;
                 }
                 faceEtudiee = mouvement.charAt(j);
-                /*
-                liberer l'emplacement pour incerer notre pièce blanche
-                on verifie si les 4 pieces blanches sont bien ailleur que l'endroit que nous allons bouger,
-                sinon mouvement D et on recommence l'opération
-                */
-                j = 4;
-                while(j<8){
 
-                    libre = !(Cube.aretes[j].appartientFace('D') &&Cube.aretes[j].appartientFace(faceEtudiee));
-                    if(!libre && i!=j){
+                /* Liberer l'emplacement pour insérer notre pièce blanche
+                On verifie si les 4 pieces blanches ne sont pas à l'endroit que nous allons bouger,
+                sinon mouvement D (bas) et on recommence l'opération */
+                j = 4;
+                while (j < 8) {
+                    libre = !(Cube.aretes[j].appartientFace('D') && Cube.aretes[j].appartientFace(faceEtudiee));
+                    if (!libre && i != j) {
                         mouvements.append("D");
                         Cube.mouvement('D');
                         j = 3;
@@ -50,48 +47,43 @@ public class CroixBlanche extends EtapeResolution {
                 }
 
                 // Placer notre pièce blanche
-                while(!Cube.aretes[i].appartientFace('D')){
-                   mouvements.append(faceEtudiee);
-                   Cube.mouvement(faceEtudiee);
+                while (!Cube.aretes[i].appartientFace('D')) {
+                    mouvements.append(faceEtudiee);
+                    Cube.mouvement(faceEtudiee);
                 }
             }
         }
 
         // Orienter la croix blanche
-        for(int i = 4; i<8; i++){
-            if(!Cube.aretes[i].estOrienteCorrectement()){
-                char M =Cube.aretes[i].facelettes[0].face;
-                String formula = ""+M+'d'+mouvement.charAt(mouvement.indexOf(M)+1);
-
-                for(int z=0; z<formula.length(); z++){
-                    mouvements.append(formula.charAt(z));
-                }
-               Cube.formule(formula);
+        for (int i = 4; i < 8; i++) {
+            if (!Cube.aretes[i].estOrienteCorrectement()) {
+                char face = Cube.aretes[i].facelettes[0].face;
+                String formula = face + "d" + mouvement.charAt(mouvement.indexOf(face) + 1);
+                mouvements.append(formula);
+                Cube.formule(formula);
             }
         }
 
         // Placer les aretes de la croix blanche
 
         // Setup
-        for(int i = 4; i<8; i++){
-            if(!Cube.aretes[i].estPositionneeCorrectement()){
-                String formula = ""+Cube.aretes[i].facelettes[1].face+Cube.aretes[i].facelettes[1].face;
-                for(int z=0; z<formula.length(); z++){
-                    mouvements.append(formula.charAt(z));
-                }
-               Cube.formule(formula);
+        for (int i = 4; i < 8; i++) {
+            if (!Cube.aretes[i].estPositionneeCorrectement()) {
+                String formula = Character.toString(Cube.aretes[i].facelettes[1].face) + Cube.aretes[i].facelettes[1].face;
+                mouvements.append(formula);
+                Cube.formule(formula);
             }
         }
 
         // Placement
-        for(int i = 4; i<8; i++){
-            if(!Cube.aretes[i].appartientFace('D')) {
+        for (int i = 4; i < 8; i++) {
+            if (!Cube.aretes[i].appartientFace('D')) {
                 while (!Cube.aretes[i].appartientFace(Cube.aretes[i].facelettes[1].color)) {
                     mouvements.append("U");
                     Cube.mouvement('U');
                 }
 
-                String formula = ""+Cube.aretes[i].facelettes[1].face +Cube.aretes[i].facelettes[1].face;
+                String formula = Character.toString(Cube.aretes[i].facelettes[1].face) + Cube.aretes[i].facelettes[1].face;
                 mouvements.append(formula);
                 Cube.formule(formula);
             }

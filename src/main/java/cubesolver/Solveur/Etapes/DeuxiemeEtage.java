@@ -9,93 +9,76 @@ import cubesolver.Solveur.EtapeResolution;
  * Place les arêtes du deuxième étape
  */
 public class DeuxiemeEtage extends EtapeResolution {
-        @Override
-        public String effectuerEtape(){
-            StringBuilder mouvements = new StringBuilder();
+    @Override
+    public String effectuerEtape() {
+        StringBuilder mouvements = new StringBuilder();
 
-            String mouvement = "RFLBR";
-            String formula;
-            String A;
-            String a;
-            String B;
-            String b;
-            String U = "U";
-            String u = "u";
-            int o;
+        String ordreFaces = "RFLBR";
+        String formule;
+        int index;
 
-            /*
-            les angles du deuxieme etage sont ceux allant de 8 à 12
-             */
-            for(int i = 8; i<12; i++){
-                //verifier si la pièce est deja positionée
-                if(!Cube.aretes[i].estPositionneeCorrectement()){
-                    //si elle n'est pas sur la face du haut, faire la formule afin de le mettre sur la face du haut
-                    if(!Cube.aretes[i].appartientFace('U')){
-                        o = Math.min(mouvement.indexOf(Cube.aretes[i].facelettes[0].face), mouvement.indexOf(Cube.aretes[i].facelettes[1].face));
-                        if(o==0){
-                            if(Cube.aretes[i].facelettes[0].face == 'B' || Cube.aretes[i].facelettes[1].face == 'B'){
-                                o=3;
-                            }
-                        }
+        // Les angles du deuxieme etage sont ceux allant de 8 à 11
+        for (int i = 8; i < 12; i++) {
 
-                        A = ""+mouvement.charAt(o+1);
-                        a = A.toLowerCase();
-                        B = ""+mouvement.charAt(o);
-                        b = B.toLowerCase();
+            // Vérifier si la pièce est deja positionée
+            if (!Cube.aretes[i].estPositionneeCorrectement()) {
 
-                        formula = U+B+u+b+u+a+U+A;
-                        Cube.formule(formula);
-                        for(int z=0; z<formula.length(); z++){
-                            mouvements.append(formula.charAt(z));
+                // Si elle n'est pas sur la face du haut, faire la formule afin de le mettre sur la face du haut
+                if (!Cube.aretes[i].appartientFace('U')) {
+                    index = Math.min(ordreFaces.indexOf(Cube.aretes[i].facelettes[0].face), ordreFaces.indexOf(Cube.aretes[i].facelettes[1].face));
+                    if (index == 0) {
+                        if (Cube.aretes[i].facelettes[0].face == 'B' || Cube.aretes[i].facelettes[1].face == 'B') {
+                            index = 3;
                         }
                     }
 
-                    //enregistrer la facelette qui est sur le dessus du Cube
-                    //la face adjacente à pour valeur 0
-                    o = 1;
-                    if(Cube.aretes[i].facelettes[1].face == 'U'){
-                        o = 0;
-                    }
-                    A = ""+Cube.aretes[i].facelettes[o].color;
-                    a = A.toLowerCase();
-                    B = ""+Cube.aretes[i].facelettes[(o+1)%2].color;
-                    b = B.toLowerCase();
-
-                    //mettre la pièce en position
-                    while(Cube.aretes[i].facelettes[o].face != Cube.aretes[i].facelettes[o].color ){
-                        mouvements.append('U');
-                        Cube.mouvement('U');
-                    }
-
-
-                    //formule pour placer la pièce
-                    if(A.charAt(0) == 'R' && B.charAt(0) == 'B'){
-                        formula = U+B+u+b+u+a+U+A;
-                        Cube.formule(formula);
-                        for(int z=0; z<formula.length(); z++){
-                            mouvements.append(formula.charAt(z));
-                        }
-                    }else if(A.charAt(0) == 'B' && B.charAt(0) == 'R'){
-                        formula = u+b+U+B+U+A+u+a;
-                        Cube.formule(formula);
-                        for(int z=0; z<formula.length(); z++){
-                            mouvements.append(formula.charAt(z));
-                        }
-                    }else if(mouvement.indexOf(A)>mouvement.indexOf(B)){
-                        formula = U+B+u+b+u+a+U+A;
-                        Cube.formule(formula);
-                        for(int z=0; z<formula.length(); z++){
-                            mouvements.append(formula.charAt(z));
-                        }
-                    }else{
-                        formula = u+b+U+B+U+A+u+a;
-                        Cube.formule(formula);
-                        for(int z=0; z<formula.length(); z++){
-                            mouvements.append(formula.charAt(z));
-                        }
+                    formule = "U" + ordreFaces.charAt(index)+ "u" + Character.toLowerCase(ordreFaces.charAt(index))
+                            + "u" + Character.toLowerCase(ordreFaces.charAt(index+1)) + "U" + ordreFaces.charAt(index+1);
+                    Cube.formule(formule);
+                    for (int z = 0; z < formule.length(); z++) {
+                        mouvements.append(formule.charAt(z));
                     }
                 }
+
+                // Enregistrer la facelette qui est sur le dessus du Cube
+                // La face adjacente à pour valeur 0
+                index = 1;
+                if (Cube.aretes[i].facelettes[1].face == 'U') {
+                    index = 0;
+                }
+                char A = Cube.aretes[i].facelettes[index].color;
+                char a = Character.toLowerCase(A);
+                char B = Cube.aretes[i].facelettes[(index + 1) % 2].color;
+                char b = Character.toLowerCase(B);
+
+                // Mettre la pièce en position
+                while (Cube.aretes[i].facelettes[index].face != Cube.aretes[i].facelettes[index].color) {
+                    mouvements.append('U');
+                    Cube.mouvement('U');
+                }
+
+
+                // Formule pour placer la pièce
+                if (A== 'R' && B == 'B') {
+                    formule = "U" + B + "u" + b + "u" + a + "U" + A;
+                    Cube.formule(formule);
+                    mouvements.append(formule);
+                } else if (A == 'B' && B == 'R') {
+                    formule = "u" + b + "U" + B + "U" + A + "u" + a;
+                    Cube.formule(formule);
+                    mouvements.append(formule);
+                } else if (ordreFaces.indexOf(A) > ordreFaces.indexOf(B)) {
+                    formule = "U" + B + "u" + b + "u" + a + "U" + A;
+                    Cube.formule(formule);
+                    mouvements.append(formule);
+                } else {
+                    formule = "u" + b + "U" + B + "U" + A + "u" + a;
+                    Cube.formule(formule);
+                    mouvements.append(formule);
+                }
             }
-            return mouvements.toString();
         }
+
+        return mouvements.toString();
     }
+}

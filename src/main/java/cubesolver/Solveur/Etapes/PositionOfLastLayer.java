@@ -15,9 +15,7 @@ public class PositionOfLastLayer extends EtapeResolution {
     public String effectuerEtape() {
         StringBuilder mouvements = new StringBuilder();
 
-        int i = 0;
-        String u = "";
-        String U = "";
+
         String formula;
 
         // **** Placement des angles ****
@@ -68,16 +66,16 @@ public class PositionOfLastLayer extends EtapeResolution {
 
 
         // **** Placement de la dernière face pour faire la formule ****
-        if(!(Cube.aretes[0].estPositionneeCorrectement() && Cube.aretes[1].estPositionneeCorrectement())){
+        if(!(Cube.aretes[0].estPositionneeCorrectement()&& Cube.aretes[1].estPositionneeCorrectement())){
+
+            int i = 0;
+            StringBuilder uBuilder = new StringBuilder();
             while(!Cube.aretes[i].estPositionneeCorrectement()){
                 i++;
-                u += "u";
-                U += "U";
-                System.out.println("tourne");
+                uBuilder.append("u");
             }
-
-            Cube.formule(u);
-            mouvements.append(u);
+            Cube.formule(uBuilder.toString());
+            mouvements.append(uBuilder);
 
             while(!(Cube.aretes[0].facelettes[1].face == Cube.angles[0].facelettes[1].face
                     && Cube.aretes[1].facelettes[1].face == Cube.angles[0].facelettes[2].face)) {
@@ -86,8 +84,8 @@ public class PositionOfLastLayer extends EtapeResolution {
                 mouvements.append(formula);
             }
 
-            Cube.formule(U);
-            mouvements.append(U);
+            Cube.formule(uBuilder.toString().toUpperCase());
+            mouvements.append(uBuilder.toString().toUpperCase());
         }
     return mouvements.toString();
 
