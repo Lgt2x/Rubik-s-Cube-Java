@@ -2,53 +2,31 @@ package cubesolver.Solveur.Etapes;
 
 import cubesolver.Cube.Cube;
 import cubesolver.Solveur.EtapeResolution;
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
-
-import java.io.IOException;
 
 /**
  * Etape de résolution #4
  * Résout la face jaune, sans placer correctement les pièces
- *
 */
 public class OrientationOfLastLayer extends EtapeResolution {
-    Long cas;
+
+    // String utilisé pour trouver les voisins d'une face dans l'ordre donné
+    String voisins = "RBLFR";
+
+    // Correspondance entre face et chiffre associé pour la représentation
+    HashMap<Character, Integer> correspondance;
 
     @Override
     public String effectuerEtape() {
-
         StringBuilder mouvements = new StringBuilder();
-        cas = conversionLastLayer(); // Conversion de la position courante pour identifier le casà traiter
-        boolean estResolu = false;
 
-        // Lire dans le fichier pour ajouter les oll
-        HashMap<Long, String> oll = chargementOLL("Formules/positions.oll");
-
-        do {
-            // Si notre cas est connu : resoudre, sinon faire tourner la face du haut jusqu'à tomber dessus
-            if(oll.containsKey(cas)) {
-                Cube.formule(oll.get(cas));
-                mouvements.append(oll.get(cas));
-                estResolu = true;
-            }else{
-                Cube.mouvement('U');
-                mouvements.append('U');
-                cas = conversionLastLayer();
-            }
-        } while(!estResolu);
-
-        return mouvements.toString();
-    }
-
-    public Long conversionLastLayer() {
-        // l'objectif de cette methode est de convertir le cube en un long afin de connaitre l'orientation des pieces du dernier etage our resoudre la face avec une unique formule
-        long a = 0L;
-        long coef;
-        String voisins = "RBLFR";
-
-        HashMap<Character, Integer> correspondance = new HashMap<>();
+        correspondance = new HashMap<>();
         correspondance.put('U', 0);
         correspondance.put('R', 1);
         correspondance.put('B', 4);
@@ -56,34 +34,72 @@ public class OrientationOfLastLayer extends EtapeResolution {
         correspondance.put('D', 10);
         correspondance.put('F', 10);
 
-        // Les aretes jaune vont de 0 à 3
-        for(int i = 0; i<4; i++){
-            a+=(long)(Math.pow(10,correspondance.get(Cube.aretes[i].facelettes[0].face)));
-            if(Cube.aretes[i].facelettes[0].face == 'U'){
-                a-=1; // On ne veut rien ajouter quand c'est U
+        int cas = conversionLastLayer(); // Conversion de la position courante pour identifier le cas à traiter
+
+        // Lire dans le fichier pour ajouter les oll
+        HashMap<Integer, String> oll = chargementOLL("Formules/positions.oll");
+
+        // Pour placer comme il faut la face du dessus pour trouver une configuration connue
+        for (int i=0;i<4;i++) {
+            // Si notre cas est connu : resoudre, sinon faire tourner la face du haut jusqu'à tomber dessus
+            if (oll.containsKey(cas)) {
+                Cube.formule(oll.get(cas));
+                mouvements.append(oll.get(cas));
+                break;
+            } else {
+                Cube.mouvement('U');
+                mouvements.append('U');
+                cas = conversionLastLayer();
             }
         }
 
+        return mouvements.toString();
+    }
+
+    /** L'objectif de cette methode est de convertir le cube en un int afin de connaitre
+     * l'orientation des pieces du dernier etage our resoudre la face avec une unique formule
+     * @return la configuration sous forme d'int
+     */
+    public int conversionLastLayer() {
+        int configuration = 0;
+
+        // Les aretes jaunes vont de 0 à 3
+        for(int i = 0; i<4; i++){
+            configuration += 0b01 << correspondance.get(Cube.aretes[i].facelettes[0].face);
+            if(Cube.aretes[i].facelettes[0].face == 'U'){
+                configuration-= 0b01; // On ne veut rien ajouter quand c'est U
+            }
+        }
+
+        int coef;
         for(int i = 0; i<4; i++){
             if(Cube.angles[i].facelettes[0].face != 'U'){
                 int j = 0;
-                while(Cube.angles[i].facelettes[0].face != voisins.charAt(j)){
-                    j++;
-                }
+                while(Cube.angles[i].facelettes[0].face != voisins.charAt(j)){ j++; }
 
-                coef = (long)(Math.pow(10,3*j));
-
-                if(Cube.angles[i].appartientFace(voisins.charAt(j+1))){
-                    coef *=100L;
-                }
-                a+=coef;
+                coef = 1 << (3*j);
+                if(Cube.angles[i].appartientFace(voisins.charAt(j+1)))
+                    coef = coef << 2; // Décalage de 2 bits vers la gauche dans ce cas
+                configuration+=coef;
             }
         }
-        return a;
+        return configuration;
     }
 
-    public HashMap<Long, String> chargementOLL(String fichier) {
-        HashMap<Long, String> oll = new HashMap<>();
+    /**
+     * Chargement des OLL depuis un fichier externe dans le dossier ressources
+     *
+     * Format .oll avec la spécification suivante:
+     * // Commentaire
+     * <configuration> <formule>
+     * Configuration : correspondance de la configuration donnée suivant le format retourné par ConversionLastLayer
+     * Formule : la formule résolvant la configuration
+     *
+     * @param fichier chemin relatif du fichier ressource .oll, à partir du dossier ressources
+     * @return la table de correspondance des OLL utilisée plus tard
+     */
+    public HashMap<Integer, String> chargementOLL(String fichier) {
+        HashMap<Integer, String> oll = new HashMap<>();
         try {
             // Recherche du chemin de la classe courante
             ClassLoader classloader = Thread.currentThread().getContextClassLoader();
@@ -107,7 +123,10 @@ public class OrientationOfLastLayer extends EtapeResolution {
                     separateur = st.split(" ");
 
                     // Remplissage de la table de correspondance à partir des données du fichier
-                    oll.put(Long.parseLong(separateur[0]), separateur[1]);
+                    oll.put(
+                            Integer.parseInt(separateur[0], 2),
+                            separateur[1]
+                    );
                 }
             }
 
