@@ -38,6 +38,7 @@ public class CommandeBoutons extends JPanel {
         // Placement boutons
         boutonArriere.setBounds(0, 0, 100, 75);
         champTexte.setBounds(100, 0, 100, 75);
+        champTexte.setText(String.valueOf(niemeMouv));
         boutonAvancer.setBounds(200, 0, 100, 75);
 
         // Couleurs et Bordures
@@ -66,12 +67,11 @@ public class CommandeBoutons extends JPanel {
             if(niemeMouv<5){
                 Cube.formule(GestionAffichage.formuleResolution[niemeMouv]);
                 GestionAffichage.actualise();
+                niemeMouv++;
                 champTexte.setText(String.valueOf(niemeMouv));
             }
-            niemeMouv++;
         }
     }
-
 
     class arriereListener implements ActionListener{
 
@@ -80,9 +80,9 @@ public class CommandeBoutons extends JPanel {
             if(niemeMouv>0){
                 Cube.formuleSymetrique(GestionAffichage.formuleResolution[niemeMouv-1]);
                 GestionAffichage.actualise();
+                niemeMouv--;
                 champTexte.setText(String.valueOf(niemeMouv));
             }
-            niemeMouv--;
         }
     }
 
