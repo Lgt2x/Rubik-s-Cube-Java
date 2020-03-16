@@ -18,7 +18,7 @@ public class AvancementResolution extends JPanel {
 
     public void paint(Graphics g) {
         g.drawLine(0,hauteur/2, largeur, hauteur/2);
-        g.
-        System.out.println(CommandeBoutons.niemeEtape);
+        //g.
+        //System.out.println(CommandeBoutons.niemeEtape);
     }
 }

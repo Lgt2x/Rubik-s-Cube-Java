@@ -14,10 +14,12 @@ import java.util.Objects;
 
 public class CommandeBoutons extends JPanel {
 
-    private JButton boutonPause = new JButton();
-    private JButton boutonAvancer = new JButton();
-    private JButton boutonArriere = new JButton();
-    private JLabel champTexte = new JLabel();
+    private JButton boutonFinish = new JButton();
+    private JButton boutonAvancerEtape = new JButton();
+    private JButton boutonArriereEtape = new JButton();
+    private JButton boutonAvancerMouv = new JButton();
+    private JButton boutonArriereMouv = new JButton();
+
 
     // Avancement de la lecture de la solution
     public static int niemeMouv = 0;
@@ -25,41 +27,49 @@ public class CommandeBoutons extends JPanel {
 
     public CommandeBoutons(){
         this.setLayout(null);
-        this.setBounds(1025, 10, 300, 75);
+        this.setBounds(925, 10, 500, 75);
         //this.setBackground(maCouleur);
 
         // Chargement des images des boutons
         try {
-            boutonPause.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/play2.png")))));
-            boutonAvancer.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/avancer.png")))));
-            boutonArriere.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/arriere.png")))));
+            boutonAvancerEtape.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/avancer.png")))));
+            boutonArriereEtape.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/arriere.png")))));
+            boutonFinish.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/boutonFinish.png")))));
+            boutonAvancerMouv.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/avancerMouv.png")))));
+            boutonArriereMouv.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/arriereMouv.png")))));
         } catch (IOException e) {
             System.out.println("Erreur de chargement d'une image");
         }
-
         // Placement boutons
-        boutonArriere.setBounds(0, 0, 100, 75);
-        champTexte.setBounds(100, 0, 100, 75);
-        champTexte.setText(String.valueOf(niemeMouv));
-        boutonAvancer.setBounds(200, 0, 100, 75);
+        boutonArriereEtape.setBounds(0, 0, 100, 75);
+        boutonArriereMouv.setBounds(100,0,100,75);
+        boutonAvancerMouv.setBounds(200,0,100,75);
+        boutonAvancerEtape.setBounds(300, 0, 100, 75);
+        boutonFinish.setBounds(400,0,100,75);
 
         // Couleurs et Bordures
         Color couleurFond = new Color(48, 48, 48);
-        boutonArriere.setBackground(couleurFond);
-        boutonPause.setBackground(couleurFond);
-        boutonAvancer.setBackground(couleurFond);
+        boutonArriereEtape.setBackground(couleurFond);
+        boutonAvancerEtape.setBackground(couleurFond);
+        boutonFinish.setBackground(couleurFond);
+        boutonAvancerMouv.setBackground(couleurFond);
+        boutonArriereMouv.setBackground(couleurFond);
 
-        boutonArriere.setBorder(BorderFactory.createLineBorder(Color.white));
-        boutonPause.setBorder(BorderFactory.createLineBorder(Color.white));
-        boutonAvancer.setBorder(BorderFactory.createLineBorder(Color.white));
 
-        boutonAvancer.addActionListener(new avancerListener());
-        boutonArriere.addActionListener(new arriereListener());
+        boutonArriereEtape.setBorder(BorderFactory.createLineBorder(Color.white));
+        boutonAvancerEtape.setBorder(BorderFactory.createLineBorder(Color.white));
+        boutonFinish.setBorder(BorderFactory.createLineBorder(Color.white));
+        boutonAvancerMouv.setBorder(BorderFactory.createLineBorder(Color.white));
+        boutonArriereMouv.setBorder(BorderFactory.createLineBorder(Color.white));
 
-        this.add(boutonArriere);
-        this.add(boutonAvancer);
-        this.add(boutonPause);
-        this.add(champTexte);
+        boutonAvancerEtape.addActionListener(new avancerListener());
+        boutonArriereEtape.addActionListener(new arriereListener());
+
+        this.add(boutonArriereEtape);
+        this.add(boutonAvancerEtape);
+        this.add(boutonFinish);
+        this.add(boutonAvancerMouv);
+        this.add(boutonArriereMouv);
     }
 
     class avancerListener implements ActionListener{
@@ -70,7 +80,6 @@ public class CommandeBoutons extends JPanel {
                 Cube.formule(GestionAffichage.formuleResolution[niemeMouv]);
                 GestionAffichage.actualise();
                 niemeMouv++;
-                champTexte.setText(String.valueOf(niemeMouv));
                 GestionAffichage.avctResolution.repaint();
             }
         }
@@ -84,7 +93,6 @@ public class CommandeBoutons extends JPanel {
                 Cube.formuleSymetrique(GestionAffichage.formuleResolution[niemeMouv-1]);
                 GestionAffichage.actualise();
                 niemeMouv--;
-                champTexte.setText(String.valueOf(niemeMouv));
                 GestionAffichage.avctResolution.repaint();
             }
         }
