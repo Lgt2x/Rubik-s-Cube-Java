@@ -44,10 +44,16 @@ public class BoutonLancement extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == mix) {
+            // Bouton de mélange
             GestionAffichage.formuleMix = Cube.melange(15);
             GestionAffichage.actualise();
         } else if (e.getSource() == solve) {
+            // Bouton résoudre
             GestionAffichage.formuleResolution = Solveur.resolution();
+            GestionAffichage.tailleSolution = 0;
+            for (int i=0;i<GestionAffichage.formuleResolution.length;i++) {
+                GestionAffichage.tailleSolution += GestionAffichage.formuleResolution[i].length();
+            }
             Cube.formule(GestionAffichage.formuleMix);
             GestionAffichage.actualise();
         }

@@ -13,11 +13,16 @@ import java.awt.*;
 public class GestionAffichage extends JFrame {
     public static String formuleMix;
     public static String[] formuleResolution;
+    public static int tailleSolution;
     public static Color couleurFond = new Color(65, 115, 109);
     public static Color couleurBoutons = new Color(48, 48, 48);
 
     public static CommandeBoutons cmdBoutons;
     public static AvancementResolution avctResolution;
+
+    // Avancement de la lecture de la solution
+    public static int niemeMouv = 0;
+    public static int niemeEtape = 0;
 
     public GestionAffichage() {
         // Initialisation de la fenetre
@@ -38,7 +43,6 @@ public class GestionAffichage extends JFrame {
         panneauPrincipal.add(cmdBoutons);
         panneauPrincipal.add(new BoutonLancement());
         panneauPrincipal.add(new BoutonsMouvements());
-        //panneauPrincipal.add(new BoutonSolution());
         avctResolution = new AvancementResolution();
         panneauPrincipal.add(avctResolution);
 
@@ -53,6 +57,5 @@ public class GestionAffichage extends JFrame {
     public static void actualise() {
         Cube.exportCube();
         AffichageCube.actualise();
-
     }
 }
