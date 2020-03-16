@@ -15,12 +15,12 @@ public  class BoutonsMouvements extends JPanel implements ActionListener {
     public BoutonsMouvements(){
         this.setLayout(new GridLayout(2,6));
         this.setBounds(875, 205, 600, 150);
-        this.setBackground(new Color(48, 48, 48));
+        this.setBackground(GestionAffichage.couleurBoutons);
 
         for (int i=0;i<faces.length;i++) {
             mouvements[i] = new JButton(faces[i]);
 
-            mouvements[i].setBackground(new Color(48, 48, 48));
+            mouvements[i].setBackground(GestionAffichage.couleurBoutons);
             mouvements[i].setForeground(Color.WHITE);
             mouvements[i].setBorder(BorderFactory.createLineBorder(Color.WHITE));
 

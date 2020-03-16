@@ -18,7 +18,10 @@ public class CommandeBoutons extends JPanel {
     private JButton boutonAvancer = new JButton();
     private JButton boutonArriere = new JButton();
     private JLabel champTexte = new JLabel();
-    private int niemeMouv = 0;
+
+    // Avancement de la lecture de la solution
+    public static int niemeMouv = 0;
+    public static int niemeEtape = 0;
 
     public CommandeBoutons(){
         this.setLayout(null);
@@ -26,7 +29,6 @@ public class CommandeBoutons extends JPanel {
         //this.setBackground(maCouleur);
 
         // Chargement des images des boutons
-        // TODO : le faire dans des classes boutton séparées pour ne pas polluer ici
         try {
             boutonPause.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/play2.png")))));
             boutonAvancer.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("BoutonsIHM/avancer.png")))));
@@ -69,6 +71,7 @@ public class CommandeBoutons extends JPanel {
                 GestionAffichage.actualise();
                 niemeMouv++;
                 champTexte.setText(String.valueOf(niemeMouv));
+                GestionAffichage.avctResolution.repaint();
             }
         }
     }
@@ -82,6 +85,7 @@ public class CommandeBoutons extends JPanel {
                 GestionAffichage.actualise();
                 niemeMouv--;
                 champTexte.setText(String.valueOf(niemeMouv));
+                GestionAffichage.avctResolution.repaint();
             }
         }
     }
