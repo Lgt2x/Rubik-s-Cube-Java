@@ -15,7 +15,6 @@ public class PositionOfLastLayer extends EtapeResolution {
     public String effectuerEtape() {
         StringBuilder mouvements = new StringBuilder();
 
-
         String formula;
 
         // **** Placement des angles ****
@@ -34,10 +33,12 @@ public class PositionOfLastLayer extends EtapeResolution {
             }
 
             // Deux cas a traiter, 2 itérations max
-            while(!Cube.angles[0].estPositionneeCorrectement()){
-                formula = "RbRFFrBRFFRR";
-                Cube.formule(formula);
-                mouvements.append(formula);
+            for(int j = 0; j<2; j++){
+                if (!Cube.angles[0].estPositionneeCorrectement()){
+                    formula = "RbRFFrBRFFRR";
+                    Cube.formule(formula);
+                    mouvements.append(formula);
+                }
             }
         }
 
@@ -70,24 +71,32 @@ public class PositionOfLastLayer extends EtapeResolution {
 
             int i = 0;
             StringBuilder uBuilder = new StringBuilder();
-            while(!Cube.aretes[i].estPositionneeCorrectement()){
-                i++;
-                uBuilder.append("u");
+            for(int j =0; j<4; j++){
+                if(!Cube.aretes[i].estPositionneeCorrectement()){
+                    i++;
+                    uBuilder.append("u");
+                }
             }
+
             Cube.formule(uBuilder.toString());
             mouvements.append(uBuilder);
-
-            while(!(Cube.aretes[0].facelettes[1].face == Cube.angles[0].facelettes[1].face
-                    && Cube.aretes[1].facelettes[1].face == Cube.angles[0].facelettes[2].face)) {
-                formula = "rUrururURURR";
-                Cube.formule(formula);
-                mouvements.append(formula);
+            for(int j =0; j<2; j++){
+                if(!(Cube.aretes[0].facelettes[1].face == Cube.angles[0].facelettes[1].face
+                        && Cube.aretes[1].facelettes[1].face == Cube.angles[0].facelettes[2].face)) {
+                    formula = "rUrururURURR";
+                    Cube.formule(formula);
+                    mouvements.append(formula);
+                }
             }
-
             Cube.formule(uBuilder.toString().toUpperCase());
             mouvements.append(uBuilder.toString().toUpperCase());
         }
-    return mouvements.toString();
+
+        if(Cube.aretes[0].estPositionneeCorrectement() && Cube.aretes[1].estPositionneeCorrectement() && Cube.aretes[2].estPositionneeCorrectement()&& Cube.aretes[3].estPositionneeCorrectement()) {
+            return mouvements.toString();
+        }else{
+            return "erreur";
+        }
 
     }
 

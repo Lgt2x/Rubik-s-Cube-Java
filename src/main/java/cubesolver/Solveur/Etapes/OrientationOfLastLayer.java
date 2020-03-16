@@ -33,14 +33,15 @@ public class OrientationOfLastLayer extends EtapeResolution {
         correspondance.put('L', 7);
         correspondance.put('D', 10);
         correspondance.put('F', 10);
-
+        int compteur = 0;
         int cas = conversionLastLayer(); // Conversion de la position courante pour identifier le cas à traiter
 
         // Lire dans le fichier pour ajouter les oll
         HashMap<Integer, String> oll = chargementOLL("Formules/positions.oll");
 
         // Pour placer comme il faut la face du dessus pour trouver une configuration connue
-        for (int i=0;i<4;i++) {
+        for (int i=0;i<5;i++) {
+            compteur++;
             // Si notre cas est connu : resoudre, sinon faire tourner la face du haut jusqu'à tomber dessus
             if (oll.containsKey(cas)) {
                 Cube.formule(oll.get(cas));
@@ -52,8 +53,11 @@ public class OrientationOfLastLayer extends EtapeResolution {
                 cas = conversionLastLayer();
             }
         }
-
-        return mouvements.toString();
+        if(compteur == 5){
+            return "erreur";
+        }else {
+            return mouvements.toString();
+        }
     }
 
     /** L'objectif de cette methode est de convertir le cube en un int afin de connaitre
