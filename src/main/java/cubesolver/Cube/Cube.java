@@ -1,5 +1,10 @@
 package cubesolver.Cube;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -197,7 +202,7 @@ public class Cube {
         return export;
     }
 
-    public static void importCube(int[][][] cubeImporte){
+    public static void importCube(int[][][] cubeImporte) {
         String piece = "";
         int i1;
         int i2;
@@ -218,7 +223,7 @@ public class Cube {
             ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 
             // Chargement d'une ressource à partir du dossier concerné
-            InputStream is = classloader.getResourceAsStream(import.angles);
+            InputStream is = classloader.getResourceAsStream("Formules/import.angles");
 
             // Initialisation de la lecture du fichier comme stream
             assert is != null;
@@ -229,41 +234,41 @@ public class Cube {
 
             // Lire la ligne tant qu'on n'est pas arrivés au bout du fichier
             while ((st = reader.readLine()) != null) {
-                piece = 0;
-                i1 = (int)st.charAt(0);
-                i2 = (int)st.charAt(1);
-                i3 = (int)st.charAt(2);
+                piece = "";
+                i1 = st.charAt(0);
+                i2 = st.charAt(1);
+                i3 = st.charAt(2);
 
-                J1 = (int)st.charAt(3);
-                J2 = (int)st.charAt(4);
-                J3 = (int)st.charAt(5);
+                j1 = st.charAt(3);
+                j2 = st.charAt(4);
+                j3 = st.charAt(5);
 
-                K1 = (int)st.charAt(6);
-                K2 = (int)st.charAt(7);
-                K3 = (int)st.charAt(8);
+                k1 = st.charAt(6);
+                k2 = st.charAt(7);
+                k3 = st.charAt(8);
 
 
-                piece += "" + correspondanceNombreFace(cubeImporte[i1][j1][k1]);
+                piece += correspondanceNombreFace(cubeImporte[i1][j1][k1]);
                 piece += "" + correspondanceNombreFace(cubeImporte[i2][j2][k2]);
                 piece += "" + correspondanceNombreFace(cubeImporte[i3][j3][k3]);
-                for(Piece angle : angles){
+                for (Piece angle : angles) {
                     //si les deux pieces correspondent
-                    if(angle.correspondA(piece)){
-                        for(int j = 0; j<3; j++){
+                    if (angle.correspondA(piece)) {
+                        for (int j = 0; j < 3; j++) {
                             //définit la face sur laquelle on se trouve
-                            if(j == 0){
+                            if (j == 0) {
                                 face = correspondanceNombreFace(i1);
-                            }else if( j == 1){
+                            } else if (j == 1) {
                                 face = correspondanceNombreFace(i2);
-                            }else{
+                            } else {
                                 face = correspondanceNombreFace(i3);
                             }
                             // si la couleur présente correspond à la couleur de notre pièce, la placer
                             if (angle.facelettes[0].color == piece.charAt(j)) {
                                 angle.facelettes[0].face = face;
-                            }else if(angle.facelettes[1].color == piece.charAt(j)) {
+                            } else if (angle.facelettes[1].color == piece.charAt(j)) {
                                 angle.facelettes[1].face = face;
-                            }else if(angle.facelettes[2].color == piece.charAt(j)) {
+                            } else if (angle.facelettes[2].color == piece.charAt(j)) {
                                 angle.facelettes[2].face = face;
                             }
                         }
@@ -280,7 +285,7 @@ public class Cube {
             ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 
             // Chargement d'une ressource à partir du dossier concerné
-            InputStream is = classloader.getResourceAsStream(import.aretes);
+            InputStream is = classloader.getResourceAsStream("Formules/import.aretes");
 
             // Initialisation de la lecture du fichier comme stream
             assert is != null;
@@ -291,40 +296,40 @@ public class Cube {
 
             // Lire la ligne tant qu'on n'est pas arrivés au bout du fichier
             while ((st = reader.readLine()) != null) {
-                piece = 0;
-                i1 = (int)st.charAt(0);
-                i2 = (int)st.charAt(1);
-                i3 = (int)st.charAt(2);
+                piece = "";
+                i1 = st.charAt(0);
+                i2 = st.charAt(1);
+                i3 = st.charAt(2);
 
-                J1 = (int)st.charAt(3);
-                J2 = (int)st.charAt(4);
-                J3 = (int)st.charAt(5);
+                j1 = st.charAt(3);
+                j2 = st.charAt(4);
+                j3 = st.charAt(5);
 
-                K1 = (int)st.charAt(6);
-                K2 = (int)st.charAt(7);
-                K3 = (int)st.charAt(8);
-        piece += "" + correspondanceNombreFace(cubeImporte[i1][j1][k1]);
-        piece += "" + correspondanceNombreFace(cubeImporte[i2][j2][k2]);
+                k1 = st.charAt(6);
+                k2 = st.charAt(7);
+                k3 = st.charAt(8);
+                piece += "" + correspondanceNombreFace(cubeImporte[i1][j1][k1]);
+                piece += "" + correspondanceNombreFace(cubeImporte[i2][j2][k2]);
 
-        for(Piece arete : aretes){
-            //si les deux pieces correspondent
-            if(arete.correspondA(piece)){
-                for(int j = 0; j<2; j++){
-                    //définit la face sur laquelle on se trouve
-                    if(j == 0){
-                        face = correspondanceNombreFace(i1);
-                    }else{
-                        face = correspondanceNombreFace(i2);
-                    }
-                    // si la couleur présente correspond à la couleur de notre pièce, la placer
-                    if (arete.facelettes[0].color == piece.charAt(j)) {
-                        arete.facelettes[0].face = face;
-                    }else if(arete.facelettes[1].color == piece.charAt(j)) {
-                        arete.facelettes[1].face = face;
+                for (Piece arete : aretes) {
+                    //si les deux pieces correspondent
+                    if (arete.correspondA(piece)) {
+                        for (int j = 0; j < 2; j++) {
+                            //définit la face sur laquelle on se trouve
+                            if (j == 0) {
+                                face = correspondanceNombreFace(i1);
+                            } else {
+                                face = correspondanceNombreFace(i2);
+                            }
+                            // si la couleur présente correspond à la couleur de notre pièce, la placer
+                            if (arete.facelettes[0].color == piece.charAt(j)) {
+                                arete.facelettes[0].face = face;
+                            } else if (arete.facelettes[1].color == piece.charAt(j)) {
+                                arete.facelettes[1].face = face;
+                            }
+                        }
                     }
                 }
-            }
-        }
             }
 
         } catch (IOException e) {
