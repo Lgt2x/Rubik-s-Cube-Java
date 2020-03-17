@@ -6,8 +6,9 @@ package cubesolver.Cube;
  */
 public class Piece {
     public Facelette[] facelettes; // Les facelettes appartement à la face, sous forme de face + couleur
-
+    public String name;
     public Piece(String name) {
+        this.name = name;
         this.facelettes = new Facelette[name.length()];
 
         for(int i = 0; i < name.length(); i++) {
@@ -78,6 +79,17 @@ public class Piece {
     public boolean estOrienteeSelon(char face){
         for (Facelette facelette: facelettes) {
             if (!(facelette.color == face)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    public boolean correspondA(String nom){
+
+        for(int i = 0; i<this.name.length(); i++){
+            if (!this.name.contains(""+nom.charAt(i))){
                 return false;
             }
         }

@@ -141,7 +141,6 @@ public class Cube {
         return combi.toString();
     }
 
-
     // TODO : Optimiser cette horreur
 
     /**
@@ -196,6 +195,142 @@ public class Cube {
             }
         } //EndFor, pour une face
         return export;
+    }
+
+    public static void importCube(int[][][] cubeImporte){
+        String piece = "";
+        int i1;
+        int i2;
+        int i3;
+
+        int j1;
+        int j2;
+        int j3;
+
+        int k1;
+        int k2;
+        int k3;
+
+        char face;
+
+        try {
+            // Recherche du chemin de la classe courante
+            ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+
+            // Chargement d'une ressource à partir du dossier concerné
+            InputStream is = classloader.getResourceAsStream(import.angles);
+
+            // Initialisation de la lecture du fichier comme stream
+            assert is != null;
+            InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
+            BufferedReader reader = new BufferedReader(streamReader);
+
+            String st;
+
+            // Lire la ligne tant qu'on n'est pas arrivés au bout du fichier
+            while ((st = reader.readLine()) != null) {
+                piece = 0;
+                i1 = (int)st.charAt(0);
+                i2 = (int)st.charAt(1);
+                i3 = (int)st.charAt(2);
+
+                J1 = (int)st.charAt(3);
+                J2 = (int)st.charAt(4);
+                J3 = (int)st.charAt(5);
+
+                K1 = (int)st.charAt(6);
+                K2 = (int)st.charAt(7);
+                K3 = (int)st.charAt(8);
+
+
+                piece += "" + correspondanceNombreFace(cubeImporte[i1][j1][k1]);
+                piece += "" + correspondanceNombreFace(cubeImporte[i2][j2][k2]);
+                piece += "" + correspondanceNombreFace(cubeImporte[i3][j3][k3]);
+                for(Piece angle : angles){
+                    //si les deux pieces correspondent
+                    if(angle.correspondA(piece)){
+                        for(int j = 0; j<3; j++){
+                            //définit la face sur laquelle on se trouve
+                            if(j == 0){
+                                face = correspondanceNombreFace(i1);
+                            }else if( j == 1){
+                                face = correspondanceNombreFace(i2);
+                            }else{
+                                face = correspondanceNombreFace(i3);
+                            }
+                            // si la couleur présente correspond à la couleur de notre pièce, la placer
+                            if (angle.facelettes[0].color == piece.charAt(j)) {
+                                angle.facelettes[0].face = face;
+                            }else if(angle.facelettes[1].color == piece.charAt(j)) {
+                                angle.facelettes[1].face = face;
+                            }else if(angle.facelettes[2].color == piece.charAt(j)) {
+                                angle.facelettes[2].face = face;
+                            }
+                        }
+                    }
+                }
+            }
+
+        } catch (IOException e) {
+            System.out.println("Erreur de l'import des angles");
+        }
+
+        try {
+            // Recherche du chemin de la classe courante
+            ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+
+            // Chargement d'une ressource à partir du dossier concerné
+            InputStream is = classloader.getResourceAsStream(import.aretes);
+
+            // Initialisation de la lecture du fichier comme stream
+            assert is != null;
+            InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
+            BufferedReader reader = new BufferedReader(streamReader);
+
+            String st;
+
+            // Lire la ligne tant qu'on n'est pas arrivés au bout du fichier
+            while ((st = reader.readLine()) != null) {
+                piece = 0;
+                i1 = (int)st.charAt(0);
+                i2 = (int)st.charAt(1);
+                i3 = (int)st.charAt(2);
+
+                J1 = (int)st.charAt(3);
+                J2 = (int)st.charAt(4);
+                J3 = (int)st.charAt(5);
+
+                K1 = (int)st.charAt(6);
+                K2 = (int)st.charAt(7);
+                K3 = (int)st.charAt(8);
+        piece += "" + correspondanceNombreFace(cubeImporte[i1][j1][k1]);
+        piece += "" + correspondanceNombreFace(cubeImporte[i2][j2][k2]);
+
+        for(Piece arete : aretes){
+            //si les deux pieces correspondent
+            if(arete.correspondA(piece)){
+                for(int j = 0; j<2; j++){
+                    //définit la face sur laquelle on se trouve
+                    if(j == 0){
+                        face = correspondanceNombreFace(i1);
+                    }else{
+                        face = correspondanceNombreFace(i2);
+                    }
+                    // si la couleur présente correspond à la couleur de notre pièce, la placer
+                    if (arete.facelettes[0].color == piece.charAt(j)) {
+                        arete.facelettes[0].face = face;
+                    }else if(arete.facelettes[1].color == piece.charAt(j)) {
+                        arete.facelettes[1].face = face;
+                    }
+                }
+            }
+        }
+            }
+
+        } catch (IOException e) {
+            System.out.println("Erreur de l'import des angles");
+        }
+
     }
 
     /**
