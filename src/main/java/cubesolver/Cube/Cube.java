@@ -330,7 +330,6 @@ public class Cube {
         } catch (IOException e) {
             System.out.println("Erreur de l'import des angles");
         }
-
     }
 
     /**
