@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>cubesolver</OriginalElement>
+  <nodes>
+    <node x="0.0" y="641.5">cubesolver.Solveur.Etapes.CroixBlanche</node>
+    <node x="643.0" y="487.0">cubesolver.Solveur.EtapeResolution</node>
+    <node x="0.0" y="897.0">cubesolver.IHM.ComposantsUI.BoutonsLecture.BoutonReculerMouvement</node>
+    <node x="363.0" y="0.0">cubesolver.IHM.GestionAffichage</node>
+    <node x="871.0" y="641.5">cubesolver.Solveur.Etapes.AnglesBlancs</node>
+    <node x="1207.0" y="1023.0">cubesolver.IHM.ComposantsUI.BoutonsMouvements</node>
+    <node x="528.0" y="1222.0">cubesolver.Cube.Facelette</node>
+    <node x="1062.0" y="897.0">cubesolver.IHM.ComposantsUI.BoutonsLecture.BoutonFinir</node>
+    <node x="319.0" y="1222.0">cubesolver.IHM.AffichageCube.AffichageCube</node>
+    <node x="1376.0" y="897.0">cubesolver.IHM.ComposantsUI.BoutonsLecture.BoutonReculerEtape</node>
+    <node x="1053.0" y="1222.0">cubesolver.IHM.ComposantsUI.CommandeBoutons</node>
+    <node x="1352.0" y="487.0">cubesolver.Cube.Piece</node>
+    <node x="0.0" y="1222.0">cubesolver.Cube.Face</node>
+    <node x="1520.0" y="1222.0">cubesolver.Launcher</node>
+    <node x="765.0" y="1222.0">cubesolver.AppTest</node>
+    <node x="0.0" y="1023.0">cubesolver.IHM.ComposantsUI.AvancementResolution</node>
+    <node x="711.0" y="791.0">cubesolver.IHM.ComposantsUI.BoutonLecture</node>
+    <node x="-19.0" y="-2.0">cubesolver.Cube.Cube</node>
+    <node x="868.0" y="1023.0">cubesolver.IHM.ComposantsUI.BoutonLancement</node>
+    <node x="692.0" y="897.0">cubesolver.IHM.ComposantsUI.BoutonsLecture.BoutonAvancerMouvement</node>
+    <node x="267.0" y="1023.0">cubesolver.IHM.AffichageCube.FaceAff</node>
+    <node x="1099.0" y="641.5">cubesolver.Solveur.Etapes.DeuxiemeEtage</node>
+    <node x="228.0" y="593.0">cubesolver.Solveur.Etapes.OrientationOfLastLayer</node>
+    <node x="643.0" y="641.5">cubesolver.Solveur.Etapes.PositionOfLastLayer</node>
+    <node x="499.0" y="1023.0">cubesolver.Solveur.Solveur</node>
+    <node x="365.0" y="897.0">cubesolver.IHM.ComposantsUI.BoutonsLecture.BoutonAvancerEtape</node>
+    <node x="1297.0" y="1222.0">cubesolver.App</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="cubesolver.Solveur.Etapes.PositionOfLastLayer" target="cubesolver.Solveur.EtapeResolution">
+      <point x="0.0" y="-28.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="cubesolver.IHM.ComposantsUI.BoutonsLecture.BoutonReculerEtape" target="cubesolver.IHM.ComposantsUI.BoutonLecture">
+      <point x="0.0" y="-40.5" />
+      <point x="1527.0" y="867.0" />
+      <point x="991.8" y="867.0" />
+      <point x="124.79999999999995" y="28.0" />
+    </edge>
+    <edge source="cubesolver.IHM.ComposantsUI.BoutonsLecture.BoutonAvancerMouvement" target="cubesolver.IHM.ComposantsUI.BoutonLecture">
+      <point x="0.0" y="-40.5" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="cubesolver.Solveur.Etapes.AnglesBlancs" target="cubesolver.Solveur.EtapeResolution">
+      <point x="0.0" y="-28.0" />
+      <point x="975.0" y="573.0" />
+      <point x="788.5999999999999" y="573.0" />
+      <point x="41.59999999999991" y="28.0" />
+    </edge>
+    <edge source="cubesolver.Solveur.Etapes.DeuxiemeEtage" target="cubesolver.Solveur.EtapeResolution">
+      <point x="0.0" y="-28.0" />
+      <point x="1203.0" y="563.0" />
+      <point x="830.1999999999999" y="563.0" />
+      <point x="83.19999999999993" y="28.0" />
+    </edge>
+    <edge source="cubesolver.Solveur.Etapes.OrientationOfLastLayer" target="cubesolver.Solveur.EtapeResolution">
+      <point x="0.0" y="-76.5" />
+      <point x="425.5" y="573.0" />
+      <point x="705.4" y="573.0" />
+      <point x="-41.60000000000002" y="28.0" />
+    </edge>
+    <edge source="cubesolver.IHM.ComposantsUI.BoutonsLecture.BoutonAvancerEtape" target="cubesolver.IHM.ComposantsUI.BoutonLecture">
+      <point x="0.0" y="-40.5" />
+      <point x="518.5" y="877.0" />
+      <point x="804.6" y="877.0" />
+      <point x="-62.39999999999998" y="28.0" />
+    </edge>
+    <edge source="cubesolver.IHM.ComposantsUI.BoutonsLecture.BoutonFinir" target="cubesolver.IHM.ComposantsUI.BoutonLecture">
+      <point x="0.0" y="-40.5" />
+      <point x="1209.0" y="877.0" />
+      <point x="929.4" y="877.0" />
+      <point x="62.39999999999998" y="28.0" />
+    </edge>
+    <edge source="cubesolver.Solveur.Etapes.CroixBlanche" target="cubesolver.Solveur.EtapeResolution">
+      <point x="0.0" y="-28.0" />
+      <point x="104.0" y="563.0" />
+      <point x="663.8" y="563.0" />
+      <point x="-83.20000000000005" y="28.0" />
+    </edge>
+    <edge source="cubesolver.IHM.ComposantsUI.BoutonsLecture.BoutonReculerMouvement" target="cubesolver.IHM.ComposantsUI.BoutonLecture">
+      <point x="0.0" y="-40.5" />
+      <point x="172.5" y="867.0" />
+      <point x="742.2" y="867.0" />
+      <point x="-124.79999999999995" y="28.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="593.5" y="375.0" />
+  <SelectedNodes>
+    <node>cubesolver.Cube.Cube</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
