@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Objects;
 
-public abstract class BoutonLecture extends JButton implements ActionListener, Etat {
+public abstract class BoutonLecture extends JButton implements ActionListener {
     public BoutonLecture(String imagePath, int x, int y, int largeur, int hauteur) {
         try {
             this.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream(imagePath)))));
@@ -22,13 +22,5 @@ public abstract class BoutonLecture extends JButton implements ActionListener, E
         this.setBackground(GestionAffichage.couleurBoutons);
         this.setBorder(BorderFactory.createLineBorder(Color.white));
         this.addActionListener(this);
-    }
-
-    /**
-     * Actualise l'état du bouton en fonction de l'état de l'IHM
-     * Si on est en phase de résolution, le bouton est activé, sinon il ne l'est pas
-     */
-    public void actualiseEtat() {
-        this.setEnabled(GestionAffichage.getEtat().equals("resolution"));
     }
 }

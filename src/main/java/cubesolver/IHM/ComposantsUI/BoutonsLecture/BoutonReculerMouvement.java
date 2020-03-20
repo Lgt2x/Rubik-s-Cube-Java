@@ -18,7 +18,6 @@ public class BoutonReculerMouvement extends BoutonLecture implements ActionListe
     public void actionPerformed(ActionEvent actionEvent) {
         if (niemeMouv > 0) {
             Cube.mouvementInverse(formuleResolutionComplet.charAt(niemeMouv - 1));
-            System.out.println(formuleResolutionComplet.charAt(niemeMouv - 1));
 
             niemeMouv--;
             mouvDansEtape--;
@@ -31,7 +30,6 @@ public class BoutonReculerMouvement extends BoutonLecture implements ActionListe
             GestionAffichage.actualiseEtat();
             GestionAffichage.avctResol.repaint();
 
-            debugLecteur();
         }
     }
 }

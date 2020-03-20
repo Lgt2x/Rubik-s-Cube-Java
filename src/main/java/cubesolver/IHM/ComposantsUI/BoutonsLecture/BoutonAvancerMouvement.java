@@ -18,7 +18,6 @@ public class BoutonAvancerMouvement extends BoutonLecture implements ActionListe
     public void actionPerformed(ActionEvent actionEvent) {
         if (niemeMouv < formuleResolutionComplet.length()) {
             Cube.mouvement(formuleResolutionComplet.charAt(niemeMouv));
-            System.out.println(formuleResolutionComplet.charAt(niemeMouv));
 
             niemeMouv++;
             mouvDansEtape++;
@@ -31,7 +30,6 @@ public class BoutonAvancerMouvement extends BoutonLecture implements ActionListe
             GestionAffichage.actualiseEtat();
             GestionAffichage.avctResol.repaint();
 
-            debugLecteur();
         }
 
     }

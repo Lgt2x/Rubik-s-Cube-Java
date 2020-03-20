@@ -6,7 +6,7 @@ import cubesolver.IHM.GestionAffichage;
 
 import javax.swing.*;
 
-import static cubesolver.IHM.GestionAffichage.niemeMouv;
+import static cubesolver.IHM.GestionAffichage.*;
 
 public class BoutonsCommande extends JPanel implements Etat {
     private static BoutonLecture[] boutonsLecture;
@@ -30,15 +30,29 @@ public class BoutonsCommande extends JPanel implements Etat {
     }
 
     /**
-     * Actualise l'état de chaque bouton
+     * Actualise l'état de chaque bouton en fonction de l'état de l'IHM
+     * Si on est en phase de résolution, le bouton est activé, sinon il ne l'est pas
      */
     public static void actualiseEtat() {
         for (BoutonLecture bouton : boutonsLecture) {
-            bouton.actualiseEtat();
+            bouton.setEnabled(true);
+
+            if (GestionAffichage.getEtat().equals("resolution")) {
+                if (niemeMouv <= 0
+                        && (bouton instanceof BoutonReculerMouvement || bouton instanceof BoutonReculerEtape)) {
+                    bouton.setEnabled(false);
+                } else if (niemeMouv >= formuleResolutionComplet.length()
+                    && (bouton instanceof BoutonAvancerMouvement || bouton instanceof BoutonAvancerEtape)) {
+                    bouton.setEnabled(false);
+                }
+            } else {
+                bouton.setEnabled(false);
+            }
+
         }
     }
 
-    public static void actualiseMouv(int indexEtape){
+    public static void actualiseMouv(int indexEtape) {
         StringBuilder mouv = new StringBuilder();
 
         for (int i = 0; i <= indexEtape; i++) {

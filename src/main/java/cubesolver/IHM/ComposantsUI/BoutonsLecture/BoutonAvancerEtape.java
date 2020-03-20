@@ -22,12 +22,6 @@ public class BoutonAvancerEtape extends BoutonLecture implements ActionListener 
                     niemeMouv + (formuleResolution[niemeEtape].length() - mouvDansEtape)
             ));
 
-            System.out.println(formuleResolution[niemeEtape]);
-            System.out.println(formuleResolutionComplet.substring(
-                    niemeMouv,
-                    niemeMouv + (formuleResolution[niemeEtape].length() - mouvDansEtape)
-            ));
-
             niemeMouv += formuleResolution[niemeEtape].length() - mouvDansEtape;
             niemeEtape++;
             mouvDansEtape = 0;
@@ -35,7 +29,6 @@ public class BoutonAvancerEtape extends BoutonLecture implements ActionListener 
             GestionAffichage.actualiseEtat();
             avctResol.repaint();
 
-            debugLecteur();
         } else if (niemeEtape == 4) {
             Cube.formule(formuleResolutionComplet.substring(
                     niemeMouv,
@@ -48,7 +41,6 @@ public class BoutonAvancerEtape extends BoutonLecture implements ActionListener 
             GestionAffichage.actualiseEtat();
             avctResol.repaint();
 
-            debugLecteur();
         }
     }
 }
