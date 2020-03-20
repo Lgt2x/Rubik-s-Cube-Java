@@ -38,32 +38,6 @@ public class BoutonsCommande extends JPanel implements Etat {
         }
     }
 
-    /**
-     * Change l'indice de l'étape au fur et à mesure qu'on fait des mouvements
-     * @param indexEtape l'indice de l'étape de résolution
-     */
-
-    public static void changeEtape(int indexEtape) {
-        int length = 0;
-
-        for (int i = 0; i <= indexEtape; i++) {
-            length += GestionAffichage.formuleResolution[i].length();
-        }
-
-        if (niemeMouv > length) {
-            GestionAffichage.niemeEtape++;
-
-        } else if (niemeMouv <= length - GestionAffichage.formuleResolution[indexEtape].length() + 1) {
-            GestionAffichage.niemeEtape--;
-
-        }
-
-        System.out.println("|| "+GestionAffichage.formuleResolution[indexEtape].length()+"||"+ GestionAffichage.formuleResolution[0].length());
-        System.out.println("Length - 1 : "+ (length - GestionAffichage.formuleResolution[indexEtape].length()));
-
-        System.out.println("Length : " + length);
-    }
-
     public static void actualiseMouv(int indexEtape){
         StringBuilder mouv = new StringBuilder();
 

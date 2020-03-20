@@ -16,6 +16,7 @@ import java.awt.*;
 public class GestionAffichage extends JFrame implements Etat{
     public static String formuleMix;
     public static String[] formuleResolution;
+    public static String formuleResolutionComplet;
     public static int tailleSolution;
 
     public static Color couleurFond = new Color(65, 115, 109);
@@ -24,8 +25,9 @@ public class GestionAffichage extends JFrame implements Etat{
     public static BarreAvancement avctResol;
 
     // Avancement de la lecture de la solution
-    public static int niemeMouv = 0;
-    public static int niemeEtape = 0;
+    public static int niemeMouv = 0; // Index du dernier mouvement effectué
+    public static int niemeEtape = 0; // Index de l'étape en cours de lecture
+    public static int mouvDansEtape = 0; // Numéro du dernier mouvement effectué dans l'étape
 
     private static String etat = "melange";
 
@@ -79,13 +81,13 @@ public class GestionAffichage extends JFrame implements Etat{
         formuleMix += sequence;
     }
 
-    public static String stringResolution() {
+    public static void stringResolution() {
         StringBuilder resolution = new StringBuilder();
         for (String str : formuleResolution) {
             resolution.append(str);
         }
 
-        return resolution.toString();
+        formuleResolutionComplet = resolution.toString();
     }
 
     public static String getEtat() {
@@ -95,5 +97,12 @@ public class GestionAffichage extends JFrame implements Etat{
     public static void setEtat(String etatset) {
         etat = etatset;
         actualiseEtat();
+    }
+
+    public static void debugLecteur() {
+        System.out.println("Etape : " + GestionAffichage.niemeEtape + "/" + (formuleResolution.length-1));
+        System.out.println("niemeMouv : " + GestionAffichage.niemeMouv + "/" + (formuleResolutionComplet.length()-1));
+        System.out.println("mouvDansEtape : " + mouvDansEtape + "/" + (formuleResolution[niemeEtape].length()-1));
+        System.out.println();
     }
 }

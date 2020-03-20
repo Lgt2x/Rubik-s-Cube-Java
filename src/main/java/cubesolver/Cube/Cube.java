@@ -99,6 +99,18 @@ public class Cube {
     }
 
     /**
+     * Effectue le mouvement inverse à celui donné en paramètre
+     * Ex : si nom = 'U', le mouvement 'u' est effectué
+     * @param nom le mouvement à inverser
+     */
+    public static void mouvementInverse(char nom) {
+        if (Character.isUpperCase(nom))
+            mouvement(Character.toLowerCase(nom));
+        else
+            mouvement(Character.toUpperCase(nom));
+    }
+
+    /**
      * Effecute les mouvements d'une formule en décomposant la formule
      *
      * @param formule chaine de caractère composée de noms de mouvement concaténés

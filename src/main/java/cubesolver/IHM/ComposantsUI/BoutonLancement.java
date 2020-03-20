@@ -58,10 +58,16 @@ public class BoutonLancement extends JPanel implements ActionListener, Etat {
         } else if (e.getSource() == solve) {
             // Bouton résoudre
             GestionAffichage.formuleResolution = Solveur.resolution();
+
+            GestionAffichage.niemeEtape = 0;
+            GestionAffichage.niemeMouv = 0;
+            GestionAffichage.mouvDansEtape = 0;
+
             GestionAffichage.tailleSolution = 0;
             for (String etape : GestionAffichage.formuleResolution) {
                 GestionAffichage.tailleSolution += etape.length();
             }
+            GestionAffichage.stringResolution();
 
             // Le cube a été résolu par la méthode résolution du solveur, il faut le mélanger à nouveau avant de l'actualiser
             Cube.formule(GestionAffichage.formuleMix);
