@@ -202,8 +202,25 @@ public class Cube {
         return export;
     }
 
-    public static void importCube(int[][][] cubeImporte) {
+    public static String importCube(int[][][] cubeImporte) {
+        //test du format du cube
+        int cases[] = new int[6];
+        for(int i=0; i<cubeImporte.length; i++) {
+            for (int j = 0; j < cubeImporte[0].length; j++) {
+                for (int k = 0; k < cubeImporte[0][0].length; k++) {
+                    cases[cubeImporte[i][j][k]]++;
+                }
+            }
+        }
+        for(int i=0; i<cases.length; i++){
+            if(cases[i] != 8){
+                return "erreur";
+            }
+        }
+
+
         String piece = "";
+        int compteur=0;
         int i1;
         int i2;
         int i3;
@@ -218,6 +235,7 @@ public class Cube {
 
         char face;
 
+        //importer les angles
         try {
             // Recherche du chemin de la classe courante
             ClassLoader classloader = Thread.currentThread().getContextClassLoader();
@@ -272,6 +290,7 @@ public class Cube {
                                 angle.facelettes[2].face = face;
                             }
                         }
+                        compteur++;
                     }
                 }
             }
@@ -280,6 +299,7 @@ public class Cube {
             System.out.println("Erreur de l'import des angles");
         }
 
+        //importer les aretes
         try {
             // Recherche du chemin de la classe courante
             ClassLoader classloader = Thread.currentThread().getContextClassLoader();
@@ -328,12 +348,18 @@ public class Cube {
                                 arete.facelettes[1].face = face;
                             }
                         }
+                        compteur++;
                     }
                 }
             }
 
         } catch (IOException e) {
             System.out.println("Erreur de l'import des angles");
+        }
+        if(compteur == 12){
+            return "";
+        }else{
+            return "erreur";
         }
     }
 
