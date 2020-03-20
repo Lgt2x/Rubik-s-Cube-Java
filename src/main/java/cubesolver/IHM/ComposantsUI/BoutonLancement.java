@@ -1,6 +1,7 @@
 package cubesolver.IHM.ComposantsUI;
 
 import cubesolver.Cube.Cube;
+import cubesolver.IHM.Etat;
 import cubesolver.IHM.GestionAffichage;
 import cubesolver.Solveur.Solveur;
 
@@ -9,7 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class BoutonLancement extends JPanel implements ActionListener {
+public class BoutonLancement extends JPanel implements ActionListener, Etat {
     private static JButton solve = new JButton("Résoudre");
     private static JButton mix = new JButton("Mélanger");
 

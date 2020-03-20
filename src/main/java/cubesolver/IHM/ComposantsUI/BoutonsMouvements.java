@@ -1,6 +1,7 @@
 package cubesolver.IHM.ComposantsUI;
 
 import cubesolver.Cube.Cube;
+import cubesolver.IHM.Etat;
 import cubesolver.IHM.GestionAffichage;
 
 import javax.swing.*;
@@ -8,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public  class BoutonsMouvements extends JPanel implements ActionListener {
+public  class BoutonsMouvements extends JPanel implements ActionListener, Etat {
     private static JButton[] mouvements = new JButton[12];
     private String[] faces = {"R", "U", "L", "D", "F", "B", "r", "u", "l", "d", "f", "b"};
 

@@ -1,13 +1,14 @@
 package cubesolver.IHM.ComposantsUI;
 
 import cubesolver.IHM.ComposantsUI.BoutonsLecture.*;
+import cubesolver.IHM.Etat;
 import cubesolver.IHM.GestionAffichage;
 
 import javax.swing.*;
 
 import static cubesolver.IHM.GestionAffichage.niemeMouv;
 
-public class BoutonsCommande extends JPanel {
+public class BoutonsCommande extends JPanel implements Etat {
     private static BoutonLecture[] boutonsLecture;
 
     public BoutonsCommande() {
@@ -38,8 +39,8 @@ public class BoutonsCommande extends JPanel {
     }
 
     /**
-     * Change l'indice de l'étape au fur et à mesure quo'on fait des mouvements
-     * @param indexEtape
+     * Change l'indice de l'étape au fur et à mesure qu'on fait des mouvements
+     * @param indexEtape l'indice de l'étape de résolution
      */
 
     public static void changeEtape(int indexEtape) {

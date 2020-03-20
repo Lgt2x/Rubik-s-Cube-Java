@@ -13,7 +13,7 @@ import java.awt.*;
 /**
  * Classe principale de la gestion de l'affichage, qui contient tous les autres panels, boutons etc.
  */
-public class GestionAffichage extends JFrame {
+public class GestionAffichage extends JFrame implements Etat{
     public static String formuleMix;
     public static String[] formuleResolution;
     public static int tailleSolution;
@@ -61,6 +61,9 @@ public class GestionAffichage extends JFrame {
         this.setVisible(true);
     }
 
+    /**
+     * Actualise l'état de tous les composants de la fenêtre
+     */
     public static void actualiseEtat() {
         // Affichage du cube
         Cube.exportCube();

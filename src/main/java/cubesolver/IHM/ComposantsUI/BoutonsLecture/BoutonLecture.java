@@ -1,5 +1,6 @@
 package cubesolver.IHM.ComposantsUI.BoutonsLecture;
 
+import cubesolver.IHM.Etat;
 import cubesolver.IHM.GestionAffichage;
 
 import javax.imageio.ImageIO;
@@ -9,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Objects;
 
-public abstract class BoutonLecture extends JButton implements ActionListener {
+public abstract class BoutonLecture extends JButton implements ActionListener, Etat {
     public BoutonLecture(String imagePath, int x, int y, int largeur, int hauteur) {
         try {
             this.setIcon(new ImageIcon(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream(imagePath)))));
@@ -28,6 +29,6 @@ public abstract class BoutonLecture extends JButton implements ActionListener {
      * Si on est en phase de résolution, le bouton est activé, sinon il ne l'est pas
      */
     public void actualiseEtat() {
-        this.setEnabled(GestionAffichage.getEtat() == "resolution");
+        this.setEnabled(GestionAffichage.getEtat().equals("resolution"));
     }
 }

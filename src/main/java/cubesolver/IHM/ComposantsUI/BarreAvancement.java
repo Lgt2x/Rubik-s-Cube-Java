@@ -1,11 +1,12 @@
 package cubesolver.IHM.ComposantsUI;
 
+import cubesolver.IHM.Etat;
 import cubesolver.IHM.GestionAffichage;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class BarreAvancement extends JPanel {
+public class BarreAvancement extends JPanel implements Etat {
     private int hauteur = 70;
     private int largeur = 400;
     private static int tailleCercle = 10;
