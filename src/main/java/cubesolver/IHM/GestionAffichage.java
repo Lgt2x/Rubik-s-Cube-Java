@@ -10,6 +10,9 @@ import cubesolver.IHM.ComposantsUI.CommandeBoutons;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Classe principale de la gestion de l'affichage, qui contient tous les autres panels, boutons etc.
+ */
 public class GestionAffichage extends JFrame {
     public static String formuleMix;
     public static String[] formuleResolution;
@@ -18,14 +21,13 @@ public class GestionAffichage extends JFrame {
     public static Color couleurFond = new Color(65, 115, 109);
     public static Color couleurBoutons = new Color(48, 48, 48);
 
-    public static CommandeBoutons cmdBoutons;
-    public static AvancementResolution avctResolution;
+    public static AvancementResolution avctResol;
 
     // Avancement de la lecture de la solution
     public static int niemeMouv = 0;
     public static int niemeEtape = 0;
 
-    public static String state;
+    private static String etat = "melange";
 
     public GestionAffichage() {
         // Initialisation de la fenetre
@@ -42,14 +44,14 @@ public class GestionAffichage extends JFrame {
 
         // Déclaration des panneaux secondaires
         panneauPrincipal.add(new AffichageCube());
-        cmdBoutons = new CommandeBoutons();
-        panneauPrincipal.add(cmdBoutons);
+        panneauPrincipal.add(new CommandeBoutons());
         panneauPrincipal.add(new BoutonLancement());
         panneauPrincipal.add(new BoutonsMouvements());
-        avctResolution = new AvancementResolution();
-        panneauPrincipal.add(avctResolution);
 
-        Cube.exportCube();
+        avctResol = new AvancementResolution();
+        panneauPrincipal.add(avctResol);
+
+        // Actualisation du contenu et des états des boutons
         actualise();
 
         // Affichage de la fenêtre
@@ -58,16 +60,31 @@ public class GestionAffichage extends JFrame {
     }
 
     public static void actualise() {
+        // Affichage du cube
         Cube.exportCube();
         AffichageCube.actualise();
+
+        // Actualisation de l'état des boutons
+        CommandeBoutons.actualiseEtat();
+        BoutonLancement.actualiseEtat();
+
     }
 
-    public static String stringResolution(){
+    public static String stringResolution() {
         StringBuilder resolution = new StringBuilder();
-        for(String str : formuleResolution){
+        for (String str : formuleResolution) {
             resolution.append(str);
         }
 
         return resolution.toString();
+    }
+
+    public static String getEtat() {
+        return etat;
+    }
+
+    public static void setEtat(String etatset) {
+        etat = etatset;
+        actualise();
     }
 }

@@ -31,8 +31,8 @@ public class OrientationOfLastLayer extends EtapeResolution {
         correspondance.put('R', 1);
         correspondance.put('B', 4);
         correspondance.put('L', 7);
-        correspondance.put('D', 10);
         correspondance.put('F', 10);
+
         int compteur = 0;
         int cas = conversionLastLayer(); // Conversion de la position courante pour identifier le cas à traiter
         // Lire dans le fichier pour ajouter les oll

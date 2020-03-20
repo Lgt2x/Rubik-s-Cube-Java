@@ -8,17 +8,33 @@ import javax.swing.*;
 import static cubesolver.IHM.GestionAffichage.niemeMouv;
 
 public class CommandeBoutons extends JPanel {
+    private static BoutonLecture[] boutonsLecture;
 
     public CommandeBoutons() {
         this.setLayout(null);
         this.setBounds(925, 10, 500, 75);
 
-        this.add(new BoutonReculerEtape(0, 0, 100, 75));
-        this.add(new BoutonReculerMouvement(100, 0, 100, 75));
-        this.add(new BoutonFinir(400, 0, 100, 75));
-        this.add(new BoutonAvancerMouvement(200, 0, 100, 75));
-        this.add(new BoutonAvancerEtape(300, 0, 100, 75));
+        boutonsLecture = new BoutonLecture[]{
+                new BoutonReculerEtape(0, 0, 100, 75),
+                new BoutonReculerMouvement(100, 0, 100, 75),
+                new BoutonFinir(400, 0, 100, 75),
+                new BoutonAvancerMouvement(200, 0, 100, 75),
+                new BoutonAvancerEtape(300, 0, 100, 75)
+        };
 
+        for (BoutonLecture bouton : boutonsLecture) {
+            this.add(bouton);
+        }
+
+    }
+
+    /**
+     * Actualise l'état de chaque bouton
+     */
+    public static void actualiseEtat() {
+        for (BoutonLecture bouton : boutonsLecture) {
+            bouton.actualiseEtat();
+        }
     }
 
     /**

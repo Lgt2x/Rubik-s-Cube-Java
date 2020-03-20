@@ -17,12 +17,12 @@ public class BoutonReculerEtape extends BoutonLecture implements ActionListener 
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        if(GestionAffichage.niemeEtape>0){
-            Cube.formuleSymetrique(GestionAffichage.formuleResolution[GestionAffichage.niemeMouv-1]);
+        if (GestionAffichage.niemeEtape > 0) {
+            Cube.formuleSymetrique(GestionAffichage.formuleResolution[GestionAffichage.niemeMouv - 1]);
             GestionAffichage.actualise();
             actualiseMouv(GestionAffichage.niemeEtape);
             GestionAffichage.niemeEtape--;
-            GestionAffichage.avctResolution.repaint();
+            GestionAffichage.avctResol.repaint();
             GestionAffichage.actualise();
         }
     }

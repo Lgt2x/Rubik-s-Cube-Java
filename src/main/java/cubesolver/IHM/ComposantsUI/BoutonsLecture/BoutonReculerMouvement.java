@@ -16,14 +16,14 @@ public class BoutonReculerMouvement extends BoutonLecture implements ActionListe
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        if(GestionAffichage.niemeMouv>0){
-            Cube.formule(Character.toString(GestionAffichage.stringResolution().charAt(GestionAffichage.niemeMouv-1)));
+        if (GestionAffichage.niemeMouv > 0) {
+            Cube.formule(Character.toString(GestionAffichage.stringResolution().charAt(GestionAffichage.niemeMouv - 1)));
             GestionAffichage.actualise();
             CommandeBoutons.changeEtape(GestionAffichage.niemeEtape);
             GestionAffichage.niemeMouv--;
             System.out.println("Etape :" + GestionAffichage.niemeEtape);
-            System.out.println("niemeMouv : " +GestionAffichage.niemeMouv);
-            GestionAffichage.avctResolution.repaint();
+            System.out.println("niemeMouv : " + GestionAffichage.niemeMouv);
+            GestionAffichage.avctResol.repaint();
         }
 
     }

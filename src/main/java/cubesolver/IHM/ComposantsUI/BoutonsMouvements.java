@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public  class BoutonsMouvements extends JPanel implements ActionListener {
-    private JButton[] mouvements = new JButton[12];
+    private static JButton[] mouvements = new JButton[12];
     private String[] faces = {"R", "U", "L", "D", "F", "B", "r", "u", "l", "d", "f", "b"};
 
     public BoutonsMouvements(){
@@ -29,7 +29,14 @@ public  class BoutonsMouvements extends JPanel implements ActionListener {
         }
     }
 
+
+    /**
+     * Au clic sur un bouton parmi les boutons de mouvement,
+     * effectuer le mouvement correspondant sur le cube
+     * @param e l'événement
+     */
     public void actionPerformed(ActionEvent e) {
+        GestionAffichage.setEtat("melange");
         JButton face = (JButton)(e.getSource());
         Cube.mouvement(face.getText().charAt(0));
         GestionAffichage.actualise();

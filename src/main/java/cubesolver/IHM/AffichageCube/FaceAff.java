@@ -1,5 +1,6 @@
 package cubesolver.IHM.AffichageCube;
 import cubesolver.Cube.Cube;
+import cubesolver.IHM.GestionAffichage;
 
 import java.awt.*;
 import javax.swing.*;
@@ -40,6 +41,7 @@ public class FaceAff extends JPanel{
         for (int i=0;i<3;i++) {
             for (int j=0;j<3;j++) {
                 facelettes[count].setBackground(this.couleurs[Cube.export[AffichageCube.ordre[position]][i][j]]);
+                facelettes[count].setEnabled(GestionAffichage.getEtat() == "melange");
                 count++;
             }
         }

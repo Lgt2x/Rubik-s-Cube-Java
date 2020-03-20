@@ -10,8 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class BoutonLancement extends JPanel implements ActionListener {
-    private JButton solve = new JButton("Résoudre");
-    private JButton mix = new JButton("Mélanger");
+    private static JButton solve = new JButton("Résoudre");
+    private static JButton mix = new JButton("Mélanger");
 
     public BoutonLancement(){
         Color couleurFond = new Color(48, 48, 48);
@@ -46,16 +46,28 @@ public class BoutonLancement extends JPanel implements ActionListener {
         if (e.getSource() == mix) {
             // Bouton de mélange
             GestionAffichage.formuleMix = Cube.melange(15);
-            GestionAffichage.actualise();
+            solve.setEnabled(true);
+
+            GestionAffichage.setEtat("melange");
+
         } else if (e.getSource() == solve) {
             // Bouton résoudre
             GestionAffichage.formuleResolution = Solveur.resolution();
             GestionAffichage.tailleSolution = 0;
-            for (int i=0;i<GestionAffichage.formuleResolution.length;i++) {
-                GestionAffichage.tailleSolution += GestionAffichage.formuleResolution[i].length();
+            for (String etape : GestionAffichage.formuleResolution) {
+                GestionAffichage.tailleSolution += etape.length();
             }
+
+            // Le cube a été résolu par la méthode résolution du solveur, il faut le mélanger à nouveau avant de l'actualiser
             Cube.formule(GestionAffichage.formuleMix);
-            GestionAffichage.actualise();
+
+            // Désactivation du bouton de résolution
+
+            GestionAffichage.setEtat("resolution");
         }
+    }
+
+    public static void actualiseEtat() {
+        solve.setEnabled(GestionAffichage.getEtat() == "melange");
     }
 }

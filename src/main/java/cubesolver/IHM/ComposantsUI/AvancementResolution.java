@@ -8,7 +8,7 @@ import java.awt.*;
 public class AvancementResolution extends JPanel {
     private int hauteur = 70;
     private int largeur = 400;
-    private int tailleCercle = 10;
+    private static int tailleCercle = 10;
 
     public AvancementResolution() {
         this.setLayout(null);
