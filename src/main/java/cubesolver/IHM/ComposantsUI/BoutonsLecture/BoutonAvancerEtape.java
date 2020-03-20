@@ -7,21 +7,22 @@ import cubesolver.IHM.GestionAffichage;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static cubesolver.IHM.ComposantsUI.CommandeBoutons.actualiseMouv;
+
 
 public class BoutonAvancerEtape extends BoutonLecture implements ActionListener {
     public BoutonAvancerEtape(int x, int y, int largeur, int hauteur) {
-        super("BoutonsIHM/avancer.png", x, y, largeur, hauteur);
+        super("BoutonsIHM/avancerMouv.png", x, y, largeur, hauteur);
     }
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        try{
+        if(GestionAffichage.niemeEtape<=4){
             Cube.formule(GestionAffichage.formuleResolution[GestionAffichage.niemeEtape]);
             GestionAffichage.actualise();
+            actualiseMouv(GestionAffichage.niemeEtape);
             GestionAffichage.niemeEtape++;
             GestionAffichage.avctResolution.repaint();
-        } catch (IndexOutOfBoundsException e){
-            System.out.println("Rubik's déjà résolu");
         }
     }
 }

@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 public class BoutonAvancerMouvement extends BoutonLecture implements ActionListener {
     public BoutonAvancerMouvement(int x, int y, int largeur, int hauteur) {
-        super("BoutonsIHM/avancerMouv.png", x, y, largeur, hauteur);
+        super("BoutonsIHM/avancer.png", x, y, largeur, hauteur);
     }
 
     @Override

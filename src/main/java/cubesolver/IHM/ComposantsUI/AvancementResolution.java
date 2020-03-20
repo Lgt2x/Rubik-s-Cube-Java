@@ -33,7 +33,5 @@ public class AvancementResolution extends JPanel {
         }
 
         g.fillOval(avancement - tailleCercle/2, hauteur/2-tailleCercle/2, tailleCercle, tailleCercle);
-
-        System.out.println(GestionAffichage.niemeEtape);
     }
 }

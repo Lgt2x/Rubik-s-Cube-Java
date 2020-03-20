@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 public class BoutonReculerMouvement extends BoutonLecture implements ActionListener {
     public BoutonReculerMouvement(int x, int y, int largeur, int hauteur) {
-        super("BoutonsIHM/arriereMouv.png", x, y, largeur, hauteur);
+        super("BoutonsIHM/arriere.png", x, y, largeur, hauteur);
     }
 
     @Override
