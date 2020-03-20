@@ -58,4 +58,13 @@ public class GestionAffichage extends JFrame {
         Cube.exportCube();
         AffichageCube.actualise();
     }
+
+    public static String stringResolution(){
+        StringBuilder resolution = new StringBuilder();
+        for(String str : formuleResolution){
+            resolution.append(str);
+        }
+
+        return resolution.toString();
+    }
 }
