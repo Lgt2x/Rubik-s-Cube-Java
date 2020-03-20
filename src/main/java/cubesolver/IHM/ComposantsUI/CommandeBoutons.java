@@ -137,6 +137,7 @@ public class CommandeBoutons extends JPanel {
         }
     }
 
+
     public void changeEtape(int indexEtape){
 
         int length = 0;
