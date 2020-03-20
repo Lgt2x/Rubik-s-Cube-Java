@@ -15,13 +15,13 @@ public class BoutonAvancerEtape extends BoutonLecture implements ActionListener 
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        if (GestionAffichage.niemeEtape < 5) {
+        try{
             Cube.formule(GestionAffichage.formuleResolution[GestionAffichage.niemeEtape]);
-            GestionAffichage.niemeMouv += GestionAffichage.formuleResolution[GestionAffichage.niemeEtape].length();
-            GestionAffichage.niemeEtape++;
-
-            GestionAffichage.avctResolution.repaint();
             GestionAffichage.actualise();
+            GestionAffichage.niemeEtape++;
+            GestionAffichage.avctResolution.repaint();
+        } catch (IndexOutOfBoundsException e){
+            System.out.println("Rubik's déjà résolu");
         }
     }
 }

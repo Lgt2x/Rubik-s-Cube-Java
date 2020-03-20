@@ -14,6 +14,7 @@ public class GestionAffichage extends JFrame {
     public static String formuleMix;
     public static String[] formuleResolution;
     public static int tailleSolution;
+
     public static Color couleurFond = new Color(65, 115, 109);
     public static Color couleurBoutons = new Color(48, 48, 48);
 
@@ -23,6 +24,8 @@ public class GestionAffichage extends JFrame {
     // Avancement de la lecture de la solution
     public static int niemeMouv = 0;
     public static int niemeEtape = 0;
+
+    public static String state;
 
     public GestionAffichage() {
         // Initialisation de la fenetre
