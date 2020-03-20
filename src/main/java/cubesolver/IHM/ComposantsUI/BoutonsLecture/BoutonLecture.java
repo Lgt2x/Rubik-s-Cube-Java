@@ -1,4 +1,4 @@
-package cubesolver.IHM.ComposantsUI;
+package cubesolver.IHM.ComposantsUI.BoutonsLecture;
 
 import cubesolver.IHM.GestionAffichage;
 

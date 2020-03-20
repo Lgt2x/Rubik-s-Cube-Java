@@ -1,7 +1,5 @@
 package cubesolver.IHM.ComposantsUI.BoutonsLecture;
 
-import cubesolver.IHM.ComposantsUI.BoutonLecture;
-
 import java.awt.event.ActionEvent;
 
 

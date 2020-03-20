@@ -1,13 +1,12 @@
 package cubesolver.IHM.ComposantsUI.BoutonsLecture;
 
 import cubesolver.Cube.Cube;
-import cubesolver.IHM.ComposantsUI.BoutonLecture;
 import cubesolver.IHM.GestionAffichage;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static cubesolver.IHM.ComposantsUI.CommandeBoutons.actualiseMouv;
+import static cubesolver.IHM.ComposantsUI.BoutonsCommande.actualiseMouv;
 
 
 public class BoutonAvancerEtape extends BoutonLecture implements ActionListener {
@@ -24,7 +23,7 @@ public class BoutonAvancerEtape extends BoutonLecture implements ActionListener 
             actualiseMouv(GestionAffichage.niemeEtape);
             GestionAffichage.niemeEtape++;
 
-            GestionAffichage.actualise();
+            GestionAffichage.actualiseEtat();
         }
     }
 }

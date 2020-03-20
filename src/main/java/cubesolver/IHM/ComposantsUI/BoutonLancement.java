@@ -13,7 +13,7 @@ public class BoutonLancement extends JPanel implements ActionListener {
     private static JButton solve = new JButton("Résoudre");
     private static JButton mix = new JButton("Mélanger");
 
-    public BoutonLancement(){
+    public BoutonLancement() {
         Color couleurFond = new Color(48, 48, 48);
 
         this.setLayout(null);
@@ -21,7 +21,7 @@ public class BoutonLancement extends JPanel implements ActionListener {
         this.setBackground(couleurFond);
 
         //Placement Boutons
-        solve.setBounds(0,0,150,100);
+        solve.setBounds(0, 0, 150, 100);
         mix.setBounds(150, 0, 150, 100);
 
         //Esthéthisme des boutons
@@ -39,15 +39,19 @@ public class BoutonLancement extends JPanel implements ActionListener {
         mix.addActionListener(this);
         solve.addActionListener(this);
 
-        this.add(solve); this.add(mix);
+        this.add(solve);
+        this.add(mix);
+    }
+
+    public static void actualiseEtat() {
+        solve.setEnabled(GestionAffichage.getEtat().equals("melange"));
     }
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == mix) {
             // Bouton de mélange
-            GestionAffichage.formuleMix = Cube.melange(15);
+            GestionAffichage.ajouterMelange(Cube.melange(15));
             solve.setEnabled(true);
-
             GestionAffichage.setEtat("melange");
 
         } else if (e.getSource() == solve) {
@@ -65,9 +69,5 @@ public class BoutonLancement extends JPanel implements ActionListener {
 
             GestionAffichage.setEtat("resolution");
         }
-    }
-
-    public static void actualiseEtat() {
-        solve.setEnabled(GestionAffichage.getEtat() == "melange");
     }
 }

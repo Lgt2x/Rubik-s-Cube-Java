@@ -5,12 +5,12 @@ import cubesolver.IHM.GestionAffichage;
 import javax.swing.*;
 import java.awt.*;
 
-public class AvancementResolution extends JPanel {
+public class BarreAvancement extends JPanel {
     private int hauteur = 70;
     private int largeur = 400;
     private static int tailleCercle = 10;
 
-    public AvancementResolution() {
+    public BarreAvancement() {
         this.setLayout(null);
         this.setBounds(975, 400, largeur, hauteur);
         this.setBackground(Color.white);

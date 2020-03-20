@@ -7,10 +7,10 @@ import javax.swing.*;
 
 import static cubesolver.IHM.GestionAffichage.niemeMouv;
 
-public class CommandeBoutons extends JPanel {
+public class BoutonsCommande extends JPanel {
     private static BoutonLecture[] boutonsLecture;
 
-    public CommandeBoutons() {
+    public BoutonsCommande() {
         this.setLayout(null);
         this.setBounds(925, 10, 500, 75);
 

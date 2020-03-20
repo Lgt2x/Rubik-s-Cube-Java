@@ -1,8 +1,7 @@
 package cubesolver.IHM.ComposantsUI.BoutonsLecture;
 
 import cubesolver.Cube.Cube;
-import cubesolver.IHM.ComposantsUI.BoutonLecture;
-import cubesolver.IHM.ComposantsUI.CommandeBoutons;
+import cubesolver.IHM.ComposantsUI.BoutonsCommande;
 import cubesolver.IHM.GestionAffichage;
 
 import java.awt.event.ActionEvent;
@@ -18,9 +17,9 @@ public class BoutonAvancerMouvement extends BoutonLecture implements ActionListe
     public void actionPerformed(ActionEvent actionEvent) {
         if (GestionAffichage.niemeMouv <= GestionAffichage.stringResolution().length()) {
             Cube.formule(Character.toString(GestionAffichage.stringResolution().charAt(GestionAffichage.niemeMouv)));
-            GestionAffichage.actualise();
+            GestionAffichage.actualiseEtat();
             GestionAffichage.niemeMouv++;
-            CommandeBoutons.changeEtape(GestionAffichage.niemeEtape);
+            BoutonsCommande.changeEtape(GestionAffichage.niemeEtape);
             System.out.println("Etape :" + GestionAffichage.niemeEtape);
             System.out.println("niemeMouv : " + GestionAffichage.niemeMouv);
             GestionAffichage.avctResol.repaint();

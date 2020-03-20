@@ -39,7 +39,8 @@ public  class BoutonsMouvements extends JPanel implements ActionListener {
         GestionAffichage.setEtat("melange");
         JButton face = (JButton)(e.getSource());
         Cube.mouvement(face.getText().charAt(0));
-        GestionAffichage.actualise();
+        GestionAffichage.ajouterMelange(Character.toString(face.getText().charAt(0)));
+        GestionAffichage.actualiseEtat();
     }
 
 }

@@ -2,10 +2,10 @@ package cubesolver.IHM;
 
 import cubesolver.Cube.Cube;
 import cubesolver.IHM.AffichageCube.AffichageCube;
-import cubesolver.IHM.ComposantsUI.AvancementResolution;
+import cubesolver.IHM.ComposantsUI.BarreAvancement;
 import cubesolver.IHM.ComposantsUI.BoutonLancement;
 import cubesolver.IHM.ComposantsUI.BoutonsMouvements;
-import cubesolver.IHM.ComposantsUI.CommandeBoutons;
+import cubesolver.IHM.ComposantsUI.BoutonsCommande;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,7 +21,7 @@ public class GestionAffichage extends JFrame {
     public static Color couleurFond = new Color(65, 115, 109);
     public static Color couleurBoutons = new Color(48, 48, 48);
 
-    public static AvancementResolution avctResol;
+    public static BarreAvancement avctResol;
 
     // Avancement de la lecture de la solution
     public static int niemeMouv = 0;
@@ -44,30 +44,36 @@ public class GestionAffichage extends JFrame {
 
         // Déclaration des panneaux secondaires
         panneauPrincipal.add(new AffichageCube());
-        panneauPrincipal.add(new CommandeBoutons());
+        panneauPrincipal.add(new BoutonsCommande());
         panneauPrincipal.add(new BoutonLancement());
         panneauPrincipal.add(new BoutonsMouvements());
 
-        avctResol = new AvancementResolution();
+        avctResol = new BarreAvancement();
         panneauPrincipal.add(avctResol);
 
         // Actualisation du contenu et des états des boutons
-        actualise();
+        formuleMix = "";
+        actualiseEtat();
+
 
         // Affichage de la fenêtre
         this.setContentPane(panneauPrincipal);
         this.setVisible(true);
     }
 
-    public static void actualise() {
+    public static void actualiseEtat() {
         // Affichage du cube
         Cube.exportCube();
         AffichageCube.actualise();
 
         // Actualisation de l'état des boutons
-        CommandeBoutons.actualiseEtat();
+        BoutonsCommande.actualiseEtat();
         BoutonLancement.actualiseEtat();
 
+    }
+
+    public static void ajouterMelange(String sequence){
+        formuleMix += sequence;
     }
 
     public static String stringResolution() {
@@ -85,6 +91,6 @@ public class GestionAffichage extends JFrame {
 
     public static void setEtat(String etatset) {
         etat = etatset;
-        actualise();
+        actualiseEtat();
     }
 }
