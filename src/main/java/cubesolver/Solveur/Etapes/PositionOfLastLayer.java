@@ -19,9 +19,13 @@ public class PositionOfLastLayer extends EtapeResolution {
 
         // **** Placement des angles ****
         // Mettre en place un angle
-        while(!Cube.angles[1].estPositionneeCorrectement()){
-            mouvements.append('U');
-            Cube.mouvement('U');
+        for(int i = 0; i<4; i++){
+            if(!Cube.angles[1].estPositionneeCorrectement()){
+                mouvements.append('U');
+                Cube.mouvement('U');
+            }else{
+                break;
+            }
         }
         // Vérifier si tous les angles sont en place ou non
         if(!(Cube.angles[0].estPositionneeCorrectement() && Cube.angles[2].estPositionneeCorrectement() && Cube.angles[3].estPositionneeCorrectement())) {
@@ -64,7 +68,6 @@ public class PositionOfLastLayer extends EtapeResolution {
             Cube.formule(formula);
             mouvements.append(formula);
         }
-
 
         // **** Placement de la dernière face pour faire la formule ****
         if(!(Cube.aretes[0].estPositionneeCorrectement()&& Cube.aretes[1].estPositionneeCorrectement())){

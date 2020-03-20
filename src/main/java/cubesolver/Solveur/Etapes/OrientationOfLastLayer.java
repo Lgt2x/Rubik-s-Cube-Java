@@ -35,7 +35,6 @@ public class OrientationOfLastLayer extends EtapeResolution {
         correspondance.put('F', 10);
         int compteur = 0;
         int cas = conversionLastLayer(); // Conversion de la position courante pour identifier le cas à traiter
-
         // Lire dans le fichier pour ajouter les oll
         HashMap<Integer, String> oll = chargementOLL("Formules/positions.oll");
 
@@ -47,16 +46,21 @@ public class OrientationOfLastLayer extends EtapeResolution {
                 Cube.formule(oll.get(cas));
                 mouvements.append(oll.get(cas));
                 break;
-            } else {
+            } else if(i<4){
                 Cube.mouvement('U');
                 mouvements.append('U');
                 cas = conversionLastLayer();
+            }else{
+                Cube.formule("FURurf");
+                mouvements.append("FURurf");
+                i=0;
             }
         }
         if(compteur == 5){
             return "erreur";
         }else {
             return mouvements.toString();
+
         }
     }
 
