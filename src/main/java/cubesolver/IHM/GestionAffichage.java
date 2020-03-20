@@ -14,10 +14,10 @@ import java.awt.*;
  * Classe principale de la gestion de l'affichage, qui contient tous les autres panels, boutons etc.
  */
 public class GestionAffichage extends JFrame implements Etat {
-    public static String formuleMix;
-    public static String[] formuleResolution;
-    public static String formuleResolutionComplet;
-    public static int tailleSolution;
+    public static String formuleMix; // Formule de mélange utilisée
+    public static String[] formuleResolution; // Tableau des formules utilisées pour chaque étape de résolution
+    public static String formuleResolutionComplet; // Formule de résolution agrégée en un string
+    public static int tailleSolution; // Taille totale de la solution
 
     public static Color couleurFond = new Color(65, 115, 109);
     public static Color couleurBoutons = new Color(48, 48, 48);
@@ -77,10 +77,17 @@ public class GestionAffichage extends JFrame implements Etat {
 
     }
 
+    /**
+     * Ajout à la formule de mélange d'une chaine donnée
+     * @param sequence la chaîne à ajouter
+     */
     public static void ajouterMelange(String sequence) {
         formuleMix += sequence;
     }
 
+    /**
+     * Calcule la formule totale de résolution à partir du tableau
+     */
     public static void stringResolution() {
         StringBuilder resolution = new StringBuilder();
         for (String str : formuleResolution) {
@@ -90,18 +97,29 @@ public class GestionAffichage extends JFrame implements Etat {
         formuleResolutionComplet = resolution.toString();
     }
 
+    /**
+     * Getter pour l'état
+     * @return l'état de l'IHM : "melange" ou "resolution"
+     */
     public static String getEtat() {
         return etat;
     }
 
+    /**
+     * Setter pour l'état
+     * @param etatset l'état à mettre : "melange" ou "resolution"
+     */
     public static void setEtat(String etatset) {
         etat = etatset;
         actualiseEtat();
     }
 
+    /**
+     * Affiche des information concernant la lecture, pour débugguer le lecteur plus facilement
+     */
     public static void debugLecteur() {
         System.out.println("Etape : " + GestionAffichage.niemeEtape + "/" + (formuleResolution.length - 1));
-        System.out.println("niemeMouv : " + GestionAffichage.niemeMouv + "/" + (formuleResolutionComplet.length() - 1));
+        System.out.println("niemeMouv : " + GestionAffichage.niemeMouv + "/" + (tailleSolution - 1));
         System.out.println("mouvDansEtape : " + mouvDansEtape + "/" + (formuleResolution[niemeEtape].length() - 1));
         System.out.println();
     }

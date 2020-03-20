@@ -16,7 +16,7 @@ public class BoutonAvancerMouvement extends BoutonLecture implements ActionListe
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        if (niemeMouv < formuleResolutionComplet.length()) {
+        if (niemeMouv < tailleSolution) {
             Cube.mouvement(formuleResolutionComplet.charAt(niemeMouv));
 
             niemeMouv++;

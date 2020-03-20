@@ -41,8 +41,8 @@ public class BoutonsCommande extends JPanel implements Etat {
                 if (niemeMouv <= 0
                         && (bouton instanceof BoutonReculerMouvement || bouton instanceof BoutonReculerEtape)) {
                     bouton.setEnabled(false);
-                } else if (niemeMouv >= formuleResolutionComplet.length()
-                    && (bouton instanceof BoutonAvancerMouvement || bouton instanceof BoutonAvancerEtape)) {
+                } else if (niemeMouv >= tailleSolution
+                    && (bouton instanceof BoutonAvancerMouvement || bouton instanceof BoutonAvancerEtape || bouton instanceof BoutonFinir)) {
                     bouton.setEnabled(false);
                 }
             } else {
@@ -50,15 +50,5 @@ public class BoutonsCommande extends JPanel implements Etat {
             }
 
         }
-    }
-
-    public static void actualiseMouv(int indexEtape) {
-        StringBuilder mouv = new StringBuilder();
-
-        for (int i = 0; i <= indexEtape; i++) {
-            mouv.append(GestionAffichage.formuleResolution[i]);
-        }
-
-        niemeMouv = mouv.length();
     }
 }

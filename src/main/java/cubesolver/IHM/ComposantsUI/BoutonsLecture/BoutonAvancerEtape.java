@@ -16,6 +16,12 @@ public class BoutonAvancerEtape extends BoutonLecture implements ActionListener 
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
+        etapeSuivante();
+        GestionAffichage.actualiseEtat();
+        avctResol.repaint();
+    }
+
+    public static void etapeSuivante() {
         if (GestionAffichage.niemeEtape < 4) {
             Cube.formule(formuleResolutionComplet.substring(
                     niemeMouv,
@@ -26,9 +32,6 @@ public class BoutonAvancerEtape extends BoutonLecture implements ActionListener 
             niemeEtape++;
             mouvDansEtape = 0;
 
-            GestionAffichage.actualiseEtat();
-            avctResol.repaint();
-
         } else if (niemeEtape == 4) {
             Cube.formule(formuleResolutionComplet.substring(
                     niemeMouv,
@@ -37,10 +40,6 @@ public class BoutonAvancerEtape extends BoutonLecture implements ActionListener 
 
             niemeMouv += formuleResolution[niemeEtape].length() - mouvDansEtape;
             mouvDansEtape = formuleResolution[niemeEtape].length();
-
-            GestionAffichage.actualiseEtat();
-            avctResol.repaint();
-
         }
     }
 }

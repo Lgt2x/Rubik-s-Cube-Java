@@ -1,7 +1,9 @@
 package cubesolver.IHM.ComposantsUI.BoutonsLecture;
 
-import java.awt.event.ActionEvent;
+import cubesolver.IHM.GestionAffichage;
 
+import java.awt.event.ActionEvent;
+import static cubesolver.IHM.GestionAffichage.*;
 
 public class BoutonFinir extends BoutonLecture {
     public BoutonFinir(int x, int y, int largeur, int hauteur) {
@@ -10,6 +12,11 @@ public class BoutonFinir extends BoutonLecture {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
+        while (niemeMouv < tailleSolution) {
+            BoutonAvancerEtape.etapeSuivante();
+        }
 
+        GestionAffichage.actualiseEtat();
+        avctResol.repaint();
     }
 }
