@@ -2,10 +2,7 @@ package cubesolver.IHM;
 
 import cubesolver.Cube.Cube;
 import cubesolver.IHM.AffichageCube.AffichageCube;
-import cubesolver.IHM.ComposantsUI.BarreAvancement;
-import cubesolver.IHM.ComposantsUI.BoutonLancement;
-import cubesolver.IHM.ComposantsUI.BoutonsCommande;
-import cubesolver.IHM.ComposantsUI.BoutonsMouvements;
+import cubesolver.IHM.ComposantsUI.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,7 +31,7 @@ public class GestionAffichage extends JFrame implements Etat {
     public GestionAffichage() {
         // Initialisation de la fenetre
         this.setTitle("Solver de rubik's cube");
-        this.setSize(1500, 1000);
+        this.setSize(1500, 690);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -49,6 +46,7 @@ public class GestionAffichage extends JFrame implements Etat {
         panneauPrincipal.add(new BoutonsCommande());
         panneauPrincipal.add(new BoutonLancement());
         panneauPrincipal.add(new BoutonsMouvements());
+        panneauPrincipal.add(new FormuleSolution());
 
         avctResol = new BarreAvancement();
         panneauPrincipal.add(avctResol);
@@ -74,6 +72,7 @@ public class GestionAffichage extends JFrame implements Etat {
         // Actualisation de l'état des boutons
         BoutonsCommande.actualiseEtat();
         BoutonLancement.actualiseEtat();
+        FormuleSolution.actualiseEtat();
 
     }
 
