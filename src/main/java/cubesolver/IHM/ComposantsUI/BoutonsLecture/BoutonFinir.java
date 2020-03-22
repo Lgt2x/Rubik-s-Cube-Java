@@ -17,6 +17,5 @@ public class BoutonFinir extends BoutonLecture {
         }
 
         GestionAffichage.actualiseEtat();
-        avctResol.repaint();
     }
 }

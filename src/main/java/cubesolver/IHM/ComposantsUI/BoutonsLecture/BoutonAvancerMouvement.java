@@ -28,8 +28,6 @@ public class BoutonAvancerMouvement extends BoutonLecture implements ActionListe
             }
 
             GestionAffichage.actualiseEtat();
-            GestionAffichage.avctResol.repaint();
-
         }
 
     }

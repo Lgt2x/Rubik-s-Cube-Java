@@ -59,10 +59,6 @@ public class BoutonLancement extends JPanel implements ActionListener, Etat {
             // Bouton résoudre
             GestionAffichage.formuleResolution = Solveur.resolution();
 
-            GestionAffichage.niemeEtape = 0;
-            GestionAffichage.niemeMouv = 0;
-            GestionAffichage.mouvDansEtape = 0;
-
             GestionAffichage.tailleSolution = 0;
             for (String etape : GestionAffichage.formuleResolution) {
                 GestionAffichage.tailleSolution += etape.length();

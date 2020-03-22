@@ -3,6 +3,7 @@ package cubesolver.IHM;
 import cubesolver.Cube.Cube;
 import cubesolver.IHM.AffichageCube.AffichageCube;
 import cubesolver.IHM.ComposantsUI.*;
+import cubesolver.Solveur.Solveur;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,10 +12,10 @@ import java.awt.*;
  * Classe principale de la gestion de l'affichage, qui contient tous les autres panels, boutons etc.
  */
 public class GestionAffichage extends JFrame implements Etat {
-    public static String formuleMix; // Formule de mélange utilisée
-    public static String[] formuleResolution; // Tableau des formules utilisées pour chaque étape de résolution
-    public static String formuleResolutionComplet; // Formule de résolution agrégée en un string
-    public static int tailleSolution; // Taille totale de la solution
+    public static String formuleMix = ""; // Formule de mélange utilisée
+    public static String[] formuleResolution = new String[5]; // Tableau des formules utilisées pour chaque étape de résolution
+    public static String formuleResolutionComplet = ""; // Formule de résolution agrégée en un string
+    public static int tailleSolution = 0; // Taille totale de la solution
 
     public static Color couleurFond = new Color(65, 115, 109);
     public static Color couleurBoutons = new Color(48, 48, 48);
@@ -35,6 +36,7 @@ public class GestionAffichage extends JFrame implements Etat {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+
         // Initialisation du panel principal
         JPanel panneauPrincipal = new JPanel();
         panneauPrincipal.setBounds(0, 0, getWidth(), getHeight());
@@ -52,8 +54,7 @@ public class GestionAffichage extends JFrame implements Etat {
         panneauPrincipal.add(avctResol);
 
         // Actualisation du contenu et des états des boutons
-        formuleMix = "";
-        actualiseEtat();
+        setEtat("melange");
 
 
         // Affichage de la fenêtre
@@ -74,10 +75,13 @@ public class GestionAffichage extends JFrame implements Etat {
         BoutonLancement.actualiseEtat();
         FormuleSolution.actualiseEtat();
 
+        // Actualisation de la barre de progression
+        avctResol.repaint();
     }
 
     /**
      * Ajout à la formule de mélange d'une chaine donnée
+     *
      * @param sequence la chaîne à ajouter
      */
     public static void ajouterMelange(String sequence) {
@@ -98,6 +102,7 @@ public class GestionAffichage extends JFrame implements Etat {
 
     /**
      * Getter pour l'état
+     *
      * @return l'état de l'IHM : "melange" ou "resolution"
      */
     public static String getEtat() {
@@ -106,9 +111,21 @@ public class GestionAffichage extends JFrame implements Etat {
 
     /**
      * Setter pour l'état
+     * Quand on repasse en phase mélange, reset du lecteur
      * @param etatset l'état à mettre : "melange" ou "resolution"
      */
     public static void setEtat(String etatset) {
+        if (etatset.equals("melange")) {
+            // Reset de la résolution
+            Solveur.reset();
+            formuleMix += formuleResolutionComplet.substring(0,niemeMouv);
+            formuleResolution = new String[5];
+            formuleResolutionComplet = "";
+            niemeMouv = 0;
+            niemeEtape = 0;
+            mouvDansEtape = 0;
+        }
+
         etat = etatset;
         actualiseEtat();
     }

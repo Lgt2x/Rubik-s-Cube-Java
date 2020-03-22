@@ -18,7 +18,6 @@ public class BoutonAvancerEtape extends BoutonLecture implements ActionListener 
     public void actionPerformed(ActionEvent actionEvent) {
         etapeSuivante();
         GestionAffichage.actualiseEtat();
-        avctResol.repaint();
     }
 
     public static void etapeSuivante() {

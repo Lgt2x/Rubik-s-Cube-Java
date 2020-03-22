@@ -1,9 +1,9 @@
 package cubesolver.IHM.ComposantsUI;
 
 import cubesolver.IHM.Etat;
-import cubesolver.IHM.GestionAffichage;
 
 import javax.swing.*;
+
 import static cubesolver.IHM.GestionAffichage.*;
 
 public class FormuleSolution extends JPanel implements Etat {
@@ -16,7 +16,7 @@ public class FormuleSolution extends JPanel implements Etat {
 
 
         text = new JTextArea("abc", 2, 50);
-        text.setBounds(0,0,600,100);
+        text.setBounds(0, 0, 600, 100);
         text.setEditable(false);
         text.setCursor(null);
         text.setFocusable(false);
@@ -28,8 +28,8 @@ public class FormuleSolution extends JPanel implements Etat {
     }
 
     public static void actualiseEtat() {
-        if (getEtat() == "resolution")
-            text.setText(formuleResolutionComplet.substring(0,niemeMouv));
+        if (getEtat().equals("resolution"))
+            text.setText(formuleResolutionComplet.substring(0, niemeMouv));
         else
             text.setText("");
     }

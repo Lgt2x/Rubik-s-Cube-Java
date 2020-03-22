@@ -30,8 +30,6 @@ public class BoutonReculerEtape extends BoutonLecture implements ActionListener 
             mouvDansEtape = 0;
 
             GestionAffichage.actualiseEtat();
-            avctResol.repaint();
-
         }
     }
 }

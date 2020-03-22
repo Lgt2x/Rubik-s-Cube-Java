@@ -28,8 +28,6 @@ public class BoutonReculerMouvement extends BoutonLecture implements ActionListe
             }
 
             GestionAffichage.actualiseEtat();
-            GestionAffichage.avctResol.repaint();
-
         }
     }
 }
