@@ -16,6 +16,7 @@ public class GestionAffichage extends JFrame implements Etat {
     public static String[] formuleResolution = new String[5]; // Tableau des formules utilisées pour chaque étape de résolution
     public static String formuleResolutionComplet = ""; // Formule de résolution agrégée en un string
     public static int tailleSolution = 0; // Taille totale de la solution
+    public static int nbEtapesSolution = 0; // Nombre d'étapes dans la solution
 
     public static Color couleurFond = new Color(81, 81, 81);
     public static Color couleurBoutons = new Color(48, 48, 48);
@@ -89,18 +90,6 @@ public class GestionAffichage extends JFrame implements Etat {
     }
 
     /**
-     * Calcule la formule totale de résolution à partir du tableau
-     */
-    public static void stringResolution() {
-        StringBuilder resolution = new StringBuilder();
-        for (String str : formuleResolution) {
-            resolution.append(str);
-        }
-
-        formuleResolutionComplet = resolution.toString();
-    }
-
-    /**
      * Getter pour l'état
      *
      * @return l'état de l'IHM : "melange" ou "resolution"
@@ -112,13 +101,21 @@ public class GestionAffichage extends JFrame implements Etat {
     /**
      * Setter pour l'état
      * Quand on repasse en phase mélange, reset du lecteur
+     *
      * @param etatset l'état à mettre : "melange" ou "resolution"
      */
     public static void setEtat(String etatset) {
         if (etatset.equals("melange")) {
             // Reset de la résolution
             Solveur.reset();
-            formuleMix += formuleResolutionComplet.substring(0,niemeMouv);
+
+            formuleMix += formuleResolutionComplet.substring(0, niemeMouv);
+
+            // Reset de la formule de mélange si on part du cue totalement résolu
+            if (niemeMouv >= tailleSolution) {
+                formuleMix = "";
+            }
+
             formuleResolution = new String[5];
             formuleResolutionComplet = "";
             niemeMouv = 0;
@@ -134,7 +131,7 @@ public class GestionAffichage extends JFrame implements Etat {
      * Affiche des information concernant la lecture, pour débugguer le lecteur plus facilement
      */
     public static void debugLecteur() {
-        System.out.println("Etape : " + GestionAffichage.niemeEtape + "/" + (formuleResolution.length - 1));
+        System.out.println("Etape : " + GestionAffichage.niemeEtape + "/" + (nbEtapesSolution - 1));
         System.out.println("niemeMouv : " + GestionAffichage.niemeMouv + "/" + (tailleSolution - 1));
         System.out.println("mouvDansEtape : " + mouvDansEtape + "/" + (formuleResolution[niemeEtape].length() - 1));
         System.out.println();
