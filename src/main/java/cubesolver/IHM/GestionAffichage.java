@@ -18,7 +18,7 @@ public class GestionAffichage extends JFrame implements Etat {
     public static int tailleSolution = 0; // Taille totale de la solution
     public static int nbEtapesSolution = 0; // Nombre d'étapes dans la solution
 
-    public static Color couleurFond = new Color(65, 115, 109);
+    public static Color couleurFond = new Color(81, 81, 81);
     public static Color couleurBoutons = new Color(48, 48, 48);
 
     public static BarreAvancement avctResol;
