@@ -51,9 +51,10 @@ public class BoutonLancement extends JPanel implements ActionListener, Etat {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == mix) {
             // Bouton de mélange
-            GestionAffichage.ajouterMelange(Cube.melange(15));
-            solve.setEnabled(true);
             GestionAffichage.setEtat("melange");
+            GestionAffichage.ajouterMelange(Cube.melange(15));
+            GestionAffichage.actualiseEtat();
+            solve.setEnabled(true);
 
         } else if (e.getSource() == solve) {
             // Bouton résoudre
@@ -63,13 +64,12 @@ public class BoutonLancement extends JPanel implements ActionListener, Etat {
             for (String etape : GestionAffichage.formuleResolution) {
                 GestionAffichage.tailleSolution += etape.length();
             }
-            GestionAffichage.stringResolution();
 
+            GestionAffichage.stringResolution();
             // Le cube a été résolu par la méthode résolution du solveur, il faut le mélanger à nouveau avant de l'actualiser
             Cube.formule(GestionAffichage.formuleMix);
 
             // Désactivation du bouton de résolution
-
             GestionAffichage.setEtat("resolution");
         }
     }

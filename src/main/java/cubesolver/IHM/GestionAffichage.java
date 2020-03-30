@@ -118,7 +118,14 @@ public class GestionAffichage extends JFrame implements Etat {
         if (etatset.equals("melange")) {
             // Reset de la résolution
             Solveur.reset();
+
             formuleMix += formuleResolutionComplet.substring(0,niemeMouv);
+
+            // Reset de la formule de mélange si on part du cue totalement résolu
+            if (niemeMouv >= tailleSolution) {
+                formuleMix = "";
+            }
+
             formuleResolution = new String[5];
             formuleResolutionComplet = "";
             niemeMouv = 0;
