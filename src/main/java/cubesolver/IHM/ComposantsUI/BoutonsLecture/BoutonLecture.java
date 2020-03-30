@@ -1,6 +1,5 @@
 package cubesolver.IHM.ComposantsUI.BoutonsLecture;
 
-import cubesolver.IHM.Etat;
 import cubesolver.IHM.GestionAffichage;
 
 import javax.imageio.ImageIO;
