@@ -21,9 +21,9 @@ public class CroixBlanche extends EtapeResolution {
         char faceEtudiee;
         boolean libre;
 
-        //placement des aretes blanches
+        //setUp des aretes blanches
         for (int i = 4; i < 8; i++) {
-            if (!Cube.aretes[i].appartientFace('D')) {
+            if (!Cube.aretes[i].appartientFace('U')&& !Cube.aretes[i].estPositionneeCorrectement()) {
 
                 //trouver la face ou se trouve la pièce
                 j = 0;
@@ -34,61 +34,64 @@ public class CroixBlanche extends EtapeResolution {
 
                 /* Liberer l'emplacement pour insérer notre pièce blanche
                 On verifie si les 4 pieces blanches ne sont pas à l'endroit que nous allons bouger,
-                sinon mouvement D (bas) et on recommence l'opération */
+                sinon mouvement U(haut) et on recommence l'opération */
                 j = 4;
                 while (j < 8) {
-                    libre = !(Cube.aretes[j].appartientFace('D') && Cube.aretes[j].appartientFace(faceEtudiee));
+                    libre = !(Cube.aretes[j].appartientFace('U') && Cube.aretes[j].appartientFace(faceEtudiee));
                     if (!libre && i != j) {
-                        mouvements.append("D");
-                        Cube.mouvement('D');
+                        mouvements.append("U");
+                        Cube.mouvement('U');
                         j = 3;
                     }
                     j++;
                 }
 
                 // Placer notre pièce blanche
-                while (!Cube.aretes[i].appartientFace('D')) {
+                while (!Cube.aretes[i].appartientFace('U')) {
                     mouvements.append(faceEtudiee);
                     Cube.mouvement(faceEtudiee);
                 }
             }
         }
 
-        // Orienter la croix blanche
-        for (int i = 4; i < 8; i++) {
-            if (!Cube.aretes[i].estOrienteCorrectement()) {
-                char face = Cube.aretes[i].facelettes[0].face;
-                String formula = face + "d" + mouvement.charAt(mouvement.indexOf(face) + 1);
-                mouvements.append(formula);
-                Cube.formule(formula);
+        int compteur = 0;
+        //placer la face blanche en l'orientant
+        for(int i=4; i<8; i++){
+            if(Cube.aretes[i].estPositionneeCorrectement()){
+                compteur++;
             }
         }
 
-        // Placer les aretes de la croix blanche
+        while(compteur != 4){
 
-        // Setup
-        for (int i = 4; i < 8; i++) {
-            if (!Cube.aretes[i].estPositionneeCorrectement()) {
-                String formula = Character.toString(Cube.aretes[i].facelettes[1].face) + Cube.aretes[i].facelettes[1].face;
-                mouvements.append(formula);
-                Cube.formule(formula);
-            }
-        }
+            for(int i=4; i<8; i++){
+                if(Cube.aretes[i].appartientFace('U')){
+                    if(Cube.aretes[i].facelettes[0].face == 'U' && Cube.aretes[i].appartientFace(Cube.aretes[i].facelettes[1].color)){
+                        String formula = Character.toString(Cube.aretes[i].facelettes[1].color) + Cube.aretes[i].facelettes[1].color;
+                        mouvements.append(formula);
+                        Cube.formule(formula);
+                        compteur++;
+                    }else if(Cube.aretes[i].facelettes[1].face == 'U' && Cube.aretes[i].appartientFace(mouvement.charAt(mouvement.indexOf(Cube.aretes[i].facelettes[1].color)+1))){
+                        String mouv1 = Character.toString(Cube.aretes[i].facelettes[0].face);
+                        mouvements.append(mouv1);
+                        Cube.formule(mouv1);
 
-        // Placement
-        for (int i = 4; i < 8; i++) {
-            if (!Cube.aretes[i].appartientFace('D')) {
-                while (!Cube.aretes[i].appartientFace(Cube.aretes[i].facelettes[1].color)) {
-                    mouvements.append("U");
-                    Cube.mouvement('U');
+                        String mouv2 = Character.toString(Cube.aretes[i].facelettes[1].face).toLowerCase();
+                        mouvements.append(mouv2);
+                        Cube.formule(mouv2);
+
+                        mouv1 = mouv1.toLowerCase();
+                        mouvements.append(mouv1);
+                        Cube.formule(mouv1);
+
+                        compteur++;
+                    }
                 }
-
-                String formula = Character.toString(Cube.aretes[i].facelettes[1].face) + Cube.aretes[i].facelettes[1].face;
-                mouvements.append(formula);
-                Cube.formule(formula);
             }
-        }
+            mouvements.append('U');
+            Cube.mouvement('U');
 
+        }
         return mouvements.toString();
     }
 }
