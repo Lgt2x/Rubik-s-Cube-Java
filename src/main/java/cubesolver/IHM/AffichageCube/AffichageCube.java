@@ -1,5 +1,6 @@
-/* problème : il ne faudrait déclarer que 52 boutons et remplir le reste du grid layout avec du vide*/
 package cubesolver.IHM.AffichageCube;
+
+import cubesolver.IHM.Etat;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +10,7 @@ import static cubesolver.IHM.GestionAffichage.couleurFond;
 /**
  * Classe chargée de l'affichage du cube dans un panel à partir de l'export fourni par la classe Cube
  */
-public class AffichageCube extends JPanel {
+public class AffichageCube extends JPanel implements Etat {
     public static int[] ordre = {3, 2, 0, 4, 5, 1};
     private static FaceAff[] faces = new FaceAff[6];
 
@@ -50,7 +51,7 @@ public class AffichageCube extends JPanel {
     /**
      * Actualise l'affichage à partir de l'export du cube
      */
-    public static void actualise() {
+    public static void actualiseEtat() {
         for (FaceAff face : faces) {
             face.actualise();
         }

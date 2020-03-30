@@ -69,7 +69,7 @@ public class GestionAffichage extends JFrame implements Etat {
     public static void actualiseEtat() {
         // Affichage du cube
         Cube.exportCube();
-        AffichageCube.actualise();
+        AffichageCube.actualiseEtat();
 
         // Actualisation de l'état des boutons
         BoutonsCommande.actualiseEtat();

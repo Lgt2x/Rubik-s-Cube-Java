@@ -9,6 +9,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Classe décrivant les boutons dédiés aux mouvements individuels du cube en phase de mélange
+ * Cette classe crée les 12 boutons individuels et les place sur une grille
+ */
 public  class BoutonsMouvements extends JPanel implements ActionListener, Etat {
     private static JButton[] mouvements = new JButton[12];
     private String[] faces = {"R", "U", "L", "D", "F", "B", "r", "u", "l", "d", "f", "b"};

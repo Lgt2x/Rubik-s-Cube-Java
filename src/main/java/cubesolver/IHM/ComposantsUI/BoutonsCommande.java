@@ -8,6 +8,14 @@ import javax.swing.*;
 
 import static cubesolver.IHM.GestionAffichage.*;
 
+/**
+ * Conteneur des boutons de lecture de la solution, dans l'ordre :
+ *  - Reculer d'une étape de résolution
+ *  - Reculer d'un mouvement
+ *  - Avancer d'un mouvement
+ *  - Avancer d'une étape
+ *  - Finir le cube entièrement
+ */
 public class BoutonsCommande extends JPanel implements Etat {
     private static BoutonLecture[] boutonsLecture;
 
@@ -37,10 +45,14 @@ public class BoutonsCommande extends JPanel implements Etat {
         for (BoutonLecture bouton : boutonsLecture) {
             bouton.setEnabled(true);
 
+            // Les boutons ne sont activés que lorsque l'app est en mode résolution
             if (GestionAffichage.getEtat().equals("resolution")) {
+                // On ne peut reculer que si la lecture du cube n'est pas à la première étape
                 if (niemeMouv <= 0
                         && (bouton instanceof BoutonReculerMouvement || bouton instanceof BoutonReculerEtape)) {
                     bouton.setEnabled(false);
+
+                // De même, on n'avance que si on n'est pas à la fin
                 } else if (niemeMouv >= tailleSolution
                     && (bouton instanceof BoutonAvancerMouvement || bouton instanceof BoutonAvancerEtape || bouton instanceof BoutonFinir)) {
                     bouton.setEnabled(false);
