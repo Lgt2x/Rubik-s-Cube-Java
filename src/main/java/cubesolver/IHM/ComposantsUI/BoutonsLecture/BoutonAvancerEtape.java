@@ -15,6 +15,7 @@ public class BoutonAvancerEtape extends BoutonLecture implements ActionListener 
     }
 
     @Override
+
     public void actionPerformed(ActionEvent actionEvent) {
         etapeSuivante();
         GestionAffichage.actualiseEtat();

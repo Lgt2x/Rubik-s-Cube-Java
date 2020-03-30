@@ -4,6 +4,8 @@ package cubesolver.IHM.AffichageCube;
 import javax.swing.*;
 import java.awt.*;
 
+import static cubesolver.IHM.GestionAffichage.couleurFond;
+
 /**
  * Classe chargée de l'affichage du cube dans un panel à partir de l'export fourni par la classe Cube
  */
@@ -13,7 +15,7 @@ public class AffichageCube extends JPanel {
 
     public AffichageCube() {
         this.setBounds(10, 10, 850, 640);
-        this.setBackground(Color.WHITE);
+        this.setBackground(couleurFond);
         this.setLayout(new GridLayout(3, 4));
 
         /* Sur une grille 3*4, donne les positions de l'applat des faces
@@ -36,7 +38,9 @@ public class AffichageCube extends JPanel {
                 this.add(faces[ordre[count]]);
                 count++;
             } else {
-                this.add(new JPanel());
+                JPanel panel = new JPanel();
+                panel.setBackground((couleurFond));
+                this.add(panel);
             }
         }
 
