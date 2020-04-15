@@ -11,7 +11,7 @@ import static cubesolver.IHM.GestionAffichage.niemeMouv;
 public class FormuleMelange extends JPanel implements Etat {
     private static JTextArea textMix;
 
-    public FormuleMelange(){
+    public FormuleMelange() {
         this.setLayout(null);
         this.setBounds(875, 540, 600, 100);
         this.setBackground(couleurBoutons);
@@ -27,15 +27,12 @@ public class FormuleMelange extends JPanel implements Etat {
         textMix.setLineWrap(true);
         textMix.setWrapStyleWord(true);
         textMix.setForeground(Color.white);
-        textMix.setFont(new Font(Font.SERIF, Font.BOLD,15));
+        textMix.setFont(new Font(Font.SERIF, Font.BOLD, 15));
 
         this.add(textMix);
     }
 
     public static void actualiseEtat() {
-        if (getEtat().equals("melange")) {
-            textMix.setText(formuleMix);
-        } else
-            textMix.setText("");
+        textMix.setText(formuleMix);
     }
 }
