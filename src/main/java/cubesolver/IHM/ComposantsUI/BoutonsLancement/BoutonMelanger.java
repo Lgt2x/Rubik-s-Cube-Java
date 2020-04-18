@@ -1,13 +1,14 @@
-package cubesolver.IHM.ComposantsUI;
+package cubesolver.IHM.ComposantsUI.BoutonsLancement;
 
 import cubesolver.Cube.Cube;
+import cubesolver.IHM.ComposantsUI.BoutonModele;
 import cubesolver.IHM.GestionAffichage;
-import cubesolver.Solveur.Solveur;
+
 import java.awt.event.ActionEvent;
 
-public class boutonMelanger extends boutonMouv{
+public class BoutonMelanger extends BoutonModele {
 
-    public boutonMelanger(String mouv, int x, int y, int largeur, int hauteur) {
+    public BoutonMelanger(String mouv, int x, int y, int largeur, int hauteur) {
         super(mouv, x, y, largeur, hauteur);
     }
 

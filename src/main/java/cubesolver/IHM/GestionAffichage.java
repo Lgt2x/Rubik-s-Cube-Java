@@ -3,6 +3,8 @@ package cubesolver.IHM;
 import cubesolver.Cube.Cube;
 import cubesolver.IHM.AffichageCube.AffichageCube;
 import cubesolver.IHM.ComposantsUI.*;
+import cubesolver.IHM.ComposantsUI.BoutonsLancement.ConteneurLancement;
+import cubesolver.IHM.ComposantsUI.BoutonsLecture.ConteneurLecture;
 import cubesolver.Solveur.Solveur;
 
 import javax.swing.*;
@@ -45,8 +47,8 @@ public class GestionAffichage extends JFrame implements Etat {
 
         // Déclaration des panneaux secondaires
         panneauPrincipal.add(new AffichageCube());
-        panneauPrincipal.add(new BoutonsCommande());
-        panneauPrincipal.add(new BoutonLancement());
+        panneauPrincipal.add(new ConteneurLecture());
+        panneauPrincipal.add(new ConteneurLancement());
         panneauPrincipal.add(new BoutonsMouvements());
         panneauPrincipal.add(new FormuleSolution());
 
@@ -71,8 +73,8 @@ public class GestionAffichage extends JFrame implements Etat {
         AffichageCube.actualise();
 
         // Actualisation de l'état des boutons
-        BoutonsCommande.actualiseEtat();
-        BoutonLancement.actualiseEtat();
+        ConteneurLecture.actualiseEtat();
+        ConteneurLancement.actualiseEtat();
         FormuleSolution.actualiseEtat();
 
         // Actualisation de la barre de progression

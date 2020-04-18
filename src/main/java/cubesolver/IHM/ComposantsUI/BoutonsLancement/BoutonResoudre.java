@@ -1,13 +1,14 @@
-package cubesolver.IHM.ComposantsUI;
+package cubesolver.IHM.ComposantsUI.BoutonsLancement;
 
 import cubesolver.Cube.Cube;
+import cubesolver.IHM.ComposantsUI.BoutonModele;
 import cubesolver.IHM.GestionAffichage;
 import cubesolver.Solveur.Solveur;
 
 import java.awt.event.ActionEvent;
 
-public class boutonResoudre extends boutonMouv {
-    public boutonResoudre(String mouv, int x, int y, int largeur, int hauteur) { super(mouv, x, y, largeur, hauteur);}
+public class BoutonResoudre extends BoutonModele {
+    public BoutonResoudre(String mouv, int x, int y, int largeur, int hauteur) { super(mouv, x, y, largeur, hauteur);}
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
@@ -24,7 +25,6 @@ public class boutonResoudre extends boutonMouv {
         Cube.formule(GestionAffichage.formuleMix);
 
         // Désactivation du bouton de résolution
-
         GestionAffichage.setEtat("resolution");
 
     }

@@ -10,6 +10,9 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ *
+ */
 public abstract class BoutonLecture extends JButton implements ActionListener {
     public BoutonLecture(String imagePath, int x, int y, int largeur, int hauteur) {
         try {

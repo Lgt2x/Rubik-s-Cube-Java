@@ -9,6 +9,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Classe définissant les boutons pour faire des mouvements indépendants sur le cube
+ */
 public  class BoutonsMouvements extends JPanel implements ActionListener, Etat {
     private static JButton[] mouvements = new JButton[12];
     private String[] faces = {"R", "U", "L", "D", "F", "B", "r", "u", "l", "d", "f", "b"};

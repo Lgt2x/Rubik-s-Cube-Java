@@ -1,4 +1,4 @@
-package cubesolver.IHM.ComposantsUI;
+package cubesolver.IHM.ComposantsUI.BoutonsLecture;
 
 import cubesolver.IHM.ComposantsUI.BoutonsLecture.*;
 import cubesolver.IHM.Etat;
@@ -8,10 +8,10 @@ import javax.swing.*;
 
 import static cubesolver.IHM.GestionAffichage.*;
 
-public class BoutonsCommande extends JPanel implements Etat {
+public class ConteneurLecture extends JPanel implements Etat {
     private static BoutonLecture[] boutonsLecture;
 
-    public BoutonsCommande() {
+    public ConteneurLecture() {
         this.setLayout(null);
         this.setBounds(925, 10, 500, 75);
 
