@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BarreAvancement extends JPanel implements Etat {
-    private static int tailleCercle = 10;
     private int hauteur = 70;
     private int largeur = 400;
 
@@ -33,6 +32,7 @@ public class BarreAvancement extends JPanel implements Etat {
             avancement = 0;
         }
 
+        int tailleCercle = 10;
         g.fillOval(avancement - tailleCercle / 2, hauteur / 2 - tailleCercle / 2, tailleCercle, tailleCercle);
     }
 }

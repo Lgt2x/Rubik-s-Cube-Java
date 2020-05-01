@@ -1,7 +1,7 @@
 # Rubik's Cube Java
 Un solver de rubik's cube avec interface graphique écrit en Java, sous license GPLv3
 
-## Lancelent de l'application
+## Lancement de l'application
 Le build est fait par Gradle, qui construit un .jar à partir des fichiers source. Le wrapper gradlew est inclus dans le repo.
  ```bash
 ./gradlew build

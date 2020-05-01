@@ -22,13 +22,12 @@ public class BoutonAvancerMouvement extends BoutonLecture implements ActionListe
             niemeMouv++;
             mouvDansEtape++;
 
-            if (mouvDansEtape >= formuleResolution[niemeEtape].length() && niemeEtape < 4) {
+            if (mouvDansEtape >= formuleResolution[niemeEtape].length() && niemeEtape < nbEtapesSolution - 1) {
                 niemeEtape++;
                 mouvDansEtape = 0;
             }
 
             GestionAffichage.actualiseEtat();
         }
-
     }
 }

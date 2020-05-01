@@ -2,6 +2,7 @@ package cubesolver.Solveur;
 
 import cubesolver.Solveur.Etapes.*;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -25,14 +26,16 @@ public class Solveur {
      * @return la formule de résolution, chaque élément du tableau est la formule pour l'étape suivante
      */
     public static String[] resolution() {
-        String[] solution = new String[etapesList.size()];
-        int compteurEtape = 0;
+        ArrayList<String> solution = new ArrayList<>();
+
         while(etapes.hasNext()) {
-            solution[compteurEtape] = etapes.next().effectuerEtape();
-            compteurEtape++;
+            String formuleEtape = etapes.next().effectuerEtape();
+            if (formuleEtape.length() > 0) {
+                solution.add(formuleEtape);
+            }
         }
 
-        return solution;
+        return solution.toArray(new String[solution.size()]);
     }
 
     /**

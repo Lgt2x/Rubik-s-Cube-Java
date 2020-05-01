@@ -43,8 +43,8 @@ public class OrientationOfLastLayer extends EtapeResolution {
             compteur++;
             // Si notre cas est connu : resoudre, sinon faire tourner la face du haut jusqu'à tomber dessus
             if (oll.containsKey(cas)) {
-                Cube.formule(oll.get(cas));
-                mouvements.append(oll.get(cas));
+                    Cube.formule(oll.get(cas));
+                    mouvements.append(oll.get(cas));
                 break;
             } else if(i<4){
                 Cube.mouvement('U');
