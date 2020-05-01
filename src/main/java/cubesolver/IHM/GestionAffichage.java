@@ -50,6 +50,7 @@ public class GestionAffichage extends JFrame implements Etat {
         panneauPrincipal.add(new BoutonLancement());
         panneauPrincipal.add(new BoutonsMouvements());
         panneauPrincipal.add(new FormuleSolution());
+        panneauPrincipal.add(new FormuleMelange());
 
         avctResol = new BarreAvancement();
         panneauPrincipal.add(avctResol);
@@ -75,6 +76,7 @@ public class GestionAffichage extends JFrame implements Etat {
         BoutonsCommande.actualiseEtat();
         BoutonLancement.actualiseEtat();
         FormuleSolution.actualiseEtat();
+        FormuleMelange.actualiseEtat();
 
         // Actualisation de la barre de progression
         avctResol.repaint();

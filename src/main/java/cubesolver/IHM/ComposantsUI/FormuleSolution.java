@@ -16,7 +16,7 @@ public class FormuleSolution extends JPanel implements Etat {
 
     public FormuleSolution() {
         this.setLayout(null);
-        this.setBounds(875, 500, 600, 100);
+        this.setBounds(875, 430, 600, 100);
         this.setBackground(couleurBoutons);
         this.setBorder(BorderFactory.createLineBorder(Color.white));
 

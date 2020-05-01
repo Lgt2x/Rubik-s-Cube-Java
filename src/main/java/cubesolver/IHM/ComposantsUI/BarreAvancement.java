@@ -12,7 +12,7 @@ public class BarreAvancement extends JPanel implements Etat {
 
     public BarreAvancement() {
         this.setLayout(null);
-        this.setBounds(975, 400, largeur, hauteur);
+        this.setBounds(975, 360, largeur, hauteur);
         this.setBackground(Color.white);
 
         repaint();
