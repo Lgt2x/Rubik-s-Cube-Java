@@ -48,7 +48,7 @@ public class PositionOfLastLayer extends EtapeResolution {
 
 
         // **** Placement des aretes ****
-        // On teste d'abord les trois cas problématiques
+        // On teste d'abord les trois cas problématiques (leurs noms sont donné ci dessous pour les identifier)
 
         //H
         if (Cube.aretes[0].appartientFace('R') && Cube.aretes[3].appartientFace('F')) {
@@ -86,11 +86,13 @@ public class PositionOfLastLayer extends EtapeResolution {
             for (int j = 0; j < 2; j++) {
                 if (!(Cube.aretes[0].facelettes[1].face == Cube.angles[0].facelettes[1].face
                         && Cube.aretes[1].facelettes[1].face == Cube.angles[0].facelettes[2].face)) {
+                    //permute les aretes pour les placer
                     formula = "rUrururURURR";
                     Cube.formule(formula);
                     mouvements.append(formula);
                 }
             }
+            //tourner la dernière face pour placer la dernière couronne
             Cube.formule(uBuilder.toString().toUpperCase());
             mouvements.append(uBuilder.toString().toUpperCase());
         }

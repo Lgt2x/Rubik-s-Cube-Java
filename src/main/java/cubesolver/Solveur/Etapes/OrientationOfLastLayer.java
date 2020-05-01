@@ -38,7 +38,11 @@ public class OrientationOfLastLayer extends EtapeResolution {
         // Lire dans le fichier pour ajouter les oll
         HashMap<Integer, String> oll = chargementOLL("Formules/positions.oll");
 
-        // Pour placer comme il faut la face du dessus pour trouver une configuration connue
+        /*Pour placer comme il faut la face du dessus pour trouver une configuration connue
+        par analyse des symétrie, il est possible de diviser par 4 le nombre de cas
+        Pour cela, si un cas n'est pas connu, nous effectuerons une rotation de la face du haut
+         */
+
         for (int i = 0; i < 5; i++) {
             compteur++;
             // Si notre cas est connu : resoudre, sinon faire tourner la face du haut jusqu'à tomber dessus
@@ -67,7 +71,9 @@ public class OrientationOfLastLayer extends EtapeResolution {
     /**
      * L'objectif de cette methode est de convertir le cube en un int afin de connaitre
      * l'orientation des pieces du dernier etage our resoudre la face avec une unique formule
-     *
+     * Cette methode étudie la dernière couronne du cube, elle en crée un int composé de 0 et de 1
+     * un 1 signifie que la facelette est  jaune, un 0 signifie que cette dernière ne l'est pas
+     * Il en resulte une combinaison unique que l'on peut identifier à l'aide du fichier positions.oll
      * @return la configuration sous forme d'int
      */
     public int conversionLastLayer() {
@@ -105,7 +111,7 @@ public class OrientationOfLastLayer extends EtapeResolution {
      * // Commentaire
      * <configuration> <formule>
      * Configuration : correspondance de la configuration donnée suivant le format retourné par ConversionLastLayer
-     * Formule : la formule résolvant la configuration
+     * Formule : la formule résolvant la configuration (à chaque configuration correspond une unique formule qui resoud le cube)
      *
      * @param fichier chemin relatif du fichier ressource .oll, à partir du dossier ressources
      * @return la table de correspondance des OLL utilisée plus tard

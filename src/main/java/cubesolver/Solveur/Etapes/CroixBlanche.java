@@ -57,6 +57,7 @@ public class CroixBlanche extends EtapeResolution {
         int compteur = 0;
         //placer la face blanche en l'orientant
         for (int i = 4; i < 8; i++) {
+            //incrémenter le compteur pour chaque pièce déja en place
             if (Cube.aretes[i].estPositionneeCorrectement()) {
                 compteur++;
             }
@@ -66,11 +67,15 @@ public class CroixBlanche extends EtapeResolution {
 
             for (int i = 4; i < 8; i++) {
                 if (Cube.aretes[i].appartientFace('U')) {
+
+                        //si la pièce est bien orienté, la descendre directement à sa position
                     if (Cube.aretes[i].facelettes[0].face == 'U' && Cube.aretes[i].appartientFace(Cube.aretes[i].facelettes[1].color)) {
                         String formula = Character.toString(Cube.aretes[i].facelettes[1].color) + Cube.aretes[i].facelettes[1].color;
                         mouvements.append(formula);
                         Cube.formule(formula);
                         compteur++;
+
+                        //si la pièce est mal orienté, la descendre de manière à l'orienté en meme temps
                     } else if (Cube.aretes[i].facelettes[1].face == 'U' && Cube.aretes[i].appartientFace(mouvement.charAt(mouvement.indexOf(Cube.aretes[i].facelettes[1].color) + 1))) {
                         String mouv1 = Character.toString(Cube.aretes[i].facelettes[0].face);
                         mouvements.append(mouv1);

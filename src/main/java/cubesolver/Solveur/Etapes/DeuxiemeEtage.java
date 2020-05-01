@@ -6,7 +6,7 @@ import cubesolver.Solveur.EtapeResolution;
 
 /**
  * Etape de résolution #3
- * Place les arêtes du deuxième étape
+ * Place les arêtes du deuxième étage
  */
 public class DeuxiemeEtage extends EtapeResolution {
     @Override
