@@ -23,19 +23,20 @@ public class Solveur {
      * Méthode principale appelée pour la résolution,
      * qui retourne un tableau représentant les mouvements nécessaire à la résolution
      * Attention : le cube est résolu à la fin de la méthode
+     *
      * @return la formule de résolution, chaque élément du tableau est la formule pour l'étape suivante
      */
     public static String[] resolution() {
         ArrayList<String> solution = new ArrayList<>();
 
-        while(etapes.hasNext()) {
+        while (etapes.hasNext()) {
             String formuleEtape = etapes.next().effectuerEtape();
             if (formuleEtape.length() > 0) {
                 solution.add(formuleEtape);
             }
         }
 
-        return solution.toArray(new String[solution.size()]);
+        return solution.toArray(new String[0]);
     }
 
     /**
@@ -51,7 +52,7 @@ public class Solveur {
         etapesList.add(new OrientationOfLastLayer());
         etapesList.add(new PositionOfLastLayer());
 
-        etapes=etapesList.iterator();
+        etapes = etapesList.iterator();
     }
 
 }

@@ -6,8 +6,11 @@ import java.awt.event.ActionListener;
 
 import static cubesolver.IHM.GestionAffichage.couleurBoutons;
 
-public abstract class boutonMouv extends JButton implements ActionListener {
-    public boutonMouv(String mouv, int x, int y, int largeur, int hauteur){
+/**
+ * Modèle de bouton standardisé, avec sa couleur, son format, pour définir un style global
+ */
+public abstract class BoutonMouvTemplate extends JButton implements ActionListener {
+    public BoutonMouvTemplate(String mouv, int x, int y, int largeur, int hauteur) {
         this.setBounds(x, y, largeur, hauteur);
         this.setBackground(couleurBoutons);
         this.setForeground(Color.white);
@@ -15,5 +18,4 @@ public abstract class boutonMouv extends JButton implements ActionListener {
         this.setBorder(BorderFactory.createLineBorder(Color.white));
         this.addActionListener(this);
     }
-
 }

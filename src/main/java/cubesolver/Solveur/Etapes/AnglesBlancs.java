@@ -10,6 +10,18 @@ import cubesolver.Solveur.EtapeResolution;
  */
 public class AnglesBlancs extends EtapeResolution {
 
+    public static String formuleDroite(char c) {
+        return c + "U" + Character.toLowerCase(c);
+    }
+
+    public static String formuleGauche(char c) {
+        return Character.toLowerCase(c) + "u" + c;
+    }
+
+    public static String formuleHaut(char c) {
+        return c + "UU" + Character.toLowerCase(c) + "u" + c + "U" + Character.toLowerCase(c);
+    }
+
     @Override
     public String effectuerEtape() {
         StringBuilder mouvements = new StringBuilder();
@@ -25,7 +37,7 @@ public class AnglesBlancs extends EtapeResolution {
             if (!Cube.angles[i].estPositionneeCorrectement()) {
 
                 // Sortir l'angle de la face du bas
-                if(Cube.angles[i].appartientFace('D')) {
+                if (Cube.angles[i].appartientFace('D')) {
                     index = Math.min(
                             Math.min(
                                     mouvement.indexOf(Cube.angles[i].facelettes[0].face),
@@ -34,13 +46,12 @@ public class AnglesBlancs extends EtapeResolution {
                     );
 
 
-                    //corriger l'erreur liée à la boucle
+                    // Corriger l'erreur liée à la boucle
                     if (index == 0) {
                         if (Cube.angles[i].appartientFace('B')) {
                             index = 3;
                         }
                     }
-                    System.out.println(index);
 
                     // Sortir l'angle
                     mouvementsString = formuleDroite(mouvement.charAt(index));
@@ -55,7 +66,7 @@ public class AnglesBlancs extends EtapeResolution {
                     Cube.mouvement('U');
                 }
 
-                //définir le min et le max pour faire la formule
+                // Définir le min et le max pour faire la formule
                 int min = Math.min(
                         mouvement.indexOf(Cube.angles[i].facelettes[1].color),
                         mouvement.indexOf(Cube.angles[i].facelettes[2].color));
@@ -71,12 +82,13 @@ public class AnglesBlancs extends EtapeResolution {
                         max = 0;
                     }
                 }
-                //Placer l'angle
-                if(Cube.angles[i].facelettes[0].face == 'U'){
+
+                // Placer l'angle
+                if (Cube.angles[i].facelettes[0].face == 'U') {
                     mouvementsString = formuleHaut(mouvement.charAt(min));
-                }else if(Cube.angles[i].facelettes[0].face == mouvement.charAt(min)){
+                } else if (Cube.angles[i].facelettes[0].face == mouvement.charAt(min)) {
                     mouvementsString = formuleDroite(mouvement.charAt(min));
-                }else{
+                } else {
                     mouvementsString = formuleGauche(mouvement.charAt(max));
                 }
 
@@ -86,16 +98,6 @@ public class AnglesBlancs extends EtapeResolution {
         }
 
         return mouvements.toString();
-    }
-
-    public static String formuleDroite(char c){
-        return c+"U"+ Character.toLowerCase(c);
-    }
-    public static String formuleGauche(char c){
-        return Character.toLowerCase(c)+"u"+c;
-    }
-    public static String formuleHaut(char c){
-        return c+"UU"+Character.toLowerCase(c)+"u"+c+"U"+ Character.toLowerCase(c);
     }
 
 

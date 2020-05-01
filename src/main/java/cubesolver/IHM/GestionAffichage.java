@@ -107,7 +107,7 @@ public class GestionAffichage extends JFrame implements Etat {
      * @param etatset l'état à mettre : "melange" ou "resolution"
      */
     public static void setEtat(String etatset) {
-        if (etatset.equals("melange")) {
+        if (etatset.equals("melange") && !etat.equals("melange")) {
             // Reset de la résolution
             Solveur.reset();
 

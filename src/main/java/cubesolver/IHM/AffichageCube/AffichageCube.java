@@ -12,7 +12,7 @@ import static cubesolver.IHM.GestionAffichage.couleurFond;
  */
 public class AffichageCube extends JPanel implements Etat {
     public static int[] ordre = {3, 2, 0, 4, 5, 1};
-    private static FaceAff[] faces = new FaceAff[6];
+    private static final FaceAff[] faces = new FaceAff[6];
 
     public AffichageCube() {
         this.setBounds(10, 10, 850, 640);

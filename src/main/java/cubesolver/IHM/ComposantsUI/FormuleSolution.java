@@ -3,7 +3,6 @@ package cubesolver.IHM.ComposantsUI;
 import cubesolver.IHM.Etat;
 
 import javax.swing.*;
-
 import java.awt.*;
 
 import static cubesolver.IHM.GestionAffichage.*;
@@ -31,16 +30,16 @@ public class FormuleSolution extends JPanel implements Etat {
         text.setLineWrap(true);
         text.setWrapStyleWord(true);
         text.setForeground(Color.WHITE);
-        text.setFont(new java.awt.Font(Font.SERIF, Font.BOLD,15));
-        text.setMargin(new Insets(5,5,5,5));
+        text.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 15));
+        text.setMargin(new Insets(5, 5, 5, 5));
 
         this.add(text);
     }
 
     public static void actualiseEtat() {
         if (getEtat().equals("resolution")) {
-            text.setText(formuleResolutionComplet.substring(0, niemeMouv));
+            text.setText("Solution : " + formuleResolutionComplet.substring(0, niemeMouv));
         } else
-            text.setText("");
+            text.setText("Solution : ");
     }
 }

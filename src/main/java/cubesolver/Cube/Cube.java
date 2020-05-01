@@ -101,6 +101,7 @@ public class Cube {
     /**
      * Effectue le mouvement inverse à celui donné en paramètre
      * Ex : si nom = 'U', le mouvement 'u' est effectué
+     *
      * @param nom le mouvement à inverser
      */
     public static void mouvementInverse(char nom) {
@@ -214,25 +215,32 @@ public class Cube {
         return export;
     }
 
+    /**
+     * Fonction d'import du cube après une saisie manuelle,
+     * pas uilisé pour le moment !
+     * WIP, pas optimisé du tout
+     * @param cubeImporte tableau 3D contenant les couleurs des faces
+     * @return le cube importé
+     */
     public static String importCube(int[][][] cubeImporte) {
-        //test du format du cube
-        int cases[] = new int[6];
-        for(int i=0; i<cubeImporte.length; i++) {
+        // test du format du cube
+        int[] cases = new int[6];
+        for (int[][] ints : cubeImporte) {
             for (int j = 0; j < cubeImporte[0].length; j++) {
                 for (int k = 0; k < cubeImporte[0][0].length; k++) {
-                    cases[cubeImporte[i][j][k]]++;
+                    cases[ints[j][k]]++;
                 }
             }
         }
-        for(int i=0; i<cases.length; i++){
-            if(cases[i] != 8){
+        for (int aCase : cases) {
+            if (aCase != 8) {
                 return "erreur";
             }
         }
 
 
         String piece = "";
-        int compteur=0;
+        int compteur = 0;
         int i1;
         int i2;
         int i3;
@@ -368,9 +376,9 @@ public class Cube {
         } catch (IOException e) {
             System.out.println("Erreur de l'import des angles");
         }
-        if(compteur == 12){
+        if (compteur == 12) {
             return "";
-        }else{
+        } else {
             return "erreur";
         }
     }

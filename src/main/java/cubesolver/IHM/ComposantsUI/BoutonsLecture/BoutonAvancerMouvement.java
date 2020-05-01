@@ -8,7 +8,9 @@ import java.awt.event.ActionListener;
 
 import static cubesolver.IHM.GestionAffichage.*;
 
-
+/**
+ * Avancer d'un mouvement dans la lecture de solution
+ */
 public class BoutonAvancerMouvement extends BoutonLecture implements ActionListener {
     public BoutonAvancerMouvement(int x, int y, int largeur, int hauteur) {
         super("BoutonsIHM/avancer.png", x, y, largeur, hauteur);

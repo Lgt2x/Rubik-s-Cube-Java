@@ -32,8 +32,8 @@ public class DeuxiemeEtage extends EtapeResolution {
                         }
                     }
 
-                    formule = "U" + ordreFaces.charAt(index)+ "u" + Character.toLowerCase(ordreFaces.charAt(index))
-                            + "u" + Character.toLowerCase(ordreFaces.charAt(index+1)) + "U" + ordreFaces.charAt(index+1);
+                    formule = "U" + ordreFaces.charAt(index) + "u" + Character.toLowerCase(ordreFaces.charAt(index))
+                            + "u" + Character.toLowerCase(ordreFaces.charAt(index + 1)) + "U" + ordreFaces.charAt(index + 1);
                     Cube.formule(formule);
                     for (int z = 0; z < formule.length(); z++) {
                         mouvements.append(formule.charAt(z));
@@ -59,7 +59,7 @@ public class DeuxiemeEtage extends EtapeResolution {
 
 
                 // Formule pour placer la pièce
-                if (A== 'R' && B == 'B') {
+                if (A == 'R' && B == 'B') {
                     formule = "U" + B + "u" + b + "u" + a + "U" + A;
                     Cube.formule(formule);
                     mouvements.append(formule);

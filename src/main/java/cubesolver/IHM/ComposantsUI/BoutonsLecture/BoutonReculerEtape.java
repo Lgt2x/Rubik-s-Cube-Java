@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 
 import static cubesolver.IHM.GestionAffichage.*;
 
+/**
+ * Recul d'une étape dans la lecture de solution
+ */
 public class BoutonReculerEtape extends BoutonLecture implements ActionListener {
     public BoutonReculerEtape(int x, int y, int largeur, int hauteur) {
         super("BoutonsIHM/arriereMouv.png", x, y, largeur, hauteur);

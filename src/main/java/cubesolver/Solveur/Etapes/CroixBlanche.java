@@ -23,7 +23,7 @@ public class CroixBlanche extends EtapeResolution {
 
         //setUp des aretes blanches
         for (int i = 4; i < 8; i++) {
-            if (!Cube.aretes[i].appartientFace('U')&& !Cube.aretes[i].estPositionneeCorrectement()) {
+            if (!Cube.aretes[i].appartientFace('U') && !Cube.aretes[i].estPositionneeCorrectement()) {
 
                 //trouver la face ou se trouve la pièce
                 j = 0;
@@ -56,22 +56,22 @@ public class CroixBlanche extends EtapeResolution {
 
         int compteur = 0;
         //placer la face blanche en l'orientant
-        for(int i=4; i<8; i++){
-            if(Cube.aretes[i].estPositionneeCorrectement()){
+        for (int i = 4; i < 8; i++) {
+            if (Cube.aretes[i].estPositionneeCorrectement()) {
                 compteur++;
             }
         }
 
-        while(compteur != 4){
+        while (compteur != 4) {
 
-            for(int i=4; i<8; i++){
-                if(Cube.aretes[i].appartientFace('U')){
-                    if(Cube.aretes[i].facelettes[0].face == 'U' && Cube.aretes[i].appartientFace(Cube.aretes[i].facelettes[1].color)){
+            for (int i = 4; i < 8; i++) {
+                if (Cube.aretes[i].appartientFace('U')) {
+                    if (Cube.aretes[i].facelettes[0].face == 'U' && Cube.aretes[i].appartientFace(Cube.aretes[i].facelettes[1].color)) {
                         String formula = Character.toString(Cube.aretes[i].facelettes[1].color) + Cube.aretes[i].facelettes[1].color;
                         mouvements.append(formula);
                         Cube.formule(formula);
                         compteur++;
-                    }else if(Cube.aretes[i].facelettes[1].face == 'U' && Cube.aretes[i].appartientFace(mouvement.charAt(mouvement.indexOf(Cube.aretes[i].facelettes[1].color)+1))){
+                    } else if (Cube.aretes[i].facelettes[1].face == 'U' && Cube.aretes[i].appartientFace(mouvement.charAt(mouvement.indexOf(Cube.aretes[i].facelettes[1].color) + 1))) {
                         String mouv1 = Character.toString(Cube.aretes[i].facelettes[0].face);
                         mouvements.append(mouv1);
                         Cube.formule(mouv1);

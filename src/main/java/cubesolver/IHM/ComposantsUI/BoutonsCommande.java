@@ -6,15 +6,16 @@ import cubesolver.IHM.GestionAffichage;
 
 import javax.swing.*;
 
-import static cubesolver.IHM.GestionAffichage.*;
+import static cubesolver.IHM.GestionAffichage.niemeMouv;
+import static cubesolver.IHM.GestionAffichage.tailleSolution;
 
 /**
  * Conteneur des boutons de lecture de la solution, dans l'ordre :
- *  - Reculer d'une étape de résolution
- *  - Reculer d'un mouvement
- *  - Avancer d'un mouvement
- *  - Avancer d'une étape
- *  - Finir le cube entièrement
+ * - Reculer d'une étape de résolution
+ * - Reculer d'un mouvement
+ * - Avancer d'un mouvement
+ * - Avancer d'une étape
+ * - Finir le cube entièrement
  */
 public class BoutonsCommande extends JPanel implements Etat {
     private static BoutonLecture[] boutonsLecture;
@@ -52,9 +53,9 @@ public class BoutonsCommande extends JPanel implements Etat {
                         && (bouton instanceof BoutonReculerMouvement || bouton instanceof BoutonReculerEtape)) {
                     bouton.setEnabled(false);
 
-                // De même, on n'avance que si on n'est pas à la fin
+                    // De même, on n'avance que si on n'est pas à la fin
                 } else if (niemeMouv >= tailleSolution
-                    && (bouton instanceof BoutonAvancerMouvement || bouton instanceof BoutonAvancerEtape || bouton instanceof BoutonFinir)) {
+                        && (bouton instanceof BoutonAvancerMouvement || bouton instanceof BoutonAvancerEtape || bouton instanceof BoutonFinir)) {
                     bouton.setEnabled(false);
                 }
             } else {

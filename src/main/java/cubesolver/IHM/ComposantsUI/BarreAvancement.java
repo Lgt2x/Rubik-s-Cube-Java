@@ -6,9 +6,13 @@ import cubesolver.IHM.GestionAffichage;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Visualisation de la barre d'avancement de la lecture de solution :
+ * un point avance sur une barre proportionnellement à l'avancement de la lecture
+ */
 public class BarreAvancement extends JPanel implements Etat {
-    private int hauteur = 70;
-    private int largeur = 400;
+    private final int hauteur = 70;
+    private final int largeur = 400;
 
     public BarreAvancement() {
         this.setLayout(null);

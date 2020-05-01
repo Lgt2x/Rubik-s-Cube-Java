@@ -9,6 +9,9 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * Classe abstraite définissant le style d'un bouton de lecture
+ */
 public abstract class BoutonLecture extends JButton implements ActionListener {
     public BoutonLecture(String imagePath, int x, int y, int largeur, int hauteur) {
         try {

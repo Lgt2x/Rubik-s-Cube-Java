@@ -13,7 +13,7 @@ import java.util.HashMap;
 /**
  * Etape de résolution #4
  * Résout la face jaune, sans placer correctement les pièces
-*/
+ */
 public class OrientationOfLastLayer extends EtapeResolution {
 
     // String utilisé pour trouver les voisins d'une face dans l'ordre donné
@@ -39,56 +39,60 @@ public class OrientationOfLastLayer extends EtapeResolution {
         HashMap<Integer, String> oll = chargementOLL("Formules/positions.oll");
 
         // Pour placer comme il faut la face du dessus pour trouver une configuration connue
-        for (int i=0;i<5;i++) {
+        for (int i = 0; i < 5; i++) {
             compteur++;
             // Si notre cas est connu : resoudre, sinon faire tourner la face du haut jusqu'à tomber dessus
             if (oll.containsKey(cas)) {
-                    Cube.formule(oll.get(cas));
-                    mouvements.append(oll.get(cas));
+                Cube.formule(oll.get(cas));
+                mouvements.append(oll.get(cas));
                 break;
-            } else if(i<4){
+            } else if (i < 4) {
                 Cube.mouvement('U');
                 mouvements.append('U');
                 cas = conversionLastLayer();
-            }else{
+            } else {
                 Cube.formule("FURurf");
                 mouvements.append("FURurf");
-                i=0;
+                i = 0;
             }
         }
-        if(compteur == 5){
+        if (compteur == 5) {
             return "erreur";
-        }else {
+        } else {
             return mouvements.toString();
 
         }
     }
 
-    /** L'objectif de cette methode est de convertir le cube en un int afin de connaitre
+    /**
+     * L'objectif de cette methode est de convertir le cube en un int afin de connaitre
      * l'orientation des pieces du dernier etage our resoudre la face avec une unique formule
+     *
      * @return la configuration sous forme d'int
      */
     public int conversionLastLayer() {
         int configuration = 0;
 
         // Les aretes jaunes vont de 0 à 3
-        for(int i = 0; i<4; i++){
+        for (int i = 0; i < 4; i++) {
             configuration += 0b01 << correspondance.get(Cube.aretes[i].facelettes[0].face);
-            if(Cube.aretes[i].facelettes[0].face == 'U'){
-                configuration-= 0b01; // On ne veut rien ajouter quand c'est U
+            if (Cube.aretes[i].facelettes[0].face == 'U') {
+                configuration -= 0b01; // On ne veut rien ajouter quand c'est U
             }
         }
 
         int coef;
-        for(int i = 0; i<4; i++){
-            if(Cube.angles[i].facelettes[0].face != 'U'){
+        for (int i = 0; i < 4; i++) {
+            if (Cube.angles[i].facelettes[0].face != 'U') {
                 int j = 0;
-                while(Cube.angles[i].facelettes[0].face != voisins.charAt(j)){ j++; }
+                while (Cube.angles[i].facelettes[0].face != voisins.charAt(j)) {
+                    j++;
+                }
 
-                coef = 1 << (3*j);
-                if(Cube.angles[i].appartientFace(voisins.charAt(j+1)))
+                coef = 1 << (3 * j);
+                if (Cube.angles[i].appartientFace(voisins.charAt(j + 1)))
                     coef = coef << 2; // Décalage de 2 bits vers la gauche dans ce cas
-                configuration+=coef;
+                configuration += coef;
             }
         }
         return configuration;
@@ -96,7 +100,7 @@ public class OrientationOfLastLayer extends EtapeResolution {
 
     /**
      * Chargement des OLL depuis un fichier externe dans le dossier ressources
-     *
+     * <p>
      * Format .oll avec la spécification suivante:
      * // Commentaire
      * <configuration> <formule>

@@ -13,16 +13,16 @@ import java.awt.event.ActionListener;
  * Classe décrivant les boutons dédiés aux mouvements individuels du cube en phase de mélange
  * Cette classe crée les 12 boutons individuels et les place sur une grille
  */
-public  class BoutonsMouvements extends JPanel implements ActionListener, Etat {
-    private static JButton[] mouvements = new JButton[12];
-    private String[] faces = {"R", "U", "L", "D", "F", "B", "r", "u", "l", "d", "f", "b"};
+public class BoutonsMouvements extends JPanel implements ActionListener, Etat {
+    private static final JButton[] mouvements = new JButton[12];
+    private final String[] faces = {"R", "U", "L", "D", "F", "B", "r", "u", "l", "d", "f", "b"};
 
-    public BoutonsMouvements(){
-        this.setLayout(new GridLayout(2,6));
+    public BoutonsMouvements() {
+        this.setLayout(new GridLayout(2, 6));
         this.setBounds(875, 205, 600, 150);
         this.setBackground(GestionAffichage.couleurBoutons);
 
-        for (int i=0;i<faces.length;i++) {
+        for (int i = 0; i < faces.length; i++) {
             mouvements[i] = new JButton(faces[i]);
 
             mouvements[i].setBackground(GestionAffichage.couleurBoutons);
@@ -38,12 +38,14 @@ public  class BoutonsMouvements extends JPanel implements ActionListener, Etat {
     /**
      * Au clic sur un bouton parmi les boutons de mouvement,
      * effectuer le mouvement correspondant sur le cube
+     *
      * @param e l'événement
      */
     public void actionPerformed(ActionEvent e) {
         GestionAffichage.setEtat("melange");
-        JButton face = (JButton)(e.getSource());
+        JButton face = (JButton) (e.getSource());
         Cube.mouvement(face.getText().charAt(0));
+
         GestionAffichage.ajouterMelange(Character.toString(face.getText().charAt(0)));
         GestionAffichage.actualiseEtat();
     }

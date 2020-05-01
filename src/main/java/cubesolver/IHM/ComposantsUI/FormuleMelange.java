@@ -5,9 +5,12 @@ import cubesolver.IHM.Etat;
 import javax.swing.*;
 import java.awt.*;
 
-import static cubesolver.IHM.GestionAffichage.*;
-import static cubesolver.IHM.GestionAffichage.niemeMouv;
+import static cubesolver.IHM.GestionAffichage.couleurBoutons;
+import static cubesolver.IHM.GestionAffichage.formuleMix;
 
+/**
+ * Affichage de la formule utilisée pour le mélange
+ */
 public class FormuleMelange extends JPanel implements Etat {
     private static JTextArea textMix;
 
@@ -18,7 +21,7 @@ public class FormuleMelange extends JPanel implements Etat {
         this.setBorder(BorderFactory.createLineBorder(Color.white));
 
 
-        textMix = new JTextArea("abc", 2, 50);
+        textMix = new JTextArea("", 2, 50);
         textMix.setBounds(0, 0, 600, 100);
         textMix.setEditable(false);
         textMix.setCursor(null);
@@ -33,6 +36,6 @@ public class FormuleMelange extends JPanel implements Etat {
     }
 
     public static void actualiseEtat() {
-        textMix.setText(formuleMix);
+        textMix.setText("Mélange : " + formuleMix);
     }
 }
